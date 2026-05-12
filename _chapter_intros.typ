@@ -1,0 +1,8 @@
+// Auto-generated: chapter-intro map keyed by H1 text.
+#let chapter-intros = (
+  "Peru/Andes/Spanish": (epigraph: "Cada planta sabe su enfermedad.", body: "Andean curanderismo, Amazonian plant medicine, and Iberian folk remedies that crossed the Atlantic. Many entries list both Spanish and Quechua common names; altitude and harvest notes accompany sourcing where relevant."),
+  "Global": (epigraph: "Every landscape carries its own pharmacy.", body: "Remedies from Europe, Africa, the Middle East, the Americas, the Pacific, and Southeast Asia that do not belong to the four anchor traditions. Regulatory status varies widely — legality and sourcing notes are flagged where known."),
+  "India": (epigraph: "Sarve bhavantu sukhinaḥ — may all beings be well.", body: "Fifty entries from the Ayurvedic corpus: classical herbs (Ashwagandha, Turmeric, Triphala) alongside culinary-medicinal staples. Preparation language follows the Charaka and Sushruta conventions; dosages are given in practical home measures rather than śāstric units."),
+  "China": (epigraph: "The superior physician treats what is not yet ill.", body: "Fifty materia medica entries from Traditional Chinese Medicine. Classical names (pinyin precedes modern botanical identifications where given in the source). Formulas follow the Shang Han Lun and Wen Bing conventions."),
+  "Japan": (epigraph: "Ichi-go ichi-e — one encounter, one opportunity.", body: "Kampo is TCM reinterpreted through four centuries of Japanese clinical adaptation. Expect familiar Chinese herbs (kakkon, shokyo) in characteristically simplified formulas — usually fewer ingredients per prescription than their TCM equivalents."),
+)

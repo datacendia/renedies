@@ -1,0 +1,861 @@
+{
+  "_comment": "Structured safety flags keyed by normalized common name OR latin binomial (lowercase, single space). Values: safe | caution | avoid | unknown. Curated from WHO monographs, NCCIH, LactMed, Natural Medicines Comprehensive Database, and Examine.com. Updated 2025.",
+  "_schema": {
+    "pregnancy": "safe | caution | avoid | unknown",
+    "lactation": "safe | caution | avoid | unknown",
+    "drugInteractions": "array of short descriptors",
+    "notes": "optional one-line context"
+  },
+  "ashwagandha": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Sedatives (benzodiazepines, Z-drugs, alcohol) — additive CNS depression",
+      "Thyroid medication (levothyroxine) — may raise T3/T4",
+      "Immunosuppressants — may antagonise",
+      "Antihypertensives — may lower BP further",
+      "Diabetes medications — may lower blood glucose further"
+    ],
+    "notes": "Traditionally considered abortifacient in large doses. Stop ≥ 2 weeks before surgery."
+  },
+  "withania somnifera": { "_alias": "ashwagandha" },
+  "turmeric": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets (warfarin, clopidogrel, aspirin) — bleeding risk",
+      "Diabetes medications — additive hypoglycaemia",
+      "Cyclosporine, tacrolimus — altered metabolism",
+      "Iron supplements — reduced absorption"
+    ],
+    "notes": "Culinary amounts are safe in pregnancy; concentrated curcumin extracts are not."
+  },
+  "curcuma longa": { "_alias": "turmeric" },
+  "ginger": {
+    "pregnancy": "safe",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets — bleeding risk at high doses",
+      "Diabetes medications — additive hypoglycaemia"
+    ],
+    "notes": "Up to 1 g/day of dried ginger is well-established for pregnancy nausea."
+  },
+  "zingiber officinale": { "_alias": "ginger" },
+  "tulsi": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Anticoagulants — possible bleeding risk",
+      "Diabetes medications — additive hypoglycaemia",
+      "Pentobarbital — prolongs sedation"
+    ],
+    "notes": "Fertility reduction reported in animal studies; avoid when trying to conceive."
+  },
+  "holy basil": { "_alias": "tulsi" },
+  "ocimum sanctum": { "_alias": "tulsi" },
+  "ocimum tenuiflorum": { "_alias": "tulsi" },
+  "ginseng": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Warfarin — reduces INR",
+      "MAOIs — headache, mania reports",
+      "Stimulants / caffeine — additive CNS stimulation",
+      "Diabetes medications — additive hypoglycaemia",
+      "Immunosuppressants — may antagonise"
+    ]
+  },
+  "panax ginseng": { "_alias": "ginseng" },
+  "panax quinquefolius": { "_alias": "ginseng" },
+  "reishi": {
+    "pregnancy": "unknown",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets — bleeding risk",
+      "Antihypertensives — additive BP lowering",
+      "Immunosuppressants — may antagonise"
+    ]
+  },
+  "ganoderma lucidum": { "_alias": "reishi" },
+  "licorice": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Diuretics — hypokalaemia risk",
+      "Digoxin — potentiates toxicity via potassium loss",
+      "Corticosteroids — prolonged half-life",
+      "Antihypertensives — antagonises",
+      "Warfarin — reduces effect"
+    ],
+    "notes": "Glycyrrhizin raises blood pressure; avoid in hypertension and CKD."
+  },
+  "glycyrrhiza glabra": { "_alias": "licorice" },
+  "glycyrrhiza uralensis": { "_alias": "licorice" },
+  "st john's wort": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "SSRIs / SNRIs / MAOIs — serotonin syndrome risk",
+      "Oral contraceptives — reduced efficacy (breakthrough ovulation)",
+      "Warfarin — reduces INR",
+      "Cyclosporine, tacrolimus — transplant rejection reports",
+      "Digoxin, HIV protease inhibitors, chemotherapy agents — reduced levels",
+      "Triptans — serotonin syndrome risk"
+    ],
+    "notes": "Potent CYP3A4 and P-glycoprotein inducer; interacts with >50% of prescription drugs."
+  },
+  "hypericum perforatum": { "_alias": "st john's wort" },
+  "kava": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Alcohol, benzodiazepines, barbiturates — additive CNS and hepatic toxicity",
+      "Levodopa — antagonises",
+      "Hepatotoxic drugs — additive liver injury"
+    ],
+    "notes": "Documented cases of severe hepatotoxicity. Banned or restricted in several countries."
+  },
+  "piper methysticum": { "_alias": "kava" },
+  "ephedra": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "MAOIs — hypertensive crisis",
+      "Stimulants, caffeine — additive cardiovascular toxicity",
+      "Antihypertensives — antagonises",
+      "Cardiac glycosides — arrhythmia risk"
+    ],
+    "notes": "Banned as a dietary supplement in the US since 2004. Deaths documented."
+  },
+  "ephedra sinica": { "_alias": "ephedra" },
+  "ma huang": { "_alias": "ephedra" },
+  "triphala": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — possible bleeding risk",
+      "Oral medications — may reduce absorption when taken concurrently"
+    ],
+    "notes": "Mild laxative; avoid in diarrhoea. Separate from other oral drugs by ≥ 2 hours."
+  },
+  "valerian": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Sedatives, alcohol — additive CNS depression",
+      "Anaesthesia — stop ≥ 1 week before surgery"
+    ]
+  },
+  "valeriana officinalis": { "_alias": "valerian" },
+  "chamomile": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Warfarin — bleeding reports",
+      "Sedatives — additive CNS depression",
+      "Cyclosporine — altered metabolism"
+    ],
+    "notes": "Asteraceae allergy cross-reactivity."
+  },
+  "matricaria chamomilla": { "_alias": "chamomile" },
+  "matricaria recutita": { "_alias": "chamomile" },
+  "echinacea": {
+    "pregnancy": "caution",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Immunosuppressants — antagonises",
+      "Hepatotoxic drugs — additive liver stress with long-term use"
+    ],
+    "notes": "Limit to ≤ 8 weeks continuous use."
+  },
+  "garlic": {
+    "pregnancy": "safe",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets — bleeding risk",
+      "Saquinavir and some antiretrovirals — reduced levels",
+      "Diabetes medications — additive hypoglycaemia"
+    ],
+    "notes": "Culinary amounts safe; concentrated aged-extract supplements may affect bleeding."
+  },
+  "allium sativum": { "_alias": "garlic" },
+  "ginkgo": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets — bleeding risk (documented intracranial haemorrhage)",
+      "Anticonvulsants — lowers seizure threshold",
+      "SSRIs — serotonin syndrome reports",
+      "Thiazide diuretics — hypertension reports"
+    ],
+    "notes": "Stop ≥ 2 weeks before surgery."
+  },
+  "ginkgo biloba": { "_alias": "ginkgo" },
+  "milk thistle": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "CYP3A4 / CYP2C9 substrates — altered metabolism (mild)",
+      "Diabetes medications — additive hypoglycaemia"
+    ]
+  },
+  "silybum marianum": { "_alias": "milk thistle" },
+  "cinnamon": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk (Cassia > Ceylon, coumarin content)",
+      "Diabetes medications — additive hypoglycaemia",
+      "Hepatotoxic drugs — Cassia coumarin hepatotoxicity"
+    ],
+    "notes": "Prefer Ceylon cinnamon (C. verum) for daily use; Cassia has 100× higher coumarin."
+  },
+  "cinnamomum verum": { "_alias": "cinnamon" },
+  "cinnamomum cassia": { "_alias": "cinnamon" },
+  "black cohosh": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Hepatotoxic drugs — rare DILI reports",
+      "Tamoxifen — unclear interaction"
+    ]
+  },
+  "actaea racemosa": { "_alias": "black cohosh" },
+  "shatavari": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Diuretics — additive effect",
+      "Oestrogen-sensitive cancers — theoretical oestrogenic activity"
+    ],
+    "notes": "Traditional galactagogue; LactMed lists 'no data' but long traditional use."
+  },
+  "asparagus racemosus": { "_alias": "shatavari" },
+  "fenugreek": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Diabetes medications — additive hypoglycaemia",
+      "MAOIs — theoretical"
+    ],
+    "notes": "Uterine stimulant in large doses. Infant maple-syrup urine smell when nursing."
+  },
+  "trigonella foenum-graecum": { "_alias": "fenugreek" },
+
+  "peppermint": {
+    "pregnancy": "caution",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Cyclosporine — raises levels",
+      "Antacids / PPIs — enteric-coated capsules may open prematurely",
+      "CYP3A4 substrates — mild inhibition in vitro"
+    ],
+    "notes": "Culinary and tea amounts safe. Peppermint oil may relax lower oesophageal sphincter — avoid in reflux. Do not apply to infants' faces (risk of apnoea)."
+  },
+  "mentha piperita": { "_alias": "peppermint" },
+  "lavender": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Sedatives, anaesthesia — additive CNS depression",
+      "Anticoagulants — theoretical at very high doses"
+    ],
+    "notes": "Oral lavender oil (e.g. Silexan) may cause prepubertal gynaecomastia with prolonged topical use in children."
+  },
+  "lavandula angustifolia": { "_alias": "lavender" },
+  "rosemary": {
+    "pregnancy": "avoid",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk at medicinal doses",
+      "Diabetes medications — additive hypoglycaemia",
+      "Diuretics — additive effect",
+      "Lithium — may reduce clearance"
+    ],
+    "notes": "Culinary amounts safe. Medicinal doses are uterine stimulant and emmenagogue."
+  },
+  "rosmarinus officinalis": { "_alias": "rosemary" },
+  "salvia rosmarinus": { "_alias": "rosemary" },
+  "thyme": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — theoretical bleeding risk at high doses",
+      "Oestrogen-sensitive conditions — mild oestrogenic activity in vitro"
+    ],
+    "notes": "Culinary amounts safe. Concentrated thyme oil is a potent irritant — never undiluted on skin."
+  },
+  "thymus vulgaris": { "_alias": "thyme" },
+  "sage": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticonvulsants — thujone lowers seizure threshold",
+      "Sedatives — additive CNS depression",
+      "Diabetes medications — additive hypoglycaemia"
+    ],
+    "notes": "Contains thujone (neurotoxic in high doses). Suppresses lactation — traditional weaning herb. Culinary amounts safe."
+  },
+  "salvia officinalis": { "_alias": "sage" },
+  "elderberry": {
+    "pregnancy": "caution",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Immunosuppressants — may antagonise",
+      "Diuretics — additive effect",
+      "Diabetes medications — additive hypoglycaemia"
+    ],
+    "notes": "Unripe berries, bark, and leaves contain cyanogenic glycosides — always cook ripe berries before use."
+  },
+  "sambucus nigra": { "_alias": "elderberry" },
+  "nettle": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Antihypertensives — additive BP lowering",
+      "Diuretics — additive effect",
+      "Lithium — may reduce clearance",
+      "Diabetes medications — additive hypoglycaemia"
+    ],
+    "notes": "Avoid in first trimester (uterine stimulant); often used in late pregnancy under supervision."
+  },
+  "urtica dioica": { "_alias": "nettle" },
+  "dandelion": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Diuretics — additive effect, hyponatraemia risk",
+      "Lithium — may reduce clearance",
+      "Antibiotics (ciprofloxacin) — reduced absorption",
+      "Potassium-sparing drugs — hyperkalaemia",
+      "CYP3A4 substrates — mild inhibition"
+    ],
+    "notes": "Asteraceae cross-reactivity for those with ragweed allergy."
+  },
+  "taraxacum officinale": { "_alias": "dandelion" },
+  "calendula": {
+    "pregnancy": "avoid",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Sedatives — additive CNS depression at high oral doses"
+    ],
+    "notes": "Topical use well tolerated. Oral use avoided in pregnancy (emmenagogue). Asteraceae allergy possible."
+  },
+  "calendula officinalis": { "_alias": "calendula" },
+  "aloe vera": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Diuretics, digoxin — hypokalaemia from latex laxative effect",
+      "Diabetes medications — additive hypoglycaemia",
+      "Sevoflurane — additive bleeding",
+      "Stimulant laxatives — additive GI effects"
+    ],
+    "notes": "Inner-leaf gel (topical/oral) is different from aloe latex. Oral latex is a stimulant laxative — IARC classifies as possibly carcinogenic."
+  },
+  "aloe barbadensis": { "_alias": "aloe vera" },
+  "neem": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Diabetes medications — additive hypoglycaemia",
+      "Immunosuppressants — may antagonise",
+      "Hepatotoxic drugs — additive liver stress"
+    ],
+    "notes": "Documented abortifacient. Neem oil ingestion in children has caused Reye-like syndrome — never give internally to children."
+  },
+  "azadirachta indica": { "_alias": "neem" },
+  "gotu kola": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Sedatives — additive CNS depression",
+      "Hepatotoxic drugs — rare DILI reports",
+      "Diabetes medications — additive hypoglycaemia",
+      "Diuretics — additive effect"
+    ],
+    "notes": "Limit to 6 weeks continuous use."
+  },
+  "centella asiatica": { "_alias": "gotu kola" },
+  "bacopa": {
+    "pregnancy": "unknown",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Thyroid medication — may raise T4",
+      "Sedatives — additive CNS depression",
+      "Calcium-channel blockers — additive",
+      "CYP450 substrates — mild inhibition"
+    ],
+    "notes": "Traditional use 12+ weeks to see cognitive effects."
+  },
+  "bacopa monnieri": { "_alias": "bacopa" },
+  "brahmi": { "_alias": "bacopa" },
+  "cardamom": {
+    "pregnancy": "safe",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — theoretical at very high doses",
+      "HIV protease inhibitors — reduced levels reported"
+    ],
+    "notes": "Culinary amounts safe; medicinal extracts less studied."
+  },
+  "elettaria cardamomum": { "_alias": "cardamom" },
+  "clove": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk (eugenol)",
+      "Diabetes medications — additive hypoglycaemia"
+    ],
+    "notes": "Culinary amounts safe. Clove oil topically can cause tissue necrosis; never give to infants orally (hepatotoxicity)."
+  },
+  "syzygium aromaticum": { "_alias": "clove" },
+  "fennel": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Ciprofloxacin — reduced absorption",
+      "Tamoxifen — theoretical antagonism (mild oestrogenic activity)",
+      "Oral contraceptives — theoretical"
+    ],
+    "notes": "Traditional galactagogue. Avoid estragole-rich essential oil internally."
+  },
+  "foeniculum vulgare": { "_alias": "fennel" },
+  "lemon balm": {
+    "pregnancy": "caution",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Sedatives — additive CNS depression",
+      "Thyroid medication — may antagonise (anti-thyroid activity)",
+      "GABAergic drugs — additive"
+    ],
+    "notes": "Avoid in hypothyroidism with medication."
+  },
+  "melissa officinalis": { "_alias": "lemon balm" },
+  "passionflower": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Sedatives, alcohol — additive CNS depression",
+      "MAOIs — theoretical",
+      "Anticoagulants — bleeding risk reported"
+    ],
+    "notes": "Uterine stimulant in animal studies."
+  },
+  "passiflora incarnata": { "_alias": "passionflower" },
+  "hawthorn": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Digoxin — potentiates effect",
+      "Antihypertensives — additive BP lowering",
+      "Nitrates / PDE5 inhibitors — additive hypotension",
+      "Beta-blockers — additive"
+    ],
+    "notes": "Used in heart failure; coordinate with cardiologist before use."
+  },
+  "crataegus monogyna": { "_alias": "hawthorn" },
+  "crataegus oxyacantha": { "_alias": "hawthorn" },
+  "saw palmetto": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets — bleeding risk (case reports)",
+      "Hormonal therapies, finasteride — additive anti-androgen effect",
+      "Oral contraceptives — theoretical"
+    ],
+    "notes": "Hormone-modulating — not for use in women of reproductive age without indication."
+  },
+  "serenoa repens": { "_alias": "saw palmetto" },
+  "cordyceps": {
+    "pregnancy": "unknown",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Immunosuppressants — may antagonise",
+      "Diabetes medications — additive hypoglycaemia"
+    ]
+  },
+  "cordyceps sinensis": { "_alias": "cordyceps" },
+  "ophiocordyceps sinensis": { "_alias": "cordyceps" },
+  "lion's mane": {
+    "pregnancy": "unknown",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Anticoagulants — theoretical",
+      "Diabetes medications — additive hypoglycaemia"
+    ],
+    "notes": "Cases of contact dermatitis and pneumonitis from raw handling."
+  },
+  "hericium erinaceus": { "_alias": "lion's mane" },
+  "chaga": {
+    "pregnancy": "unknown",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Diabetes medications — additive hypoglycaemia",
+      "Immunosuppressants — may antagonise"
+    ],
+    "notes": "High oxalate content — avoid in kidney disease or kidney-stone history."
+  },
+  "inonotus obliquus": { "_alias": "chaga" },
+  "maca": {
+    "pregnancy": "unknown",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Hormonal therapies — theoretical modulation",
+      "Thyroid medication — goitrogenic in raw form at high doses"
+    ],
+    "notes": "Traditionally gelatinised (cooked) for safety; raw powder at very high doses is goitrogenic."
+  },
+  "lepidium meyenii": { "_alias": "maca" },
+  "cat's claw": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Immunosuppressants — may antagonise",
+      "Anticoagulants — bleeding risk",
+      "Antihypertensives — additive BP lowering",
+      "Protease inhibitors — reduced levels"
+    ],
+    "notes": "Contraceptive and abortifacient in traditional use."
+  },
+  "uncaria tomentosa": { "_alias": "cat's claw" },
+  "yerba mate": {
+    "pregnancy": "caution",
+    "lactation": "caution",
+    "drugInteractions": [
+      "MAOIs — hypertensive reaction",
+      "Stimulants, caffeine — additive",
+      "Theophylline — additive CNS stimulation",
+      "Lithium — reduced clearance"
+    ],
+    "notes": "Polycyclic-aromatic-hydrocarbon content; long-term high-temperature consumption associated with upper-aerodigestive cancers."
+  },
+  "ilex paraguariensis": { "_alias": "yerba mate" },
+  "astragalus": {
+    "pregnancy": "caution",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Immunosuppressants — antagonises",
+      "Antihypertensives — additive BP lowering",
+      "Diuretics — additive effect",
+      "Anticoagulants — theoretical"
+    ],
+    "notes": "Avoid in autoimmune disease and organ-transplant recipients."
+  },
+  "astragalus membranaceus": { "_alias": "astragalus" },
+  "schisandra": {
+    "pregnancy": "avoid",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "CYP3A4 substrates (tacrolimus, statins, midazolam) — significantly raises levels",
+      "Warfarin — reduces INR",
+      "Hepatotoxic drugs — unclear"
+    ],
+    "notes": "Potent CYP3A4 inhibitor — clinically significant interactions."
+  },
+  "schisandra chinensis": { "_alias": "schisandra" },
+  "goji": {
+    "pregnancy": "avoid",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Warfarin — documented bleeding (raises INR)",
+      "Diabetes medications — additive hypoglycaemia",
+      "Antihypertensives — additive BP lowering"
+    ]
+  },
+  "lycium barbarum": { "_alias": "goji" },
+  "dong quai": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticoagulants — documented bleeding (raises INR)",
+      "Oestrogen-sensitive cancers — oestrogenic activity",
+      "Photosensitising drugs — additive (furanocoumarins)"
+    ],
+    "notes": "Uterine stimulant. Not for solo use — traditionally blended in formulas."
+  },
+  "angelica sinensis": { "_alias": "dong quai" },
+  "hibiscus": {
+    "pregnancy": "avoid",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Antihypertensives — additive BP lowering",
+      "Chloroquine — reduces levels",
+      "Diclofenac, paracetamol — altered pharmacokinetics",
+      "Diuretics — additive effect"
+    ],
+    "notes": "Traditional emmenagogue."
+  },
+  "hibiscus sabdariffa": { "_alias": "hibiscus" },
+  "moringa": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Diabetes medications — additive hypoglycaemia",
+      "Thyroid medication — may reduce levels",
+      "Antihypertensives — additive BP lowering"
+    ],
+    "notes": "Leaves generally safe; root bark is abortifacient."
+  },
+  "moringa oleifera": { "_alias": "moringa" },
+  "kratom": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Opioids, sedatives, alcohol — additive CNS and respiratory depression (fatal overdose reports)",
+      "CYP2D6 / CYP3A4 substrates — altered metabolism",
+      "MAOIs, SSRIs — serotonin syndrome risk",
+      "Hepatotoxic drugs — additive (DILI reported)"
+    ],
+    "notes": "Regulated or prohibited in many jurisdictions. Addictive. Neonatal abstinence syndrome documented."
+  },
+  "mitragyna speciosa": { "_alias": "kratom" },
+  "skullcap": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Sedatives — additive CNS depression",
+      "Hepatotoxic drugs — DILI case reports (often from germander adulteration)",
+      "CYP450 substrates — variable"
+    ],
+    "notes": "Historically adulterated with Teucrium — source from reputable suppliers."
+  },
+  "scutellaria baicalensis": { "_alias": "skullcap" },
+  "scutellaria lateriflora": { "_alias": "skullcap" },
+  "marshmallow": {
+    "pregnancy": "safe",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Oral medications — mucilage may reduce absorption; separate by ≥ 1 hour",
+      "Diabetes medications — additive hypoglycaemia at high doses"
+    ]
+  },
+  "althaea officinalis": { "_alias": "marshmallow" },
+  "slippery elm": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Oral medications — mucilage may reduce absorption; separate by ≥ 2 hours"
+    ]
+  },
+  "ulmus rubra": { "_alias": "slippery elm" },
+  "black seed": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Antihypertensives — additive BP lowering",
+      "Diabetes medications — additive hypoglycaemia",
+      "Immunosuppressants (cyclosporine) — reduces levels",
+      "CYP3A4 / CYP2D6 substrates — altered metabolism"
+    ],
+    "notes": "Uterine stimulant in animal studies."
+  },
+  "nigella sativa": { "_alias": "black seed" },
+  "saffron": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Antihypertensives — additive",
+      "SSRIs — additive (serotonergic mechanism)"
+    ],
+    "notes": "> 5 g uterine stimulant; > 10 g potentially abortifacient."
+  },
+  "crocus sativus": { "_alias": "saffron" },
+  "olive leaf": {
+    "pregnancy": "caution",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Antihypertensives — additive BP lowering",
+      "Diabetes medications — additive hypoglycaemia",
+      "Anticoagulants — theoretical"
+    ]
+  },
+  "olea europaea": { "_alias": "olive leaf" },
+  "willow bark": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets — additive bleeding (salicylate)",
+      "NSAIDs, aspirin — additive GI and renal toxicity",
+      "Methotrexate — reduced clearance",
+      "ACE inhibitors — reduced effect"
+    ],
+    "notes": "Contains salicin — same contraindications as aspirin, including Reye syndrome risk in children with viral illness."
+  },
+  "salix alba": { "_alias": "willow bark" },
+  "feverfew": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticoagulants / antiplatelets — bleeding risk",
+      "NSAIDs — reduces efficacy (inhibits cyclooxygenase competitively)"
+    ],
+    "notes": "Uterine stimulant. Stop gradually — rebound headache on abrupt discontinuation."
+  },
+  "tanacetum parthenium": { "_alias": "feverfew" },
+  "rhodiola": {
+    "pregnancy": "unknown",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "Stimulants — additive",
+      "MAOIs, SSRIs — theoretical (monoamine activity)",
+      "Diabetes medications — additive hypoglycaemia",
+      "Warfarin — reduces clearance"
+    ],
+    "notes": "Avoid in bipolar disorder — activating."
+  },
+  "rhodiola rosea": { "_alias": "rhodiola" },
+  "eleuthero": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "Warfarin — raises digoxin levels; may alter INR",
+      "Immunosuppressants — may antagonise",
+      "Diabetes medications — additive hypoglycaemia",
+      "CYP3A4 substrates — variable"
+    ]
+  },
+  "eleutherococcus senticosus": { "_alias": "eleuthero" },
+  "siberian ginseng": { "_alias": "eleuthero" },
+  "vitex": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Oral contraceptives — reduces efficacy",
+      "Hormonal therapies (HRT, tamoxifen) — antagonises",
+      "Dopamine agonists / antagonists — may potentiate or oppose",
+      "Antipsychotics — theoretical dopaminergic interaction"
+    ],
+    "notes": "Suppresses prolactin — not for use by nursing mothers or in IVF protocols."
+  },
+  "vitex agnus-castus": { "_alias": "vitex" },
+  "chaste tree": { "_alias": "vitex" },
+  "yarrow": {
+    "pregnancy": "avoid",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Antihypertensives — additive BP lowering",
+      "Sedatives — additive CNS depression",
+      "Lithium — reduced clearance"
+    ],
+    "notes": "Emmenagogue. Asteraceae allergy cross-reactivity."
+  },
+  "achillea millefolium": { "_alias": "yarrow" },
+  "psyllium": {
+    "pregnancy": "safe",
+    "lactation": "safe",
+    "drugInteractions": [
+      "Oral medications — may reduce absorption; separate by ≥ 2 hours",
+      "Lithium — reduced levels",
+      "Diabetes medications — additive hypoglycaemia (slows carbohydrate absorption)"
+    ],
+    "notes": "Take with 250 ml water minimum — risk of oesophageal or intestinal obstruction."
+  },
+  "plantago ovata": { "_alias": "psyllium" },
+  "mugwort": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticoagulants — bleeding risk",
+      "Sedatives — additive CNS depression"
+    ],
+    "notes": "Thujone content (neurotoxic). Abortifacient. Asteraceae allergy cross-reactivity."
+  },
+  "artemisia vulgaris": { "_alias": "mugwort" },
+  "boswellia": {
+    "pregnancy": "avoid",
+    "lactation": "caution",
+    "drugInteractions": [
+      "NSAIDs — additive anti-inflammatory (may reduce needed dose)",
+      "CYP3A4 substrates — inhibits",
+      "Anticoagulants — theoretical"
+    ]
+  },
+  "boswellia serrata": { "_alias": "boswellia" },
+  "frankincense": { "_alias": "boswellia" },
+  "goldenseal": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "CYP3A4 / CYP2D6 substrates — berberine is a significant inhibitor",
+      "Cyclosporine, digoxin — raises levels",
+      "Anticoagulants — altered INR",
+      "Metformin — additive hypoglycaemia"
+    ],
+    "notes": "Berberine is a uterine stimulant and causes kernicterus in neonates — never in pregnancy, breastfeeding, or newborns."
+  },
+  "hydrastis canadensis": { "_alias": "goldenseal" },
+  "yohimbe": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "MAOIs — hypertensive crisis",
+      "SSRIs, TCAs — serotonin-adrenergic interaction",
+      "Stimulants, caffeine — additive cardiovascular toxicity",
+      "Antihypertensives — antagonises",
+      "PDE5 inhibitors — additive cardiovascular effects"
+    ],
+    "notes": "FDA warning letters and hundreds of adverse-event reports including seizures and fatal arrhythmias."
+  },
+  "pausinystalia johimbe": { "_alias": "yohimbe" },
+  "comfrey": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Hepatotoxic drugs — additive liver injury"
+    ],
+    "notes": "Contains hepatotoxic pyrrolizidine alkaloids. Oral use prohibited in several countries. Topical use on broken skin also contraindicated."
+  },
+  "symphytum officinale": { "_alias": "comfrey" },
+  "pennyroyal": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Hepatotoxic drugs — additive liver injury",
+      "CYP450 substrates — altered metabolism (pulegone)"
+    ],
+    "notes": "Pulegone is severely hepatotoxic. Documented human deaths. Never use pennyroyal oil internally."
+  },
+  "mentha pulegium": { "_alias": "pennyroyal" },
+  "arnica": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "Anticoagulants — topical absorption can raise INR",
+      "Antihypertensives — additive"
+    ],
+    "notes": "Topical only on unbroken skin. Oral use is toxic — homeopathic dilutions are the only safe internal form."
+  },
+  "arnica montana": { "_alias": "arnica" },
+  "coca": {
+    "pregnancy": "avoid",
+    "lactation": "avoid",
+    "drugInteractions": [
+      "MAOIs — hypertensive crisis",
+      "Stimulants, caffeine — additive cardiovascular toxicity",
+      "Antihypertensives — antagonises",
+      "Beta-blockers — unopposed alpha-stimulation"
+    ],
+    "notes": "Coca leaf is a controlled substance outside a few Andean jurisdictions. Traditional chewing/tea use differs pharmacokinetically from processed cocaine."
+  },
+  "erythroxylum coca": { "_alias": "coca" },
+  "artemisia annua": {
+    "pregnancy": "avoid",
+    "lactation": "unknown",
+    "drugInteractions": [
+      "CYP2B6 / CYP3A4 substrates — altered metabolism",
+      "Antimalarials — do not monotreat malaria with herbal artemisia (resistance risk)",
+      "Hepatotoxic drugs — additive"
+    ],
+    "notes": "WHO-classified antimalarial; use purified artemisinin combination therapy only."
+  },
+  "sweet wormwood": { "_alias": "artemisia annua" },
+  "qinghao": { "_alias": "artemisia annua" }
+}

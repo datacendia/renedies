@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────
+   Theme tokens — Garden (light) and Apothecary (dark)
+   ───────────────────────────────────────────── */
+:root, [data-theme="garden"] {
+  --surface:     251 250 246;   /* fbfaf6 */
+  --elevated:    255 255 255;
+  --ink:          26  26  26;
+  --ink-soft:     82  86  78;
+  --line:        228 240 227;   /* brand-100 */
+  --accent:       55 109  53;   /* brand-600 */
+  --accent-soft: 244 249 244;   /* brand-50  */
+  --ember:       201 138  63;   /* warm amber accent */
+  --grid-opacity: 0.35;
+  color-scheme: light;
+}
+
+[data-theme="apothecary"] {
+  --surface:      22  17  13;   /* deep bark */
+  --elevated:     34  26  20;
+  --ink:         246 232 209;   /* parchment */
+  --ink-soft:    196 174 140;
+  --line:         62  44  30;
+  --accent:      219 158  84;   /* warm brass */
+  --accent-soft:  46  33  22;
+  --ember:       242 170  76;   /* candleflame */
+  --grid-opacity: 0.12;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --surface:      22  17  13;
+    --elevated:     34  26  20;
+    --ink:         246 232 209;
+    --ink-soft:    196 174 140;
+    --line:         62  44  30;
+    --accent:      219 158  84;
+    --accent-soft:  46  33  22;
+    --ember:       242 170  76;
+    --grid-opacity: 0.12;
+    color-scheme: dark;
+  }
+}
+
+/* ─────────── Base ─────────── */
+html, body {
+  background-color: rgb(var(--surface));
+  color:            rgb(var(--ink));
+  font-feature-settings: "ss01", "ss02", "liga", "calt";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image:
+    radial-gradient(1200px 600px at 100% -100px, rgb(var(--ember) / 0.06), transparent 60%),
+    radial-gradient(900px  500px at -100px 30%, rgb(var(--accent) / 0.05), transparent 60%);
+}
+
+/* Apothecary — subtle candlelight vignette */
+[data-theme="apothecary"] body {
+  background-image:
+    radial-gradient(900px 500px at 50% -200px, rgb(var(--ember) / 0.14), transparent 60%),
+    radial-gradient(600px 300px at 0%  100%, rgb(var(--accent) / 0.06), transparent 60%),
+    radial-gradient(600px 300px at 100% 80%, rgb(var(--ember) / 0.04), transparent 60%);
+}
+
+::selection { background: rgb(var(--ember) / 0.35); color: rgb(var(--ink)); }
+
+/* Graceful focus ring */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid rgb(var(--ember));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─────────── Typography scale ─────────── */
+.font-display { font-family: "Fraunces", "Cormorant Garamond", Georgia, serif; font-optical-sizing: auto; }
+
+h1, h2, h3, h4 { letter-spacing: -0.01em; }
+
+.drop-cap::first-letter {
+  font-family: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  float: left;
+  font-size: 4.2em;
+  line-height: 0.85;
+  padding: 0.08em 0.12em 0 0;
+  color: rgb(var(--ember));
+  font-weight: 500;
+}
+
+/* Prose overrides using semantic tokens */
+.prose-remedy h1 { @apply font-display text-4xl mt-6 mb-3; color: rgb(var(--ink)); }
+.prose-remedy h2 { @apply font-display text-2xl mt-6 mb-2; color: rgb(var(--ink)); }
+.prose-remedy h3 { @apply font-display text-xl  mt-4 mb-1; color: rgb(var(--accent)); }
+.prose-remedy p  { @apply my-2 leading-relaxed; color: rgb(var(--ink)); }
+.prose-remedy ul { @apply list-disc ml-6 my-2; }
+.prose-remedy strong { color: rgb(var(--ink)); }
+.prose-remedy blockquote { @apply border-l-4 px-4 py-2 my-3; border-color: rgb(var(--accent) / 0.5); background: rgb(var(--accent-soft)); color: rgb(var(--ink-soft)); }
+.prose-remedy code { @apply px-1 py-0.5 rounded text-sm; background: rgb(var(--accent-soft)); }
+
+/* ─────────── Component primitives ─────────── */
+.card {
+  background-color: rgb(var(--elevated));
+  border: 1px solid rgb(var(--line));
+  border-radius: 14px;
+  transition: transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms, border-color 240ms;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -14px rgb(0 0 0 / 0.25);
+  border-color: rgb(var(--accent) / 0.45);
+}
+
+.btn { @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition; }
+.btn-primary  { background: rgb(var(--accent)); color: rgb(var(--elevated)); }
+.btn-primary:hover { filter: brightness(1.08); box-shadow: 0 8px 24px -10px rgb(var(--accent) / 0.5); }
+.btn-ghost    { color: rgb(var(--ink)); border: 1px solid rgb(var(--line)); background: transparent; }
+.btn-ghost:hover { background: rgb(var(--accent-soft)); border-color: rgb(var(--accent) / 0.4); }
+.btn-ember    { background: rgb(var(--ember)); color: #1a120a; }
+.btn-ember:hover { filter: brightness(1.06); box-shadow: 0 0 24px -4px rgb(var(--ember) / 0.6); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  padding: 0.12rem 0.6rem; border-radius: 999px; font-size: 0.72rem;
+  background: rgb(var(--accent-soft));
+  color: rgb(var(--accent));
+  border: 1px solid rgb(var(--accent) / 0.25);
+}
+
+.divider-ornament {
+  height: 1px; width: 100%;
+  background: linear-gradient(90deg, transparent, rgb(var(--line)) 20%, rgb(var(--accent) / 0.4) 50%, rgb(var(--line)) 80%, transparent);
+}
+
+/* Shimmer placeholder for lazy content */
+.shimmer {
+  background: linear-gradient(90deg, rgb(var(--line)) 0%, rgb(var(--accent-soft)) 40%, rgb(var(--line)) 80%);
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+
+/* Disable motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile bottom-nav safe-area */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
+main { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0)); }
+@media (min-width: 768px) { main { padding-bottom: 0; } }

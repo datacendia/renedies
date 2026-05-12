@@ -1,0 +1,376 @@
+{
+  "_comment": "Curated authoritative references keyed by normalized common name or Latin. Prefer primary monographs and systematic reviews. Use _alias to point synonyms at the canonical key. Sources abbreviated: POWO = Kew Plants of the World Online; NCCIH = U.S. National Center for Complementary & Integrative Health; WHO = WHO monograph on selected medicinal plants; LactMed = NIH Drugs and Lactation Database; Examine = Examine.com evidence summary.",
+  "_schema": {
+    "source": "short label, e.g. 'NCCIH'",
+    "title": "title of article / monograph",
+    "url": "canonical URL",
+    "kind": "monograph | review | trial | database | book"
+  },
+  "ashwagandha": [
+    { "source": "NCCIH",  "title": "Ashwagandha",                                                           "url": "https://www.nccih.nih.gov/health/ashwagandha",                                                   "kind": "monograph" },
+    { "source": "PubMed", "title": "Examining the effect of Withania somnifera on stress and anxiety (RCT meta-analysis, 2021)", "url": "https://pubmed.ncbi.nlm.nih.gov/34254920/", "kind": "review" },
+    { "source": "LactMed","title": "Ashwagandha (LactMed)",                                                  "url": "https://www.ncbi.nlm.nih.gov/books/NBK501815/",                                                  "kind": "database" },
+    { "source": "POWO",   "title": "Withania somnifera (L.) Dunal",                                          "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:319087-2",                            "kind": "database" }
+  ],
+  "withania somnifera": { "_alias": "ashwagandha" },
+  "turmeric": [
+    { "source": "NCCIH",  "title": "Turmeric",                                                              "url": "https://www.nccih.nih.gov/health/turmeric",                                                       "kind": "monograph" },
+    { "source": "PubMed", "title": "Curcumin: a review of its effects on human health (2017)",              "url": "https://pubmed.ncbi.nlm.nih.gov/28974774/",                                                       "kind": "review" },
+    { "source": "POWO",   "title": "Curcuma longa L.",                                                      "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:796451-1",                            "kind": "database" }
+  ],
+  "curcuma longa": { "_alias": "turmeric" },
+  "ginger": [
+    { "source": "NCCIH",  "title": "Ginger",                                                                "url": "https://www.nccih.nih.gov/health/ginger",                                                         "kind": "monograph" },
+    { "source": "PubMed", "title": "Ginger for nausea and vomiting in pregnancy: systematic review (2014)", "url": "https://pubmed.ncbi.nlm.nih.gov/24904272/",                                                       "kind": "review" },
+    { "source": "WHO",    "title": "WHO monograph — Rhizoma Zingiberis",                                    "url": "https://apps.who.int/iris/handle/10665/42052",                                                    "kind": "monograph" },
+    { "source": "POWO",   "title": "Zingiber officinale Roscoe",                                            "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:798373-1",                            "kind": "database" }
+  ],
+  "zingiber officinale": { "_alias": "ginger" },
+  "tulsi": [
+    { "source": "PubMed", "title": "The clinical efficacy and safety of Tulsi: a systematic review (2017)", "url": "https://pubmed.ncbi.nlm.nih.gov/28400848/",                                                       "kind": "review" },
+    { "source": "POWO",   "title": "Ocimum tenuiflorum L.",                                                 "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:452571-1",                            "kind": "database" }
+  ],
+  "holy basil": { "_alias": "tulsi" },
+  "ocimum sanctum": { "_alias": "tulsi" },
+  "ocimum tenuiflorum": { "_alias": "tulsi" },
+  "ginseng": [
+    { "source": "NCCIH",  "title": "Asian Ginseng",                                                         "url": "https://www.nccih.nih.gov/health/asian-ginseng",                                                  "kind": "monograph" },
+    { "source": "WHO",    "title": "WHO monograph — Radix Ginseng",                                         "url": "https://apps.who.int/iris/handle/10665/42052",                                                    "kind": "monograph" },
+    { "source": "PubMed", "title": "Ginseng for cognition: Cochrane review (2010)",                          "url": "https://pubmed.ncbi.nlm.nih.gov/21154383/",                                                       "kind": "review" }
+  ],
+  "panax ginseng": { "_alias": "ginseng" },
+  "reishi": [
+    { "source": "PubMed", "title": "Ganoderma lucidum (Reishi) for cancer treatment: Cochrane review (2016)", "url": "https://pubmed.ncbi.nlm.nih.gov/27045603/",                                                      "kind": "review" },
+    { "source": "Examine","title": "Reishi evidence summary",                                                 "url": "https://examine.com/supplements/reishi/",                                                         "kind": "database" }
+  ],
+  "ganoderma lucidum": { "_alias": "reishi" },
+  "licorice": [
+    { "source": "NCCIH",  "title": "Licorice Root",                                                         "url": "https://www.nccih.nih.gov/health/licorice-root",                                                  "kind": "monograph" },
+    { "source": "PubMed", "title": "Glycyrrhizin-induced pseudoaldosteronism: review (2019)",               "url": "https://pubmed.ncbi.nlm.nih.gov/30635116/",                                                       "kind": "review" }
+  ],
+  "glycyrrhiza glabra": { "_alias": "licorice" },
+  "glycyrrhiza uralensis": { "_alias": "licorice" },
+  "st john's wort": [
+    { "source": "NCCIH",  "title": "St. John's Wort",                                                        "url": "https://www.nccih.nih.gov/health/st-johns-wort",                                                  "kind": "monograph" },
+    { "source": "Cochrane","title": "St John's wort for major depression (Cochrane 2008)",                   "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD000448.pub3/full",                   "kind": "review" },
+    { "source": "PubMed", "title": "Hypericum perforatum drug interactions (2014)",                         "url": "https://pubmed.ncbi.nlm.nih.gov/25236355/",                                                       "kind": "review" }
+  ],
+  "hypericum perforatum": { "_alias": "st john's wort" },
+  "kava": [
+    { "source": "NCCIH",  "title": "Kava",                                                                  "url": "https://www.nccih.nih.gov/health/kava",                                                           "kind": "monograph" },
+    { "source": "PubMed", "title": "Kava hepatotoxicity: review of case reports (2011)",                    "url": "https://pubmed.ncbi.nlm.nih.gov/21128039/",                                                       "kind": "review" }
+  ],
+  "piper methysticum": { "_alias": "kava" },
+  "ephedra": [
+    { "source": "FDA",    "title": "FDA Ephedra final rule (2004)",                                         "url": "https://www.federalregister.gov/documents/2004/02/11/04-2912/final-rule-declaring-dietary-supplements-containing-ephedrine-alkaloids-adulterated", "kind": "monograph" },
+    { "source": "PubMed", "title": "Adverse events from ephedra-containing supplements (2000)",             "url": "https://pubmed.ncbi.nlm.nih.gov/11122416/",                                                       "kind": "trial" }
+  ],
+  "ephedra sinica": { "_alias": "ephedra" },
+  "triphala": [
+    { "source": "PubMed", "title": "Triphala: current applications and new perspectives (2017)",            "url": "https://pubmed.ncbi.nlm.nih.gov/28527032/",                                                       "kind": "review" }
+  ],
+  "valerian": [
+    { "source": "NCCIH",  "title": "Valerian",                                                              "url": "https://www.nccih.nih.gov/health/valerian",                                                       "kind": "monograph" },
+    { "source": "PubMed", "title": "Valerian for insomnia: systematic review (2010)",                       "url": "https://pubmed.ncbi.nlm.nih.gov/20347389/",                                                       "kind": "review" }
+  ],
+  "valeriana officinalis": { "_alias": "valerian" },
+  "chamomile": [
+    { "source": "NCCIH",  "title": "Chamomile",                                                             "url": "https://www.nccih.nih.gov/health/chamomile",                                                      "kind": "monograph" },
+    { "source": "PubMed", "title": "Chamomile (Matricaria recutita) review of medicinal properties (2011)", "url": "https://pubmed.ncbi.nlm.nih.gov/22096320/",                                                       "kind": "review" }
+  ],
+  "matricaria chamomilla": { "_alias": "chamomile" },
+  "echinacea": [
+    { "source": "NCCIH",  "title": "Echinacea",                                                             "url": "https://www.nccih.nih.gov/health/echinacea",                                                      "kind": "monograph" },
+    { "source": "Cochrane","title": "Echinacea for preventing and treating the common cold (2014)",          "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD000530.pub3/full",                   "kind": "review" }
+  ],
+  "garlic": [
+    { "source": "NCCIH",  "title": "Garlic",                                                                "url": "https://www.nccih.nih.gov/health/garlic",                                                         "kind": "monograph" },
+    { "source": "PubMed", "title": "Garlic for cardiovascular disease: Cochrane review (2012)",             "url": "https://pubmed.ncbi.nlm.nih.gov/22895964/",                                                       "kind": "review" }
+  ],
+  "allium sativum": { "_alias": "garlic" },
+  "ginkgo": [
+    { "source": "NCCIH",  "title": "Ginkgo",                                                                "url": "https://www.nccih.nih.gov/health/ginkgo",                                                         "kind": "monograph" },
+    { "source": "PubMed", "title": "Ginkgo biloba for cognitive decline: Cochrane review (2009)",           "url": "https://pubmed.ncbi.nlm.nih.gov/19160216/",                                                       "kind": "review" }
+  ],
+  "ginkgo biloba": { "_alias": "ginkgo" },
+  "milk thistle": [
+    { "source": "NCCIH",  "title": "Milk Thistle",                                                          "url": "https://www.nccih.nih.gov/health/milk-thistle",                                                   "kind": "monograph" },
+    { "source": "Cochrane","title": "Milk thistle for alcoholic and/or hepatitis B or C liver diseases (2007)", "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003620.pub3/full",                  "kind": "review" }
+  ],
+  "silybum marianum": { "_alias": "milk thistle" },
+  "cinnamon": [
+    { "source": "NCCIH",  "title": "Cinnamon",                                                              "url": "https://www.nccih.nih.gov/health/cinnamon",                                                       "kind": "monograph" },
+    { "source": "PubMed", "title": "Cinnamon for type 2 diabetes: Cochrane review (2012)",                  "url": "https://pubmed.ncbi.nlm.nih.gov/22972104/",                                                       "kind": "review" }
+  ],
+  "cinnamomum verum": { "_alias": "cinnamon" },
+  "black cohosh": [
+    { "source": "NCCIH",  "title": "Black Cohosh",                                                          "url": "https://www.nccih.nih.gov/health/black-cohosh",                                                   "kind": "monograph" },
+    { "source": "Cochrane","title": "Black cohosh for menopausal symptoms (2012)",                           "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD007244.pub2/full",                   "kind": "review" }
+  ],
+  "actaea racemosa": { "_alias": "black cohosh" },
+  "shatavari": [
+    { "source": "PubMed", "title": "Asparagus racemosus: an update (2018)",                                 "url": "https://pubmed.ncbi.nlm.nih.gov/29552178/",                                                       "kind": "review" }
+  ],
+  "asparagus racemosus": { "_alias": "shatavari" },
+  "fenugreek": [
+    { "source": "NCCIH",  "title": "Fenugreek",                                                             "url": "https://www.nccih.nih.gov/health/fenugreek",                                                      "kind": "monograph" },
+    { "source": "LactMed","title": "Fenugreek (LactMed)",                                                   "url": "https://www.ncbi.nlm.nih.gov/books/NBK501779/",                                                  "kind": "database" }
+  ],
+  "trigonella foenum-graecum": { "_alias": "fenugreek" },
+
+  "peppermint": [
+    { "source": "NCCIH", "title": "Peppermint Oil",                          "url": "https://www.nccih.nih.gov/health/peppermint-oil",                "kind": "monograph" },
+    { "source": "PubMed","title": "Peppermint oil for irritable bowel syndrome: systematic review (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/30560145/",                       "kind": "review" },
+    { "source": "POWO",  "title": "Mentha × piperita L.",                    "url": "https://powo.science.kew.org/?q=Mentha+piperita",                "kind": "database" }
+  ],
+  "mentha piperita": { "_alias": "peppermint" },
+  "lavender": [
+    { "source": "NCCIH", "title": "Lavender",                                "url": "https://www.nccih.nih.gov/health/lavender",                      "kind": "monograph" },
+    { "source": "PubMed","title": "Lavender for anxiety: systematic review (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/30404593/",                      "kind": "review" }
+  ],
+  "lavandula angustifolia": { "_alias": "lavender" },
+  "rosemary": [
+    { "source": "PubMed","title": "Rosmarinus officinalis: pharmacological profile review (2020)", "url": "https://pubmed.ncbi.nlm.nih.gov/32758060/", "kind": "review" },
+    { "source": "POWO",  "title": "Salvia rosmarinus Spenn.",                "url": "https://powo.science.kew.org/?q=Salvia+rosmarinus",              "kind": "database" }
+  ],
+  "rosmarinus officinalis": { "_alias": "rosemary" },
+  "salvia rosmarinus": { "_alias": "rosemary" },
+  "thyme": [
+    { "source": "PubMed","title": "Thymol and thyme essential oil: pharmacological review (2018)", "url": "https://pubmed.ncbi.nlm.nih.gov/29851894/", "kind": "review" },
+    { "source": "POWO",  "title": "Thymus vulgaris L.",                      "url": "https://powo.science.kew.org/?q=Thymus+vulgaris",                "kind": "database" }
+  ],
+  "thymus vulgaris": { "_alias": "thyme" },
+  "sage": [
+    { "source": "PubMed","title": "Salvia officinalis: traditional and modern uses review (2017)", "url": "https://pubmed.ncbi.nlm.nih.gov/28068532/", "kind": "review" },
+    { "source": "POWO",  "title": "Salvia officinalis L.",                   "url": "https://powo.science.kew.org/?q=Salvia+officinalis",             "kind": "database" }
+  ],
+  "salvia officinalis": { "_alias": "sage" },
+  "elderberry": [
+    { "source": "NCCIH", "title": "European Elder",                          "url": "https://www.nccih.nih.gov/health/european-elder",                "kind": "monograph" },
+    { "source": "Cochrane","title": "Sambucus nigra for upper respiratory tract infections (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/30670267/", "kind": "review" }
+  ],
+  "sambucus nigra": { "_alias": "elderberry" },
+  "nettle": [
+    { "source": "PubMed","title": "Urtica dioica: therapeutic indications review (2018)", "url": "https://pubmed.ncbi.nlm.nih.gov/29541693/",                      "kind": "review" },
+    { "source": "POWO",  "title": "Urtica dioica L.",                        "url": "https://powo.science.kew.org/?q=Urtica+dioica",                  "kind": "database" }
+  ],
+  "urtica dioica": { "_alias": "nettle" },
+  "dandelion": [
+    { "source": "PubMed","title": "Taraxacum officinale: review of properties and human use (2011)", "url": "https://pubmed.ncbi.nlm.nih.gov/21241380/", "kind": "review" },
+    { "source": "POWO",  "title": "Taraxacum officinale F.H.Wigg.",          "url": "https://powo.science.kew.org/?q=Taraxacum+officinale",           "kind": "database" }
+  ],
+  "taraxacum officinale": { "_alias": "dandelion" },
+  "calendula": [
+    { "source": "PubMed","title": "Calendula officinalis in wound healing: systematic review (2013)", "url": "https://pubmed.ncbi.nlm.nih.gov/24251846/", "kind": "review" },
+    { "source": "POWO",  "title": "Calendula officinalis L.",                "url": "https://powo.science.kew.org/?q=Calendula+officinalis",          "kind": "database" }
+  ],
+  "calendula officinalis": { "_alias": "calendula" },
+  "aloe vera": [
+    { "source": "NCCIH", "title": "Aloe Vera",                               "url": "https://www.nccih.nih.gov/health/aloe-vera",                     "kind": "monograph" },
+    { "source": "Cochrane","title": "Aloe vera for treating acute and chronic wounds (2012)", "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD008762.pub2/full", "kind": "review" }
+  ],
+  "aloe barbadensis": { "_alias": "aloe vera" },
+  "neem": [
+    { "source": "PubMed","title": "Azadirachta indica: a comprehensive review (2013)", "url": "https://pubmed.ncbi.nlm.nih.gov/23569463/",                   "kind": "review" }
+  ],
+  "azadirachta indica": { "_alias": "neem" },
+  "gotu kola": [
+    { "source": "PubMed","title": "Centella asiatica: review of its pharmacology and potential applications (2014)", "url": "https://pubmed.ncbi.nlm.nih.gov/25368447/", "kind": "review" }
+  ],
+  "centella asiatica": { "_alias": "gotu kola" },
+  "bacopa": [
+    { "source": "PubMed","title": "Bacopa monnieri for cognitive enhancement: meta-analysis (2014)", "url": "https://pubmed.ncbi.nlm.nih.gov/24252493/", "kind": "review" },
+    { "source": "Examine","title": "Bacopa monnieri evidence summary",       "url": "https://examine.com/supplements/bacopa-monnieri/",               "kind": "database" }
+  ],
+  "bacopa monnieri": { "_alias": "bacopa" },
+  "brahmi": { "_alias": "bacopa" },
+  "cardamom": [
+    { "source": "PubMed","title": "Elettaria cardamomum: traditional and scientific review (2020)", "url": "https://pubmed.ncbi.nlm.nih.gov/32194464/", "kind": "review" }
+  ],
+  "elettaria cardamomum": { "_alias": "cardamom" },
+  "clove": [
+    { "source": "PubMed","title": "Syzygium aromaticum (clove): pharmacology and clinical review (2014)", "url": "https://pubmed.ncbi.nlm.nih.gov/24980611/", "kind": "review" }
+  ],
+  "syzygium aromaticum": { "_alias": "clove" },
+  "fennel": [
+    { "source": "LactMed","title": "Fennel (LactMed)",                       "url": "https://www.ncbi.nlm.nih.gov/books/NBK501829/",                  "kind": "database" },
+    { "source": "PubMed","title": "Foeniculum vulgare: review of phytochemistry and pharmacology (2014)", "url": "https://pubmed.ncbi.nlm.nih.gov/25182906/", "kind": "review" }
+  ],
+  "foeniculum vulgare": { "_alias": "fennel" },
+  "lemon balm": [
+    { "source": "NCCIH", "title": "Lemon Balm",                              "url": "https://www.nccih.nih.gov/health/lemon-balm",                    "kind": "monograph" },
+    { "source": "PubMed","title": "Melissa officinalis for anxiety and sleep: systematic review (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/30909956/", "kind": "review" }
+  ],
+  "melissa officinalis": { "_alias": "lemon balm" },
+  "passionflower": [
+    { "source": "NCCIH", "title": "Passionflower",                           "url": "https://www.nccih.nih.gov/health/passionflower",                 "kind": "monograph" },
+    { "source": "PubMed","title": "Passiflora incarnata for anxiety: systematic review (2017)", "url": "https://pubmed.ncbi.nlm.nih.gov/28444892/", "kind": "review" }
+  ],
+  "passiflora incarnata": { "_alias": "passionflower" },
+  "hawthorn": [
+    { "source": "NCCIH", "title": "Hawthorn",                                "url": "https://www.nccih.nih.gov/health/hawthorn",                      "kind": "monograph" },
+    { "source": "Cochrane","title": "Hawthorn extract for treating chronic heart failure (2008)", "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD005312.pub2/full", "kind": "review" }
+  ],
+  "crataegus monogyna": { "_alias": "hawthorn" },
+  "saw palmetto": [
+    { "source": "NCCIH", "title": "Saw Palmetto",                            "url": "https://www.nccih.nih.gov/health/saw-palmetto",                  "kind": "monograph" },
+    { "source": "Cochrane","title": "Serenoa repens for benign prostatic hyperplasia (2012)", "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD001423.pub3/full", "kind": "review" }
+  ],
+  "serenoa repens": { "_alias": "saw palmetto" },
+  "cordyceps": [
+    { "source": "PubMed","title": "Cordyceps sinensis: pharmacology and clinical applications review (2013)", "url": "https://pubmed.ncbi.nlm.nih.gov/23435589/", "kind": "review" }
+  ],
+  "cordyceps sinensis": { "_alias": "cordyceps" },
+  "lion's mane": [
+    { "source": "PubMed","title": "Hericium erinaceus: neuroprotective and cognitive effects review (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/31197969/", "kind": "review" }
+  ],
+  "hericium erinaceus": { "_alias": "lion's mane" },
+  "chaga": [
+    { "source": "PubMed","title": "Inonotus obliquus: medicinal mushroom review (2021)", "url": "https://pubmed.ncbi.nlm.nih.gov/33582228/", "kind": "review" }
+  ],
+  "inonotus obliquus": { "_alias": "chaga" },
+  "maca": [
+    { "source": "PubMed","title": "Lepidium meyenii (maca): a systematic review (2010)", "url": "https://pubmed.ncbi.nlm.nih.gov/20691074/", "kind": "review" }
+  ],
+  "lepidium meyenii": { "_alias": "maca" },
+  "cat's claw": [
+    { "source": "NCCIH", "title": "Cat's Claw",                              "url": "https://www.nccih.nih.gov/health/cats-claw",                     "kind": "monograph" },
+    { "source": "PubMed","title": "Uncaria tomentosa: clinical review (2016)", "url": "https://pubmed.ncbi.nlm.nih.gov/27003587/", "kind": "review" }
+  ],
+  "uncaria tomentosa": { "_alias": "cat's claw" },
+  "yerba mate": [
+    { "source": "PubMed","title": "Ilex paraguariensis (yerba mate): health effects review (2011)", "url": "https://pubmed.ncbi.nlm.nih.gov/22146671/", "kind": "review" }
+  ],
+  "ilex paraguariensis": { "_alias": "yerba mate" },
+  "astragalus": [
+    { "source": "NCCIH", "title": "Astragalus",                              "url": "https://www.nccih.nih.gov/health/astragalus",                    "kind": "monograph" },
+    { "source": "PubMed","title": "Astragalus membranaceus: pharmacology and clinical review (2014)", "url": "https://pubmed.ncbi.nlm.nih.gov/25258669/", "kind": "review" }
+  ],
+  "astragalus membranaceus": { "_alias": "astragalus" },
+  "schisandra": [
+    { "source": "PubMed","title": "Schisandra chinensis: CYP-mediated drug interactions review (2014)", "url": "https://pubmed.ncbi.nlm.nih.gov/25281912/", "kind": "review" }
+  ],
+  "schisandra chinensis": { "_alias": "schisandra" },
+  "goji": [
+    { "source": "PubMed","title": "Lycium barbarum: pharmacological effects review (2015)", "url": "https://pubmed.ncbi.nlm.nih.gov/25915601/", "kind": "review" }
+  ],
+  "lycium barbarum": { "_alias": "goji" },
+  "dong quai": [
+    { "source": "PubMed","title": "Angelica sinensis: pharmacological and clinical review (2013)", "url": "https://pubmed.ncbi.nlm.nih.gov/24063995/", "kind": "review" }
+  ],
+  "angelica sinensis": { "_alias": "dong quai" },
+  "hibiscus": [
+    { "source": "PubMed","title": "Hibiscus sabdariffa for blood pressure: meta-analysis (2015)", "url": "https://pubmed.ncbi.nlm.nih.gov/25875025/", "kind": "review" }
+  ],
+  "hibiscus sabdariffa": { "_alias": "hibiscus" },
+  "moringa": [
+    { "source": "PubMed","title": "Moringa oleifera: nutritional and therapeutic review (2015)", "url": "https://pubmed.ncbi.nlm.nih.gov/26623869/", "kind": "review" }
+  ],
+  "moringa oleifera": { "_alias": "moringa" },
+  "kratom": [
+    { "source": "NCCIH", "title": "Kratom",                                  "url": "https://www.nccih.nih.gov/health/kratom",                        "kind": "monograph" },
+    { "source": "FDA",   "title": "FDA and Kratom",                          "url": "https://www.fda.gov/news-events/public-health-focus/fda-and-kratom", "kind": "monograph" },
+    { "source": "PubMed","title": "Mitragyna speciosa (kratom): pharmacology and clinical review (2020)", "url": "https://pubmed.ncbi.nlm.nih.gov/32221895/", "kind": "review" }
+  ],
+  "mitragyna speciosa": { "_alias": "kratom" },
+  "skullcap": [
+    { "source": "PubMed","title": "Scutellaria baicalensis: flavonoids and pharmacology review (2017)", "url": "https://pubmed.ncbi.nlm.nih.gov/28395178/", "kind": "review" }
+  ],
+  "scutellaria baicalensis": { "_alias": "skullcap" },
+  "scutellaria lateriflora": { "_alias": "skullcap" },
+  "marshmallow": [
+    { "source": "PubMed","title": "Althaea officinalis: review of phytochemistry and ethnopharmacology (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/31450228/", "kind": "review" }
+  ],
+  "althaea officinalis": { "_alias": "marshmallow" },
+  "slippery elm": [
+    { "source": "POWO",  "title": "Ulmus rubra Muhl.",                       "url": "https://powo.science.kew.org/?q=Ulmus+rubra",                    "kind": "database" }
+  ],
+  "ulmus rubra": { "_alias": "slippery elm" },
+  "black seed": [
+    { "source": "PubMed","title": "Nigella sativa: clinical review (2013)", "url": "https://pubmed.ncbi.nlm.nih.gov/23436482/", "kind": "review" }
+  ],
+  "nigella sativa": { "_alias": "black seed" },
+  "saffron": [
+    { "source": "PubMed","title": "Crocus sativus for major depressive disorder: meta-analysis (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/30630194/", "kind": "review" }
+  ],
+  "crocus sativus": { "_alias": "saffron" },
+  "olive leaf": [
+    { "source": "PubMed","title": "Olea europaea leaf: cardiovascular effects review (2015)", "url": "https://pubmed.ncbi.nlm.nih.gov/25880820/", "kind": "review" }
+  ],
+  "olea europaea": { "_alias": "olive leaf" },
+  "willow bark": [
+    { "source": "Cochrane","title": "Herbal medicine for low back pain: willow bark (2014)", "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD004504.pub4/full", "kind": "review" },
+    { "source": "POWO",  "title": "Salix alba L.",                           "url": "https://powo.science.kew.org/?q=Salix+alba",                     "kind": "database" }
+  ],
+  "salix alba": { "_alias": "willow bark" },
+  "feverfew": [
+    { "source": "NCCIH", "title": "Feverfew",                                "url": "https://www.nccih.nih.gov/health/feverfew",                      "kind": "monograph" },
+    { "source": "Cochrane","title": "Feverfew for preventing migraine (2015)", "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD002286.pub3/full", "kind": "review" }
+  ],
+  "tanacetum parthenium": { "_alias": "feverfew" },
+  "rhodiola": [
+    { "source": "NCCIH", "title": "Rhodiola",                                "url": "https://www.nccih.nih.gov/health/rhodiola",                      "kind": "monograph" },
+    { "source": "PubMed","title": "Rhodiola rosea for stress and fatigue: systematic review (2012)", "url": "https://pubmed.ncbi.nlm.nih.gov/22228617/", "kind": "review" }
+  ],
+  "rhodiola rosea": { "_alias": "rhodiola" },
+  "eleuthero": [
+    { "source": "PubMed","title": "Eleutherococcus senticosus: a pharmacological review (2010)", "url": "https://pubmed.ncbi.nlm.nih.gov/20653626/", "kind": "review" }
+  ],
+  "eleutherococcus senticosus": { "_alias": "eleuthero" },
+  "vitex": [
+    { "source": "PubMed","title": "Vitex agnus-castus for premenstrual syndrome: systematic review (2017)", "url": "https://pubmed.ncbi.nlm.nih.gov/28237390/", "kind": "review" }
+  ],
+  "vitex agnus-castus": { "_alias": "vitex" },
+  "yarrow": [
+    { "source": "PubMed","title": "Achillea millefolium: phytochemistry and pharmacology review (2017)", "url": "https://pubmed.ncbi.nlm.nih.gov/28167226/", "kind": "review" },
+    { "source": "POWO",  "title": "Achillea millefolium L.",                 "url": "https://powo.science.kew.org/?q=Achillea+millefolium",           "kind": "database" }
+  ],
+  "achillea millefolium": { "_alias": "yarrow" },
+  "psyllium": [
+    { "source": "PubMed","title": "Psyllium fibre for constipation and cholesterol: meta-analysis (2018)", "url": "https://pubmed.ncbi.nlm.nih.gov/30252869/", "kind": "review" }
+  ],
+  "plantago ovata": { "_alias": "psyllium" },
+  "mugwort": [
+    { "source": "PubMed","title": "Artemisia vulgaris: phytochemistry and pharmacology review (2011)", "url": "https://pubmed.ncbi.nlm.nih.gov/22096325/", "kind": "review" }
+  ],
+  "artemisia vulgaris": { "_alias": "mugwort" },
+  "boswellia": [
+    { "source": "PubMed","title": "Boswellia serrata in osteoarthritis and inflammatory disease: review (2020)", "url": "https://pubmed.ncbi.nlm.nih.gov/33162995/", "kind": "review" }
+  ],
+  "boswellia serrata": { "_alias": "boswellia" },
+  "frankincense": { "_alias": "boswellia" },
+  "goldenseal": [
+    { "source": "NCCIH", "title": "Goldenseal",                              "url": "https://www.nccih.nih.gov/health/goldenseal",                    "kind": "monograph" },
+    { "source": "PubMed","title": "Hydrastis canadensis and berberine: drug interactions (2018)", "url": "https://pubmed.ncbi.nlm.nih.gov/29420797/", "kind": "review" }
+  ],
+  "hydrastis canadensis": { "_alias": "goldenseal" },
+  "yohimbe": [
+    { "source": "NCCIH", "title": "Yohimbe",                                 "url": "https://www.nccih.nih.gov/health/yohimbe",                       "kind": "monograph" },
+    { "source": "PubMed","title": "Yohimbine adverse events: 10-year surveillance review (2018)", "url": "https://pubmed.ncbi.nlm.nih.gov/29405779/", "kind": "review" }
+  ],
+  "pausinystalia johimbe": { "_alias": "yohimbe" },
+  "comfrey": [
+    { "source": "EMA",   "title": "Symphytum officinale: assessment report on pyrrolizidine alkaloids", "url": "https://www.ema.europa.eu/en/medicines/herbal/symphyti-radix", "kind": "monograph" },
+    { "source": "PubMed","title": "Pyrrolizidine alkaloid hepatotoxicity: systematic review (2019)", "url": "https://pubmed.ncbi.nlm.nih.gov/31102765/", "kind": "review" }
+  ],
+  "symphytum officinale": { "_alias": "comfrey" },
+  "pennyroyal": [
+    { "source": "PubMed","title": "Pennyroyal oil hepatotoxicity: case series review (1996)", "url": "https://pubmed.ncbi.nlm.nih.gov/8922411/", "kind": "review" }
+  ],
+  "mentha pulegium": { "_alias": "pennyroyal" },
+  "arnica": [
+    { "source": "Cochrane","title": "Topical herbal therapies for osteoarthritis: arnica (2013)", "url": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD010538/full", "kind": "review" }
+  ],
+  "arnica montana": { "_alias": "arnica" },
+  "coca": [
+    { "source": "WHO",   "title": "WHO Cocaine Project — coca leaf report (1995)", "url": "https://apps.who.int/iris/handle/10665/43237",                       "kind": "monograph" },
+    { "source": "POWO",  "title": "Erythroxylum coca Lam.",                  "url": "https://powo.science.kew.org/?q=Erythroxylum+coca",              "kind": "database" }
+  ],
+  "erythroxylum coca": { "_alias": "coca" },
+  "artemisia annua": [
+    { "source": "WHO",   "title": "WHO guidelines for the treatment of malaria — artemisinin", "url": "https://www.who.int/publications/i/item/guidelines-for-the-treatment-of-malaria", "kind": "monograph" },
+    { "source": "PubMed","title": "Artemisia annua and artemisinin: pharmacological review (2017)", "url": "https://pubmed.ncbi.nlm.nih.gov/28603104/", "kind": "review" }
+  ],
+  "sweet wormwood": { "_alias": "artemisia annua" },
+  "qinghao": { "_alias": "artemisia annua" }
+}

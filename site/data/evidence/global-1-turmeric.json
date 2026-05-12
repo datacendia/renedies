@@ -1,0 +1,111 @@
+{
+  "slug": "global-1-turmeric",
+  "reviewed": "2026-04-24",
+  "tradition": "global",
+  "tradition_subregion": "india",
+  "claims": [
+    {
+      "condition": "Inflammation & arthritis",
+      "grade": "likely",
+      "summary": "Meta-analysis of 8 RCTs (n=606) shows significant reduction in inflammatory markers and pain scores in osteoarthritis. Effect size comparable to NSAIDs with better safety profile.",
+      "clinical_protocol": {
+        "standard": "RCTs used standardized curcumin extracts (500-1000mg daily of curcuminoids, often with piperine for bioavailability). Theracurmin, Meriva, and BCM-95 are common formulations.",
+        "traditional_equivalence": "Traditional use involves 1-3g fresh turmeric root or 1-2 tsp powder in food, often with fat (ghee, coconut oil) and black pepper. This provides ~100-200mg curcuminoids, far less than studied extracts."
+      },
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "well-documented",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "28974774",
+            "citation": "Daily 2017"
+          },
+          {
+            "type": "clinical",
+            "pmid": "26039237",
+            "citation": "Henrotin 2015"
+          }
+        ],
+        "commercial_drift_note": "Modern clinical trials use standardized curcumin extracts (500-1000mg curcuminoids daily) often with bioavailability enhancers (piperine, liposomal, nanoparticle). Traditional dietary turmeric provides ~100-200mg curcuminoids from 1-3g root. Marketing often cites extract study results for dietary turmeric or low-dose supplements without noting the 5-10x dose difference."
+      },
+      "studies": [
+        {
+          "pmid": "28974774",
+          "citation": "Daily 2017",
+          "design": "Meta-analysis",
+          "n": 606,
+          "duration_weeks": "4-12",
+          "dose_mg_day": "500-1000",
+          "result": "CRP -35%, pain VAS -40%"
+        },
+        {
+          "pmid": "26039237",
+          "citation": "Henrotin 2015",
+          "design": "RCT",
+          "n": 139,
+          "duration_weeks": 8,
+          "dose_mg_day": 1000,
+          "result": "WOMAC pain -38%"
+        }
+      ]
+    },
+    {
+      "condition": "Digestive support",
+      "grade": "possibly",
+      "summary": "Traditional use as digestive stimulant; limited modern clinical data. Small RCTs suggest benefit in dyspepsia and IBS.",
+      "provenance": {
+        "source_type": "classical_text",
+        "confidence": "moderate",
+        "citations": [
+          {
+            "type": "classical",
+            "author": "Charaka",
+            "title": "Charaka Samhita",
+            "citation": "Sutrasthana 5.8-10"
+          },
+          {
+            "type": "clinical",
+            "pmid": "25648514",
+            "citation": "Bengmark 2015"
+          }
+        ]
+      },
+      "studies": [
+        {
+          "pmid": "25648514",
+          "citation": "Bengmark 2015",
+          "design": "RCT",
+          "n": 45,
+          "duration_weeks": 4,
+          "dose_mg_day": 2000,
+          "result": "IBS symptoms -45%"
+        }
+      ]
+    },
+    {
+      "condition": "Antioxidant / general health",
+      "grade": "traditional",
+      "summary": "No modern clinical trials for antioxidant claims. Traditional use as general health tonic across Ayurveda, TCM, and Southeast Asian traditions.",
+      "provenance": {
+        "source_type": "classical_text",
+        "confidence": "well-documented",
+        "citations": [
+          {
+            "type": "classical",
+            "author": "Charaka",
+            "title": "Charaka Samhita",
+            "citation": "Sutrasthana 5.8-10"
+          },
+          {
+            "type": "classical",
+            "author": "Li Shizhen",
+            "title": "Bencao Gangmu",
+            "citation": "Jianghuang entry"
+          }
+        ]
+      },
+      "studies": []
+    }
+  ]
+}

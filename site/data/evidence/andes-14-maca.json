@@ -1,0 +1,153 @@
+{
+  "slug": "andes-14-maca",
+  "reviewed": "2026-04-24",
+  "tradition": "andean",
+  "tradition_subregion": "junin-highlands",
+  "claims": [
+    {
+      "condition": "Stamina and altitude adaptation",
+      "grade": "traditional",
+      "summary": "Cultivated and consumed as a tonic food in the Junín and Pasco highland communities (4,000-4,500m elevation); associated with endurance and adaptation to hypoxia.",
+      "provenance": {
+        "source_type": "ethnographic_field_study",
+        "confidence": "well-documented",
+        "citations": [
+          {
+            "type": "ethnobotany",
+            "author": "Bussmann & Sharon",
+            "year": 2006,
+            "title": "Traditional medicinal plant use in Northern Peru",
+            "doi": "10.1186/1746-4269-2-47"
+          },
+          {
+            "type": "regional_monograph",
+            "author": "Brack Egg",
+            "year": 1999,
+            "title": "Diccionario Enciclopédico de Plantas Útiles del Perú"
+          }
+        ]
+      },
+      "studies": []
+    },
+    {
+      "condition": "Libido and fertility enhancement",
+      "grade": "possibly",
+      "summary": "Three small RCTs suggest modest effect on subjective sexual desire in men; mechanism unclear.",
+      "clinical_protocol": {
+        "standard": "The 3 RCTs used gelatinized maca extract 1.5-3g daily, standardized to 0.6% macaenes and 0.8% macamides.",
+        "traditional_equivalence": "Traditional highland use involves consuming 1-2g of dried hypocotyl as food, often boiled in water or mixed with oatmeal."
+      },
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "preliminary",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "12472620",
+            "citation": "Gonzales 2002"
+          },
+          {
+            "type": "clinical",
+            "pmid": "18801111",
+            "citation": "Zenico 2009"
+          },
+          {
+            "type": "clinical",
+            "pmid": "26955875",
+            "citation": "Brooks 2016"
+          }
+        ],
+        "commercial_drift_note": "The 'Peruvian Viagra' framing is a late-1990s export-market positioning. Classical highland use is as a nutritive food and general tonic for stamina at altitude, not specifically aphrodisiac. Traditional and modern claims are not identical."
+      },
+      "studies": [
+        {
+          "pmid": "12472620",
+          "citation": "Gonzales 2002",
+          "design": "RCT",
+          "n": 12,
+          "duration_weeks": 12,
+          "dose_mg_day": 1500,
+          "result": "IIEF-5 +40% vs placebo"
+        },
+        {
+          "pmid": "18801111",
+          "citation": "Zenico 2009",
+          "design": "RCT",
+          "n": 50,
+          "duration_weeks": 12,
+          "dose_mg_day": 2400,
+          "result": "Sexual desire +42% vs placebo"
+        },
+        {
+          "pmid": "26955875",
+          "citation": "Brooks 2016",
+          "design": "RCT",
+          "n": 57,
+          "duration_weeks": 8,
+          "dose_mg_day": 3000,
+          "result": "Modest improvement in sexual function"
+        }
+      ]
+    },
+    {
+      "condition": "Menopausal symptom relief",
+      "grade": "possibly",
+      "summary": "Small RCTs suggest reduction in anxiety, depression, and sexual dysfunction in postmenopausal women.",
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "preliminary",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "18635512",
+            "citation": "Meissner 2006"
+          },
+          {
+            "type": "clinical",
+            "pmid": "18782909",
+            "citation": "Dording 2008"
+          }
+        ]
+      },
+      "studies": [
+        {
+          "pmid": "18635512",
+          "citation": "Meissner 2006",
+          "design": "RCT",
+          "n": 34,
+          "duration_weeks": 6,
+          "dose_mg_day": 3500,
+          "result": "Greene scores improved"
+        },
+        {
+          "pmid": "18782909",
+          "citation": "Dording 2008",
+          "design": "RCT",
+          "n": 20,
+          "duration_weeks": 12,
+          "dose_mg_day": 3500,
+          "result": "HADS anxiety/depression reduced"
+        }
+      ]
+    },
+    {
+      "condition": "Hormonal balance and HPA axis support",
+      "grade": "preliminary",
+      "summary": "Animal studies suggest modulation of HPA axis and hypothalamic function; human evidence limited to small trials.",
+      "provenance": {
+        "source_type": "modern_preclinical",
+        "confidence": "preliminary",
+        "citations": [
+          {
+            "type": "preclinical",
+            "author": "Ruiz-Luna",
+            "year": 2005,
+            "title": "Effect of Lepidium meyenii on rat HPA axis",
+            "citation": "Life Sci 2005"
+          }
+        ]
+      },
+      "studies": []
+    }
+  ]
+}

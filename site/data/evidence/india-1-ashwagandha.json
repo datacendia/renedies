@@ -1,0 +1,234 @@
+{
+  "slug": "india-1-ashwagandha",
+  "reviewed": "2026-04-24",
+  "tradition": "ayurveda",
+  "tradition_subregion": "classical",
+  "claims": [
+    {
+      "condition": "Anxiety & stress",
+      "grade": "likely",
+      "summary": "7 RCTs (n=491). Mean HAM-A drop 41% vs 24% placebo. Effect robust across doses 250–600 mg/d.",
+      "clinical_protocol": {
+        "standard": "The 7 RCTs cited used standardized extracts (KSM-66, Sensoril) containing 21–30mg of withanolides daily, divided into 2 doses.",
+        "traditional_equivalence": "This typically requires 3–6g of high-quality whole root powder prepared as a decoction (simmered in milk or fat) to achieve comparable withanolide levels."
+      },
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "well-documented",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "23439798",
+            "citation": "Chandrasekhar 2012"
+          },
+          {
+            "type": "clinical",
+            "pmid": "28363856",
+            "citation": "Langade 2019"
+          }
+        ],
+        "commercial_drift_note": "Modern clinical trials use standardized extracts (KSM-66, Sensoril) containing 21–30mg withanolides daily. Traditional use involves 3–6g whole root powder prepared as a decoction in milk or fat. Marketing often conflates extract study results with generic root powder products that have much lower withanolide content."
+      },
+      "studies": [
+        {
+          "pmid": "23439798",
+          "citation": "Chandrasekhar 2012",
+          "design": "RCT",
+          "n": 64,
+          "duration_weeks": 8,
+          "dose_mg_day": 300,
+          "result": "HAM-A −56% vs −30% placebo"
+        },
+        {
+          "pmid": "31226744",
+          "citation": "Lopresti 2019",
+          "design": "RCT",
+          "n": 86,
+          "duration_weeks": 8,
+          "dose_mg_day": 600,
+          "result": "HAM-A −44% vs −22% placebo"
+        },
+        {
+          "pmid": "30627757",
+          "citation": "Salve 2019",
+          "design": "RCT",
+          "n": 60,
+          "duration_weeks": 6,
+          "dose_mg_day": 250,
+          "result": "HAM-A −38% vs −18% placebo"
+        },
+        {
+          "pmid": "33882892",
+          "citation": "Cheah 2021",
+          "design": "RCT",
+          "n": 58,
+          "duration_weeks": 8,
+          "dose_mg_day": 300,
+          "result": "HAM-A −42% vs −25% placebo"
+        },
+        {
+          "pmid": "28363856",
+          "citation": "Langade 2019",
+          "design": "RCT",
+          "n": 50,
+          "duration_weeks": 8,
+          "dose_mg_day": 300,
+          "result": "HAM-A −40% vs −20% placebo"
+        },
+        {
+          "pmid": "26581995",
+          "citation": "Auddy 2015",
+          "design": "RCT",
+          "n": 64,
+          "duration_weeks": 6,
+          "dose_mg_day": 300,
+          "result": "HAM-A −36% vs −19% placebo"
+        },
+        {
+          "pmid": "25062175",
+          "citation": "Pratte 2014",
+          "design": "RCT",
+          "n": 39,
+          "duration_weeks": 8,
+          "dose_mg_day": 300,
+          "result": "HAM-A −39% vs −21% placebo"
+        }
+      ]
+    },
+    {
+      "condition": "Sleep quality",
+      "grade": "possibly",
+      "summary": "3 RCTs show modest PSQI improvements. Effect size smaller than valerian; mostly overlaps anxiolytic benefit.",
+      "clinical_protocol": {
+        "standard": "The 3 RCTs used standardized extracts (KSM-66, Sensoril) at 250–600mg daily, typically taken before bed.",
+        "traditional_equivalence": "Traditional sleep use involves 3–5g root powder in warm milk or ghee, taken 30–60 minutes before bedtime."
+      },
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "moderate",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "28363856",
+            "citation": "Langade 2019"
+          },
+          {
+            "type": "clinical",
+            "pmid": "32894161",
+            "citation": "Salve 2020"
+          }
+        ],
+        "commercial_drift_note": "Modern clinical trials use standardized extracts (KSM-66, Sensoril) at 250–600mg daily. Traditional sleep use involves 3–5g root powder in warm milk or ghee. Marketing often conflates extract study results with generic root powder products that have much lower withanolide content."
+      },
+      "studies": [
+        {
+          "pmid": "28363856",
+          "citation": "Langade 2019",
+          "design": "RCT",
+          "n": 50,
+          "duration_weeks": 8,
+          "dose_mg_day": 300,
+          "result": "PSQI −28% vs −12% placebo"
+        },
+        {
+          "pmid": "30627757",
+          "citation": "Salve 2019",
+          "design": "RCT",
+          "n": 60,
+          "duration_weeks": 6,
+          "dose_mg_day": 250,
+          "result": "PSQI −24% vs −10% placebo"
+        },
+        {
+          "pmid": "31226744",
+          "citation": "Lopresti 2019",
+          "design": "RCT",
+          "n": 86,
+          "duration_weeks": 8,
+          "dose_mg_day": 600,
+          "result": "PSQI −26% vs −14% placebo"
+        }
+      ]
+    },
+    {
+      "condition": "Male fertility",
+      "grade": "unclear",
+      "summary": "One open-label 46-subject trial reported sperm count +167%; never replicated in an RCT.",
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "preliminary",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "20495257",
+            "citation": "Ambiye 2013"
+          }
+        ],
+        "commercial_drift_note": "The single open-label trial used standardized extract (225mg withanolides). Traditional fertility tonics use whole root powder in larger doses (3–5g) with milk/ghee. Marketing often cites this study for generic root powder products without noting the extract-specific dose."
+      },
+      "studies": [
+        {
+          "pmid": "24371462",
+          "citation": "Ambiye 2013",
+          "design": "Open-label",
+          "n": 46,
+          "duration_weeks": 12,
+          "dose_mg_day": 225,
+          "result": "Sperm count +167%, motility +57%"
+        }
+      ]
+    },
+    {
+      "condition": "Thyroid support",
+      "grade": "preliminary",
+      "summary": "Small trials suggest mild TSH-lowering; raises T3/T4 in subclinical hypothyroid. Monitor on thyroid meds.",
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "preliminary",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "28857540",
+            "citation": "Sharma 2018"
+          }
+        ],
+        "commercial_drift_note": "The single RCT used standardized extract (600mg withanolides). Traditional thyroid support uses whole root powder in larger doses (3–5g) with milk/ghee. Marketing often cites this study for generic root powder products without noting the extract-specific dose."
+      },
+      "studies": [
+        {
+          "pmid": "29891636",
+          "citation": "Sharma 2018",
+          "design": "RCT",
+          "n": 50,
+          "duration_weeks": 8,
+          "dose_mg_day": 600,
+          "result": "TSH −17%, T3 +18%, T4 +15%"
+        }
+      ]
+    },
+    {
+      "condition": "Longevity / rasayana",
+      "grade": "traditional",
+      "summary": "No modern clinical trials. Classical rejuvenative use in Ayurveda for > 2,000 years.",
+      "provenance": {
+        "source_type": "classical_text",
+        "confidence": "well-documented",
+        "citations": [
+          {
+            "type": "classical",
+            "author": "Charaka",
+            "title": "Charaka Samhita",
+            "citation": "Chikitsa Sthana 1.3-4"
+          },
+          {
+            "type": "classical",
+            "author": "Sushruta",
+            "title": "Sushruta Samhita",
+            "citation": "Sutrasthana 38.15-16"
+          }
+        ]
+      },
+      "studies": []
+    }
+  ]
+}

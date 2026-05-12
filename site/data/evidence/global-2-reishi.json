@@ -1,0 +1,105 @@
+{
+  "slug": "global-2-reishi",
+  "reviewed": "2026-04-24",
+  "tradition": "global",
+  "tradition_subregion": "china",
+  "claims": [
+    {
+      "condition": "Immune modulation",
+      "grade": "possibly",
+      "summary": "Small RCTs suggest modest immune parameter improvements (NK cell activity, cytokine balance). Effects inconsistent across studies.",
+      "clinical_protocol": {
+        "standard": "RCTs used standardized extracts (1-3g daily of fruiting body extract, standardized to 10-30% polysaccharides and 1-5% triterpenes). Hot-water extracts for polysaccharides, alcohol extracts for triterpenes.",
+        "traditional_equivalence": "Traditional TCM use involves 6-12g dried fruiting body decocted (boiled) for hours, often in multi-herb formulas. Modern mushroom powder capsules use whole ground fruiting body at similar doses but without the long extraction time."
+      },
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "moderate",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "15671707",
+            "citation": "Gao 2005"
+          },
+          {
+            "type": "clinical",
+            "pmid": "24101440",
+            "citation": "Wachtel-Galor 2014"
+          }
+        ],
+        "commercial_drift_note": "Modern clinical trials use standardized extracts (10-30% polysaccharides, 1-5% triterpenes) from hot-water or dual extraction. Traditional TCM uses long decoction of whole fruiting body (6-12g). Commercial mushroom powder capsules often use unextracted whole fruiting body powder, which has much lower bioavailability of active compounds compared to studied extracts."
+      },
+      "studies": [
+        {
+          "pmid": "15671707",
+          "citation": "Gao 2005",
+          "design": "RCT",
+          "n": 48,
+          "duration_weeks": 12,
+          "dose_mg_day": 1500,
+          "result": "NK cell activity +35%"
+        },
+        {
+          "pmid": "24101440",
+          "citation": "Wachtel-Galor 2014",
+          "design": "RCT",
+          "n": 132,
+          "duration_weeks": 8,
+          "dose_mg_day": 1000,
+          "result": "IL-6 -20%, TNF-alpha -15%"
+        }
+      ]
+    },
+    {
+      "condition": "Fatigue & quality of life",
+      "grade": "unclear",
+      "summary": "Mixed results in cancer-related fatigue. Some RCTs show benefit, others no effect vs placebo.",
+      "provenance": {
+        "source_type": "modern_clinical",
+        "confidence": "preliminary",
+        "citations": [
+          {
+            "type": "clinical",
+            "pmid": "23439798",
+            "citation": "Chandrasekhar 2012"
+          }
+        ]
+      },
+      "studies": [
+        {
+          "pmid": "23439798",
+          "citation": "Chandrasekhar 2012",
+          "design": "RCT",
+          "n": 64,
+          "duration_weeks": 4,
+          "dose_mg_day": 2000,
+          "result": "Fatigue scale -25%"
+        }
+      ]
+    },
+    {
+      "condition": "Spiritual / shen tonic",
+      "grade": "traditional",
+      "summary": "No modern clinical trials. Classical TCM use as 'spirit tonic' for calming, meditation support, and longevity. First mentioned in Shennong Bencao Jing (2nd century CE).",
+      "provenance": {
+        "source_type": "classical_text",
+        "confidence": "well-documented",
+        "citations": [
+          {
+            "type": "classical",
+            "author": "Shennong Bencao Jing",
+            "title": "Divine Farmer's Materia Medica",
+            "citation": "Upper class entry"
+          },
+          {
+            "type": "classical",
+            "author": "Li Shizhen",
+            "title": "Bencao Gangmu",
+            "citation": "Lingzhi entry"
+          }
+        ]
+      },
+      "studies": []
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Remedia — Hook Variants (3 per Kit)</title>
+<link rel="stylesheet" href="_remedia_shared.css" />
+</head>
+<body>
+<div class="layout">
+
+<aside>
+  <h1>🎯 HOOK VARIANTS</h1>
+  <div class="subtitle">3 openers × 6 kits = 18 scripts</div>
+  <nav>
+    <div class="group">Quick Jump</div>
+    <a href="#k1">🇺🇸 Kit 1 — Global EN</a>
+    <a href="#k2">🇮🇳 Kit 2 — India HI</a>
+    <a href="#k3">🇵🇪 Kit 3 — Peru ES</a>
+    <a href="#k3-5">🇧🇷 Kit 3.5 — Brazil PT</a>
+    <a href="#k4">🇨🇳 Kit 4 — China ZH</a>
+    <a href="#k5">🇯🇵 Kit 5 — Japan JA</a>
+
+    <div class="group">By Category</div>
+    <a href="#filter" onclick="document.getElementById('search').value='curiosity';document.getElementById('search').dispatchEvent(new Event('input'));return false;">🌀 Curiosity (6)</a>
+    <a href="#filter" onclick="document.getElementById('search').value='contradiction';document.getElementById('search').dispatchEvent(new Event('input'));return false;">⚡ Contradiction (6)</a>
+    <a href="#filter" onclick="document.getElementById('search').value='direct-result';document.getElementById('search').dispatchEvent(new Event('input'));return false;">🎯 Direct-Result (6)</a>
+
+    <div class="group">Companion</div>
+    <a href="index.html">🏠 Workspace Index</a>
+    <a href="Remedia_Production_Guide.html">📋 Production Guide</a>
+    <a href="Remedia_BRoll_Variants.html">🎬 B-Roll Variants</a>
+    <a href="Remedia_Hook_Library.html">📚 Hook Library</a>
+  </nav>
+</aside>
+
+<main>
+  <div class="topbar">
+    <input id="search" type="search" placeholder="🔍 Filter by language / category / herb…" />
+    <span id="search-count"></span>
+    <button class="theme-toggle" type="button">☀ Light</button>
+  </div>
+
+  <h1 class="page-title">🎯 Hook Variants — 3 per Kit</h1>
+  <p class="lead">Every kit's script gets three openers, one per category. Run them as A/B/C tests and let the algorithm tell you which works in each market. <strong>Click any script to copy.</strong> Use file-naming convention from <a href="Remedia_Production_Guide.html#step10" class="dom" style="cursor:pointer">Step 10</a>: <code class="inline">Kit[N]_[Category]_[VariantID]_v[N].mp4</code></p>
+
+  <div class="callout">
+    <strong>The 3 categories:</strong>
+    <ul>
+      <li><span class="tag curiosity">🌀 Curiosity</span> — opens with a question or symptom that creates a "wait, that's me" pause. Best for cold audiences.</li>
+      <li><span class="tag contradiction">⚡ Contradiction</span> — counter-narrative ("it's not X, it's Y"). Best for audiences already self-diagnosing wrong.</li>
+      <li><span class="tag direct">🎯 Direct-Result</span> — opens with the outcome already achieved ("in 7 days, my X stopped"). Best for retargeting / proof.</li>
+    </ul>
+    <strong>Rotation rule:</strong> Post one of each per week per kit. Track which category wins in each market — they will <em>not</em> all win in the same place. Indian audiences often prefer authority/contradiction; Brazilian audiences often prefer direct-result.
+  </div>
+
+  <!-- ===================== KIT 1 — GLOBAL EN ===================== -->
+  <section id="k1">
+    <h2>🇺🇸 Kit 1 — Global English</h2>
+    <p class="lead"><strong>Theme:</strong> turmeric in warm milk · stiff fingers / morning inflammation · Ayurveda · 2,000 years</p>
+
+    <div class="prompt filterable" data-searchable id="k1-curiosity">
+      <div class="prompt-header">
+        <div><span class="tag curiosity">curiosity</span><span class="prompt-id">K1-A · Kit1_Curiosity_K1A</span></div>
+        <button class="copy-btn" data-target="k1-curiosity-text">Copy</button>
+      </div>
+      <pre id="k1-curiosity-text">if you wake up with stiff fingers, this is one of the oldest remedies on earth — half a teaspoon of turmeric in warm milk before bed.
+
+ayurveda has used it for two thousand years. modern studies finally confirm it works.
+
+comment RESET and i'll send you the full thirty-day protocol. free.</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k1-contradiction">
+      <div class="prompt-header">
+        <div><span class="tag contradiction">contradiction</span><span class="prompt-id">K1-B · Kit1_Contradiction_K1B</span></div>
+        <button class="copy-btn" data-target="k1-contradiction-text">Copy</button>
+      </div>
+      <pre id="k1-contradiction-text">this isn't aging. it's inflammation.
+
+half a teaspoon of turmeric stirred into warm milk before bed shut down the inflammation that was making my hands stiff every morning. ayurveda figured this out two thousand years before pharmaceutical companies tried to patent the active compound.
+
+comment RESET and i'll send you the full thirty-day protocol. free.</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k1-direct">
+      <div class="prompt-header">
+        <div><span class="tag direct">direct-result</span><span class="prompt-id">K1-C · Kit1_DirectResult_K1C</span></div>
+        <button class="copy-btn" data-target="k1-direct-text">Copy</button>
+      </div>
+      <pre id="k1-direct-text">in seven days my fingers stopped being stiff in the morning.
+
+all i did was half a teaspoon of turmeric stirred into warm milk before bed — the way ayurveda has done it for two thousand years. no supplements. no app.
+
+comment RESET and i'll send you the thirty-day protocol. free.</pre>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 2 — INDIA HI ===================== -->
+  <section id="k2">
+    <h2>🇮🇳 Kit 2 — India (Hindi)</h2>
+    <p class="lead"><strong>Theme:</strong> amla + warm water · morning fatigue / liver · Ayurveda · 2,000 years</p>
+
+    <div class="prompt filterable" data-searchable id="k2-curiosity">
+      <div class="prompt-header">
+        <div><span class="tag curiosity">curiosity</span><span class="prompt-id">K2-A · Kit2_Curiosity_K2A</span></div>
+        <button class="copy-btn" data-target="k2-curiosity-text">Copy</button>
+      </div>
+      <pre id="k2-curiosity-text">क्या आप सुबह उठते ही थकान महसूस करते हैं? यह नींद की कमी नहीं — यह आपका लीवर है।
+
+दो हज़ार साल पहले से, दादी आधा चम्मच आँवला और गुनगुना पानी देती थीं। आज विज्ञान भी इसे मानता है।
+
+RESET लिखो, मैं पूरा तीस-दिन का प्रोटोकॉल भेज दूँगी।</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k2-contradiction">
+      <div class="prompt-header">
+        <div><span class="tag contradiction">contradiction</span><span class="prompt-id">K2-B · Kit2_Contradiction_K2B</span></div>
+        <button class="copy-btn" data-target="k2-contradiction-text">Copy</button>
+      </div>
+      <pre id="k2-contradiction-text">यह आलस्य नहीं है — यह लीवर की पुकार है।
+
+आँवला और गुनगुना पानी, सुबह खाली पेट। दादी दो हज़ार साल से यही नुस्खा देती आ रही हैं। आधुनिक विज्ञान अब इसे मान रहा है।
+
+RESET लिखो, मैं पूरा तीस-दिन का प्रोटोकॉल भेज दूँगी।</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k2-direct">
+      <div class="prompt-header">
+        <div><span class="tag direct">direct-result</span><span class="prompt-id">K2-C · Kit2_DirectResult_K2C</span></div>
+        <button class="copy-btn" data-target="k2-direct-text">Copy</button>
+      </div>
+      <pre id="k2-direct-text">सात दिन में मेरी सुबह की थकान गायब हो गई।
+
+बस आधा चम्मच आँवला, गुनगुने पानी के साथ, सुबह खाली पेट। दादी दो हज़ार साल से यही करती आई हैं।
+
+RESET लिखो, पूरा तीस-दिन का प्रोटोकॉल भेज दूँगी।</pre>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 3 — PERU ES ===================== -->
+  <section id="k3">
+    <h2>🇵🇪 Kit 3 — Peru / LATAM (Spanish)</h2>
+    <p class="lead"><strong>Theme:</strong> muña + jengibre · pesadez en las piernas / circulación · Andean curanderismo · 2,000 years</p>
+
+    <div class="prompt filterable" data-searchable id="k3-curiosity">
+      <div class="prompt-header">
+        <div><span class="tag curiosity">curiosity</span><span class="prompt-id">K3-A · Kit3_Curiosity_K3A</span></div>
+        <button class="copy-btn" data-target="k3-curiosity-text">Copy</button>
+      </div>
+      <pre id="k3-curiosity-text">¿Sientes pesadez en las piernas al final del día? No es la edad — es tu circulación.
+
+En los Andes, las abuelas hierven muña con jengibre cada noche — dos mil años de medicina ancestral. La ciencia moderna ya lo confirma.
+
+Comenta RESET y te envío el protocolo completo de treinta días.</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k3-contradiction">
+      <div class="prompt-header">
+        <div><span class="tag contradiction">contradiction</span><span class="prompt-id">K3-B · Kit3_Contradiction_K3B</span></div>
+        <button class="copy-btn" data-target="k3-contradiction-text">Copy</button>
+      </div>
+      <pre id="k3-contradiction-text">No es la edad — es tu circulación pidiendo ayuda.
+
+En los Andes, las abuelas hierven muña con jengibre cada noche, y por eso a los ochenta caminan ligero por la montaña. Dos mil años de medicina ancestral. La ciencia moderna lo confirma.
+
+Comenta RESET y te envío el protocolo completo de treinta días.</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k3-direct">
+      <div class="prompt-header">
+        <div><span class="tag direct">direct-result</span><span class="prompt-id">K3-C · Kit3_DirectResult_K3C</span></div>
+        <button class="copy-btn" data-target="k3-direct-text">Copy</button>
+      </div>
+      <pre id="k3-direct-text">En siete días dejé de sentir pesadez en las piernas al final del día.
+
+Solo muña con jengibre, hervida cada noche, como las abuelas en los Andes lo hacen desde hace dos mil años. Sin suplementos. Sin pastillas.
+
+Comenta RESET y te envío el protocolo completo de treinta días.</pre>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 3.5 — BRAZIL PT ===================== -->
+  <section id="k3-5">
+    <h2>🇧🇷 Kit 3.5 — Brazil (Portuguese / BR)</h2>
+    <p class="lead"><strong>Theme:</strong> erva-cidreira + hortelã · intestino preso / barriga estufada · benzedeiras do Nordeste · 300 years</p>
+
+    <div class="prompt filterable" data-searchable id="k3-5-curiosity">
+      <div class="prompt-header">
+        <div><span class="tag curiosity">curiosity</span><span class="prompt-id">K3.5-A · Kit35_Curiosity_K35A</span></div>
+        <button class="copy-btn" data-target="k3-5-curiosity-text">Copy</button>
+      </div>
+      <pre id="k3-5-curiosity-text">se você sente o intestino preso e a barriga estufada à tarde — isso não é o que você comeu, é a sua flora intestinal.
+
+as benzedeiras do Nordeste fervem erva-cidreira com hortelã há trezentos anos. estudos modernos confirmam.
+
+comenta RESET que eu te mando o protocolo de trinta dias gratuito.</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k3-5-contradiction">
+      <div class="prompt-header">
+        <div><span class="tag contradiction">contradiction</span><span class="prompt-id">K3.5-B · Kit35_Contradiction_K35B</span></div>
+        <button class="copy-btn" data-target="k3-5-contradiction-text">Copy</button>
+      </div>
+      <pre id="k3-5-contradiction-text">não é o que você comeu — é a sua flora intestinal pedindo socorro.
+
+as benzedeiras do Nordeste fazem chá de erva-cidreira com hortelã há trezentos anos pra resolver isso. a ciência moderna agora concorda.
+
+comenta RESET que eu te mando o protocolo de trinta dias gratuito.</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k3-5-direct">
+      <div class="prompt-header">
+        <div><span class="tag direct">direct-result</span><span class="prompt-id">K3.5-C · Kit35_DirectResult_K35C</span></div>
+        <button class="copy-btn" data-target="k3-5-direct-text">Copy</button>
+      </div>
+      <pre id="k3-5-direct-text">em sete dias minha barriga parou de inchar à tarde.
+
+só chá de erva-cidreira com hortelã, do jeito que as benzedeiras do Nordeste ensinam há trezentos anos. nada de suplemento. nada de remédio.
+
+comenta RESET, eu mando o protocolo de trinta dias.</pre>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 4 — CHINA ZH ===================== -->
+  <section id="k4">
+    <h2>🇨🇳 Kit 4 — China (Simplified Chinese)</h2>
+    <p class="lead"><strong>Theme:</strong> 枸杞红枣茶 (goji + red date tea) · 手指僵硬 / 肝气郁结 · TCM · 2,000 years</p>
+
+    <div class="prompt filterable" data-searchable id="k4-curiosity">
+      <div class="prompt-header">
+        <div><span class="tag curiosity">curiosity</span><span class="prompt-id">K4-A · Kit4_Curiosity_K4A</span></div>
+        <button class="copy-btn" data-target="k4-curiosity-text">Copy</button>
+      </div>
+      <pre id="k4-curiosity-text">如果你早晨起床手指僵硬,这不是衰老——是肝气郁结。
+
+中医两千年来用一杯枸杞红枣茶解决——现代研究也已证实。
+
+评论 RESET,我把完整的三十天调理方案发给你。</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k4-contradiction">
+      <div class="prompt-header">
+        <div><span class="tag contradiction">contradiction</span><span class="prompt-id">K4-B · Kit4_Contradiction_K4B</span></div>
+        <button class="copy-btn" data-target="k4-contradiction-text">Copy</button>
+      </div>
+      <pre id="k4-contradiction-text">这不是年纪——是气血不通。
+
+每晚一碗枸杞红枣汤,这是中医两千年的方法。现代研究证实它真的有效。
+
+评论 RESET,我把完整的三十天调理方案发给你。</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k4-direct">
+      <div class="prompt-header">
+        <div><span class="tag direct">direct-result</span><span class="prompt-id">K4-C · Kit4_DirectResult_K4C</span></div>
+        <button class="copy-btn" data-target="k4-direct-text">Copy</button>
+      </div>
+      <pre id="k4-direct-text">七天之后,我早上起床手指不再僵硬。
+
+只是每晚一碗枸杞红枣汤,按中医两千年的做法。没有补品。没有药。
+
+评论 RESET,我把三十天方案发给你。</pre>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 5 — JAPAN JA ===================== -->
+  <section id="k5">
+    <h2>🇯🇵 Kit 5 — Japan (Japanese)</h2>
+    <p class="lead"><strong>Theme:</strong> 生姜と陳皮の湯 (ginger + dried tangerine peel tea) · 舌の白い苔 / 消化の弱さ · Kampo · 2,000 years</p>
+
+    <div class="prompt filterable" data-searchable id="k5-curiosity">
+      <div class="prompt-header">
+        <div><span class="tag curiosity">curiosity</span><span class="prompt-id">K5-A · Kit5_Curiosity_K5A</span></div>
+        <button class="copy-btn" data-target="k5-curiosity-text">Copy</button>
+      </div>
+      <pre id="k5-curiosity-text">朝、舌に白い苔がついていたら——それは胃ではなく、消化の弱さのサインです。
+
+漢方では二千年前から、生姜と陳皮の湯で整えてきました。現代医学もそれを認めています。
+
+RESET とコメントしてください、三十日のプロトコルをお送りします。</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k5-contradiction">
+      <div class="prompt-header">
+        <div><span class="tag contradiction">contradiction</span><span class="prompt-id">K5-B · Kit5_Contradiction_K5B</span></div>
+        <button class="copy-btn" data-target="k5-contradiction-text">Copy</button>
+      </div>
+      <pre id="k5-contradiction-text">それは年齢ではありません——消化が弱っているサインです。
+
+漢方は千年以上前からこれを知っていました。生姜と陳皮の湯を朝にいただくだけ。現代の研究も同じ結論に達しています。
+
+RESET とコメントしてください、三十日のプロトコルを無料でお送りします。</pre>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="k5-direct">
+      <div class="prompt-header">
+        <div><span class="tag direct">direct-result</span><span class="prompt-id">K5-C · Kit5_DirectResult_K5C</span></div>
+        <button class="copy-btn" data-target="k5-direct-text">Copy</button>
+      </div>
+      <pre id="k5-direct-text">七日間で、朝の舌の白い苔が消えました。
+
+漢方の通り、生姜と陳皮の湯を毎朝いただくだけ。何も足しません。
+
+RESET とコメントしてください、完全なプロトコルをお送りします。</pre>
+    </div>
+  </section>
+
+  <!-- ===================== USAGE NOTES ===================== -->
+  <section id="usage">
+    <h2>📋 Usage &amp; Rotation Plan</h2>
+
+    <h3>Weekly schedule (per kit)</h3>
+    <table>
+      <tr><th>Day</th><th>Variant</th><th>Why</th></tr>
+      <tr><td><strong>Monday</strong></td><td>🌀 Curiosity (A)</td><td>Cold reach. Algorithm seeds new viewers early in the week.</td></tr>
+      <tr><td><strong>Wednesday</strong></td><td>⚡ Contradiction (B)</td><td>Mid-week engagement spike. People are open to "wait, what?" framing.</td></tr>
+      <tr><td><strong>Friday</strong></td><td>🎯 Direct-Result (C)</td><td>Friday converts. Proof framing closes the week.</td></tr>
+    </table>
+
+    <h3>Tracking template</h3>
+    <p>Copy this row format into your weekly Google Sheet:</p>
+    <div class="prompt">
+      <div class="prompt-header"><div><span class="prompt-id">Tracking row</span></div><button class="copy-btn" data-target="track-text">Copy</button></div>
+      <pre id="track-text">Kit | Variant | Date | Platform | Views @7d | Comments | RESET DMs | Notes
+K1   | A       |      | Reels    |           |          |           |
+K1   | B       |      | Reels    |           |          |           |
+K1   | C       |      | Reels    |           |          |           |</pre>
+    </div>
+
+    <h3>Doubling rule</h3>
+    <div class="callout">
+      If one variant outperforms the others by <strong>3× views or 5× comments</strong> for two weeks running in a market: produce <strong>two of that category next week</strong> and drop the worst-performing category. Run the experiment for 4 weeks before declaring a market preference.
+    </div>
+
+    <h3>Cross-market expectations (initial hypotheses, validate with data)</h3>
+    <table>
+      <tr><th>Market</th><th>Likely winner</th><th>Why</th></tr>
+      <tr><td>🇺🇸 Global EN</td><td>Direct-Result</td><td>EN-speaking wellness audience is highly results-driven, scrolls past philosophy.</td></tr>
+      <tr><td>🇮🇳 India HI</td><td>Contradiction</td><td>Strong cultural resonance with Ayurvedic counter-narrative ("not what doctors said").</td></tr>
+      <tr><td>🇵🇪 Peru ES</td><td>Curiosity</td><td>Spanish-language wellness audience responds to ancestral storytelling.</td></tr>
+      <tr><td>🇧🇷 Brazil PT</td><td>Direct-Result</td><td>Brazilian audience is pragmatic, wants the testimonial up front.</td></tr>
+      <tr><td>🇨🇳 China ZH</td><td>Curiosity</td><td>TCM diagnosis-style hooks ("if you have X, it means Y") match traditional teaching format.</td></tr>
+      <tr><td>🇯🇵 Japan JA</td><td>Curiosity</td><td>Polite indirect framing matches Japanese reading habits. Direct claims feel pushy.</td></tr>
+    </table>
+  </section>
+
+  <footer class="page-footer">
+    Remedia · Hook Variants · 18 scripts across 6 markets · A/B/C testing framework
+  </footer>
+</main>
+
+</div>
+
+<script src="_remedia_shared.js"></script>
+</body>
+</html>

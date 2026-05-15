@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Remedia — Workspace Index</title>
+<link rel="stylesheet" href="_remedia_shared.css" />
+<style>
+  /* index-only overrides */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .hero .wordmark {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 3.5em;
+    color: var(--accent);
+    letter-spacing: 12px;
+    margin: 0;
+  }
+  .hero .tagline {
+    color: var(--muted);
+    font-size: 1.2em;
+    font-style: italic;
+    margin-top: 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    display: block;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-left-color: var(--accent-2);
+    background: var(--panel-2);
+  }
+  .card .icon {
+    font-size: 2em;
+    margin-bottom: 6px;
+  }
+  .card h3 {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+  .card .meta {
+    color: var(--accent-2);
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .card.disabled {
+    opacity: 0.55;
+    pointer-events: none;
+    border-left-color: var(--muted);
+  }
+  .card.disabled h3 { color: var(--muted); }
+  .section-label {
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin: 36px 0 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  main { max-width: 1100px; margin: 0 auto; }
+  .topbar { justify-content: flex-end; }
+</style>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <button class="theme-toggle" type="button">☀ Light</button>
+  </div>
+
+  <div class="hero">
+    <h1 class="wordmark">REMEDIA</h1>
+    <div class="tagline">Ancient Wisdom From Five Continents · One Body · Thirty Days</div>
+  </div>
+
+  <p class="lead" style="text-align:center; margin-bottom:30px;">
+    Workspace index. All companion documents, production assets, competitive intelligence, and brand resources.
+  </p>
+
+  <!-- ============== PRODUCTION ============== -->
+  <div class="section-label">📋 Production</div>
+  <div class="grid">
+    <a href="Remedia_Production_Guide.html" class="card">
+      <div class="icon">🎬</div>
+      <h3>Production Guide</h3>
+      <p>Step-by-step workflow for generating 6 localized AI videos. Soul ID training, prompts per kit, CapCut assembly, publishing matrix, measurement.</p>
+      <div class="meta">10 steps · 6 kits · 120 training prompts</div>
+    </a>
+
+    <a href="Remedia_Hook_Variants.html" class="card">
+      <div class="icon">🎯</div>
+      <h3>Hook Variants</h3>
+      <p>Three opener categories per kit: curiosity / contradiction / direct-result. A/B/C testing framework.</p>
+      <div class="meta">18 scripts · 3 categories</div>
+    </a>
+
+    <a href="Remedia_BRoll_Variants.html" class="card">
+      <div class="icon">🎥</div>
+      <h3>B-Roll Variants</h3>
+      <p>Alternate b-roll prompts per kit so cross-posted videos don't read as duplicates. Close-up hands · ingredient pour · steam swirl.</p>
+      <div class="meta">18 prompts · platform mix matrix</div>
+    </a>
+
+    <a href="Remedia_Hook_Library.html" class="card">
+      <div class="icon">📚</div>
+      <h3>Hook Library</h3>
+      <p>100 ready-to-use video hooks (20 per market × 5 markets) organized by category, with 10-week rotation plan.</p>
+      <div class="meta">100 hooks · 5 markets</div>
+    </a>
+
+    <a href="Remedia_disclaimer_overlay.svg" class="card" target="_blank">
+      <div class="icon">⚖️</div>
+      <h3>Disclaimer Overlay</h3>
+      <p>SVG asset for the final 1.5s of every published video. "Educational. Not medical advice." Convert to PNG once, reuse forever.</p>
+      <div class="meta">SVG · 1080×1920</div>
+    </a>
+  </div>
+
+  <!-- ============== BRAND ============== -->
+  <div class="section-label">🏆 Brand &amp; Domains</div>
+  <div class="grid">
+    <a href="available_domain_names.html" class="card">
+      <div class="icon">🏆</div>
+      <h3>Domain Shortlist</h3>
+      <p>177 RDAP-validated available <code>.com</code> domains across 13 cultural traditions. Click any pill to copy.</p>
+      <div class="meta">177 domains · 3 tiers · validated May 14–15</div>
+    </a>
+
+    <a href="available_domain_names.md" class="card">
+      <div class="icon">📝</div>
+      <h3>Domains (Markdown)</h3>
+      <p>Markdown source of the domain shortlist. Use this for git diffs and for piping into other tools.</p>
+      <div class="meta">.md source</div>
+    </a>
+  </div>
+
+  <!-- ============== COMPETITIVE INTEL ============== -->
+  <div class="section-label">🔍 Competitive Intelligence — Chaya Wellness</div>
+  <div class="grid">
+    <a href="COMPETITIVE_ANALYSIS_Chaya_Wellness.md" class="card">
+      <div class="icon">🧭</div>
+      <h3>Competitive Analysis</h3>
+      <p>Full analysis of Chaya Wellness — funnel, positioning, content strategy, ethical tradeoffs, Remedia counter-moves.</p>
+      <div class="meta">.md · 13 KB</div>
+    </a>
+
+    <a href="FUNNEL_MAP_Chaya_Wellness.html" class="card">
+      <div class="icon">🕸</div>
+      <h3>Chaya Funnel Map</h3>
+      <p>Stage-by-stage breakdown of Chaya's six-stage funnel: attention → capture → nurture → low-ticket → mid-ticket → recurring.</p>
+      <div class="meta">6 stages · counter-moves per stage</div>
+    </a>
+
+    <a href="CHAYA_REELS_VISUAL_PLAYBOOK.html" class="card">
+      <div class="icon">🎥</div>
+      <h3>Chaya Reels Playbook</h3>
+      <p>Reverse-engineered visual playbook from 16 captured Reel hooks. What works, what's risky, what we ethically refuse to copy.</p>
+      <div class="meta">16 hooks decoded · visual mechanics</div>
+    </a>
+
+    <a href="PRODUCTION_GUIDE_AUDIT.md" class="card">
+      <div class="icon">✅</div>
+      <h3>Production Guide Audit</h3>
+      <p>Audit of the Production Guide against competitive intelligence findings. 11 fixes identified, all implemented.</p>
+      <div class="meta">.md · audit log</div>
+    </a>
+  </div>
+
+  <!-- ============== EBOOK ============== -->
+  <div class="section-label">📖 The 30-Day Reset (Lead Magnet)</div>
+  <div class="grid">
+    <a href="Remedia_30_Day_Five_Traditions_Reset.pdf" class="card" target="_blank">
+      <div class="icon">📕</div>
+      <h3>30-Day Five Traditions Reset (EN)</h3>
+      <p>Long-form lead magnet. Now includes "How This Differs" opener · cultural attribution per tradition · contraindications per herb · Day 0 prep checklist + cost comparison · QR opt-in page · sourcing footnotes.</p>
+      <div class="meta">PDF · ~62 pages · EN · v2</div>
+    </a>
+
+    <a href="Remedia_30_Dias_Cinco_Tradiciones_Reset.pdf" class="card" target="_blank">
+      <div class="icon">📘</div>
+      <h3>30 Días — Cinco Tradiciones (ES)</h3>
+      <p>Edición ES-LATAM. Front matter completo (portada, aviso médico, "En qué se diferencia," dedicatoria, índice, prólogo). Cuerpo del protocolo pendiente de traducción profesional — listo como gancho de captura.</p>
+      <div class="meta">PDF · ES-LATAM · front-matter v1</div>
+    </a>
+
+    <a href="_30day_5traditions_reset.typ" class="card">
+      <div class="icon">⚙️</div>
+      <h3>PDF Source — EN</h3>
+      <p>Typst source for the EN edition. Edit here, recompile.</p>
+      <div class="meta">.typ source</div>
+    </a>
+
+    <a href="_30day_5traditions_reset_es.typ" class="card">
+      <div class="icon">⚙️</div>
+      <h3>PDF Source — ES</h3>
+      <p>Typst source for the ES edition with TODO list for protocol-body translation.</p>
+      <div class="meta">.typ source</div>
+    </a>
+  </div>
+
+  <!-- ============== HERBAL REFERENCE ============== -->
+  <div class="section-label">🌿 Herbal Reference (Internal)</div>
+  <div class="grid">
+    <a href="01_Indian_Ayurvedic.md" class="card">
+      <div class="icon">🇮🇳</div>
+      <h3>Indian / Ayurvedic</h3>
+      <p>Working reference for the Ayurvedic tradition.</p>
+      <div class="meta">.md</div>
+    </a>
+    <a href="02_Peruvian_Andean_Spanish.md" class="card">
+      <div class="icon">🇵🇪</div>
+      <h3>Peruvian / Andean</h3>
+      <p>Working reference for Andean curanderismo.</p>
+      <div class="meta">.md</div>
+    </a>
+    <a href="03_Chinese_TCM.md" class="card">
+      <div class="icon">🇨🇳</div>
+      <h3>Chinese TCM</h3>
+      <p>Working reference for Traditional Chinese Medicine.</p>
+      <div class="meta">.md</div>
+    </a>
+    <a href="04_Japanese_Kampo.md" class="card">
+      <div class="icon">🇯🇵</div>
+      <h3>Japanese Kampo</h3>
+      <p>Working reference for Japanese Kampo tradition.</p>
+      <div class="meta">.md</div>
+    </a>
+    <a href="05_Other_Global.md" class="card">
+      <div class="icon">🌍</div>
+      <h3>Other Global Traditions</h3>
+      <p>Mediterranean, Middle Eastern, African working reference.</p>
+      <div class="meta">.md</div>
+    </a>
+    <a href="06_Symptom_Index.md" class="card">
+      <div class="icon">🔍</div>
+      <h3>Symptom Index</h3>
+      <p>Cross-tradition symptom→remedy lookup.</p>
+      <div class="meta">.md</div>
+    </a>
+  </div>
+
+  <footer class="page-footer">
+    <p style="text-align:center; margin: 0;">
+      Remedia workspace · <em>educational only · not medical advice</em> · always consult qualified practitioners
+    </p>
+  </footer>
+</main>
+
+<script src="_remedia_shared.js"></script>
+</body>
+</html>

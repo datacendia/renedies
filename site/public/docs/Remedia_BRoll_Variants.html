@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Remedia — B-Roll Variants (3 per Kit)</title>
+<link rel="stylesheet" href="_remedia_shared.css" />
+</head>
+<body>
+<div class="layout">
+
+<aside>
+  <h1>🎬 B-ROLL VARIANTS</h1>
+  <div class="subtitle">3 alternates × 6 kits = 18 prompts</div>
+  <nav>
+    <div class="group">Quick Jump</div>
+    <a href="#k1">🇺🇸 Kit 1 — Global</a>
+    <a href="#k2">🇮🇳 Kit 2 — India</a>
+    <a href="#k3">🇵🇪 Kit 3 — Peru</a>
+    <a href="#k3-5">🇧🇷 Kit 3.5 — Brazil</a>
+    <a href="#k4">🇨🇳 Kit 4 — China</a>
+    <a href="#k5">🇯🇵 Kit 5 — Japan</a>
+
+    <div class="group">By Style</div>
+    <a href="#filter" onclick="document.getElementById('search').value='close-up hands';document.getElementById('search').dispatchEvent(new Event('input'));return false;">✋ Close-up Hands</a>
+    <a href="#filter" onclick="document.getElementById('search').value='ingredient pour';document.getElementById('search').dispatchEvent(new Event('input'));return false;">🌾 Ingredient Pour</a>
+    <a href="#filter" onclick="document.getElementById('search').value='steam swirl';document.getElementById('search').dispatchEvent(new Event('input'));return false;">💨 Steam Swirl</a>
+
+    <div class="group">Companion</div>
+    <a href="index.html">🏠 Workspace Index</a>
+    <a href="Remedia_Production_Guide.html">📋 Production Guide</a>
+    <a href="Remedia_Hook_Variants.html">🎯 Hook Variants</a>
+  </nav>
+</aside>
+
+<main>
+  <div class="topbar">
+    <input id="search" type="search" placeholder="🔍 Filter by kit / style / herb…" />
+    <span id="search-count"></span>
+    <button class="theme-toggle" type="button">☀ Light</button>
+  </div>
+
+  <h1 class="page-title">🎬 B-Roll Variants — 3 Alternates per Kit</h1>
+  <p class="lead">Each kit's existing 3 b-rolls (X.2–X.4 in the Production Guide) get 3 <em>alternative</em> b-rolls so videos don't look identical when cross-posted. Algorithms penalize duplicate visual content. <strong>Click any prompt to copy.</strong></p>
+
+  <div class="callout">
+    <strong>The 3 alternative styles (one per kit slot):</strong>
+    <ul>
+      <li><span class="tag" style="color:var(--accent)">✋ Close-up Hands</span> — replaces the powder/pour b-roll. The herbalist's hands working a specific gesture (grinding, sifting, tying).</li>
+      <li><span class="tag" style="color:var(--accent-2)">🌾 Ingredient Pour</span> — replaces the tea/cup b-roll. Pure ingredient action, no human present.</li>
+      <li><span class="tag" style="color:var(--accent-3)">💨 Steam Swirl</span> — replaces the hanging-herbs b-roll. Hyper-detailed steam/vapor over the prepared remedy.</li>
+    </ul>
+    <strong>Cross-post mapping:</strong>
+    <ul>
+      <li>Original cut → TikTok / Instagram Reels (uses X.2, X.3, X.4)</li>
+      <li>Variant cut A → YouTube Shorts (uses X.2-ALT, X.3, X.4)</li>
+      <li>Variant cut B → Pinterest carousel + Lemon8 (uses X.2, X.3-ALT, X.4-ALT)</li>
+    </ul>
+    Different platforms get different b-rolls. Same talking-head MP4. The <em>visual mix</em> reads as fresh content.
+  </div>
+
+  <!-- ===================== KIT 1 GLOBAL ===================== -->
+  <section id="k1">
+    <h2>🇺🇸 Kit 1 — Global English</h2>
+    <p class="lead"><strong>Hero ingredients:</strong> turmeric · chamomile · rosemary · lavender</p>
+
+    <div class="prompt filterable" data-searchable id="b-1-2-alt">
+      <div class="prompt-header">
+        <div><span class="tag">close-up hands</span><span class="prompt-id">Prompt 1.2-ALT · B-Roll 1 Alternate</span></div>
+        <button class="copy-btn" data-target="b-1-2-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-1-2-alt-text">Extreme close-up of weathered female hands gently grinding dried turmeric root in a small white marble mortar with a wooden pestle, fingers calm and deliberate, fine golden powder accumulating, warm afternoon side light, deep black background, shallow depth of field, photorealistic skin texture with light freckles. Vertical 9:16. --no plastic skin, AI fingers, smooth flawless skin, modern manicure</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-1-2-alt-motion">Slow circular grinding motion of pestle, hands stay relaxed, very subtle camera push-in.</pre>
+      <button class="copy-btn" data-target="b-1-2-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-1-3-alt">
+      <div class="prompt-header">
+        <div><span class="tag">ingredient pour</span><span class="prompt-id">Prompt 1.3-ALT · B-Roll 2 Alternate</span></div>
+        <button class="copy-btn" data-target="b-1-3-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-1-3-alt-text">Macro side-on shot of warm golden milk being slowly poured from a small ceramic pitcher into a stoneware mug with a half-teaspoon of golden turmeric already dusted on the surface, milk swirling and absorbing the powder into a glowing amber liquid, warm window light, dark wooden table, shallow depth of field. Vertical 9:16. --no logo, brand, modern packaging</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-1-3-alt-motion">Slow continuous pour, milk swirls into amber, surface settles, very subtle drift.</pre>
+      <button class="copy-btn" data-target="b-1-3-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-1-4-alt">
+      <div class="prompt-header">
+        <div><span class="tag">steam swirl</span><span class="prompt-id">Prompt 1.4-ALT · B-Roll 3 Alternate</span></div>
+        <button class="copy-btn" data-target="b-1-4-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-1-4-alt-text">Hyper-detailed macro shot of steam rising from a stoneware mug of golden turmeric milk, single chamomile flower floating, steam threads curl through warm window light beam, deep moody negative space above, dark wooden table, 35mm cinematic aesthetic. Vertical 9:16. --no neon colors, fake bokeh, oversaturated</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-1-4-alt-motion">Steam threads rise slowly through light beam, very subtle convection, static camera.</pre>
+      <button class="copy-btn" data-target="b-1-4-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 2 INDIA ===================== -->
+  <section id="k2">
+    <h2>🇮🇳 Kit 2 — India</h2>
+    <p class="lead"><strong>Hero ingredients:</strong> amla · turmeric · tulsi · ashwagandha</p>
+
+    <div class="prompt filterable" data-searchable id="b-2-2-alt">
+      <div class="prompt-header">
+        <div><span class="tag">close-up hands</span><span class="prompt-id">Prompt 2.2-ALT · B-Roll 1 Alternate</span></div>
+        <button class="copy-btn" data-target="b-2-2-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-2-2-alt-text">Extreme close-up of weathered Indian grandmother's hands with small gold bangles gently splitting a fresh green amla fruit between her thumbs over a brass thali, juice glistening, warm golden lattice light, dark wooden table, shallow depth of field, photorealistic skin texture with henna tracery. Vertical 9:16. --no plastic skin, AI fingers, modern manicure, jewelry overload</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-2-2-alt-motion">Hands gently break the amla open, juice glistens, slow camera push-in.</pre>
+      <button class="copy-btn" data-target="b-2-2-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-2-3-alt">
+      <div class="prompt-header">
+        <div><span class="tag">ingredient pour</span><span class="prompt-id">Prompt 2.3-ALT · B-Roll 2 Alternate</span></div>
+        <button class="copy-btn" data-target="b-2-3-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-2-3-alt-text">Macro shot of clear warm water being slowly poured from a small brass lota into a clay kulhad cup containing a half-teaspoon of dried amla powder, water swirling deep amber-green as it absorbs the powder, golden lattice light from camera left, dark carved wooden table, single marigold petal beside the cup. Vertical 9:16. --no plastic, modern packaging, supermarket products</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-2-3-alt-motion">Slow continuous pour, water swirls into amber-green, surface settles.</pre>
+      <button class="copy-btn" data-target="b-2-3-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-2-4-alt">
+      <div class="prompt-header">
+        <div><span class="tag">steam swirl</span><span class="prompt-id">Prompt 2.4-ALT · B-Roll 3 Alternate</span></div>
+        <button class="copy-btn" data-target="b-2-4-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-2-4-alt-text">Hyper-detailed macro shot of steam rising from a clay kulhad of warm amla water, single fresh tulsi leaf floating, steam threads curl through golden lattice light, deep moody negative space above, dark carved wooden surface scattered with cardamom pods, traditional Indian apothecary aesthetic. Vertical 9:16. --no neon, oversaturated, fake bokeh</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-2-4-alt-motion">Steam threads rise through golden light beam, tulsi leaf drifts very slightly, static camera.</pre>
+      <button class="copy-btn" data-target="b-2-4-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 3 PERU ===================== -->
+  <section id="k3">
+    <h2>🇵🇪 Kit 3 — Peru / LATAM</h2>
+    <p class="lead"><strong>Hero ingredients:</strong> muña · jengibre · maca · coca</p>
+
+    <div class="prompt filterable" data-searchable id="b-3-2-alt">
+      <div class="prompt-header">
+        <div><span class="tag">close-up hands</span><span class="prompt-id">Prompt 3.2-ALT · B-Roll 1 Alternate</span></div>
+        <button class="copy-btn" data-target="b-3-2-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-3-2-alt-text">Extreme close-up of weathered Quechua grandmother's hands tying a small bundle of fresh muña and dried jengibre with a thin red wool thread, fingers calm and skilled, hand-woven Andean textile in red and indigo blurred behind, warm dawn light, deep character lines on knuckles, photorealistic skin texture. Vertical 9:16. --no plastic skin, modern manicure, AI fingers</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-3-2-alt-motion">Hands wrap thread three times around the bundle, tie a slow knot, very subtle camera drift.</pre>
+      <button class="copy-btn" data-target="b-3-2-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-3-3-alt">
+      <div class="prompt-header">
+        <div><span class="tag">ingredient pour</span><span class="prompt-id">Prompt 3.3-ALT · B-Roll 2 Alternate</span></div>
+        <button class="copy-btn" data-target="b-3-3-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-3-3-alt-text">Macro shot of fresh muña leaves and slices of jengibre being dropped one by one from a stone hand into a small clay pot of simmering water, leaves swirl as they hit the surface, warm dawn light, hand-woven Andean textile in red and indigo, deep earthy palette. Vertical 9:16. --no modern cookware, plastic, branding</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-3-3-alt-motion">Each leaf and slice drops slowly, water ripples and swirls, gentle steam begins to rise.</pre>
+      <button class="copy-btn" data-target="b-3-3-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-3-4-alt">
+      <div class="prompt-header">
+        <div><span class="tag">steam swirl</span><span class="prompt-id">Prompt 3.4-ALT · B-Roll 3 Alternate</span></div>
+        <button class="copy-btn" data-target="b-3-4-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-3-4-alt-text">Hyper-detailed macro shot of steam rising from a clay cup of muña-jengibre tea, single muña leaf floating, steam threads curl through warm dawn light, deep moody negative space above, hand-woven Andean textile in red and indigo, soft mist of Andean morning in distant blur. Vertical 9:16. --no neon, fake bokeh, oversaturated</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-3-4-alt-motion">Steam threads rise slowly through dawn light, leaf drifts very slightly, static camera.</pre>
+      <button class="copy-btn" data-target="b-3-4-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 3.5 BRAZIL ===================== -->
+  <section id="k3-5">
+    <h2>🇧🇷 Kit 3.5 — Brazil</h2>
+    <p class="lead"><strong>Hero ingredients:</strong> erva-cidreira · hortelã · copaíba · açaí</p>
+
+    <div class="prompt filterable" data-searchable id="b-3-5-2-alt">
+      <div class="prompt-header">
+        <div><span class="tag">close-up hands</span><span class="prompt-id">Prompt 3.5.2-ALT · B-Roll 1 Alternate</span></div>
+        <button class="copy-btn" data-target="b-3-5-2-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-3-5-2-alt-text">Extreme close-up of warm brown Bahian grandmother's hands gently rolling fresh hortelã leaves between her fingers to release oils, a small clay bowl of fresh erva-cidreira beside her, terracotta floor tiles softly blurred, warm tropical morning light through philodendron leaves, photorealistic skin texture with copper undertones. Vertical 9:16. --no plastic skin, modern manicure, AI fingers</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-3-5-2-alt-motion">Fingers gently roll the leaves, brief pause, place onto the bowl, very subtle camera drift.</pre>
+      <button class="copy-btn" data-target="b-3-5-2-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-3-5-3-alt">
+      <div class="prompt-header">
+        <div><span class="tag">ingredient pour</span><span class="prompt-id">Prompt 3.5.3-ALT · B-Roll 2 Alternate</span></div>
+        <button class="copy-btn" data-target="b-3-5-3-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-3-5-3-alt-text">Macro shot of hot water being slowly poured from an enamel bule into a small clay cuia containing fresh erva-cidreira and hortelã leaves, leaves dancing on the surface as water rises, warm tropical morning light through banana leaves, terracotta tile, philodendron in soft background blur. Vertical 9:16. --no plastic, modern kitchen, branded packaging</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-3-5-3-alt-motion">Slow continuous pour, leaves rise and dance, water settles, very subtle camera drift.</pre>
+      <button class="copy-btn" data-target="b-3-5-3-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-3-5-4-alt">
+      <div class="prompt-header">
+        <div><span class="tag">steam swirl</span><span class="prompt-id">Prompt 3.5.4-ALT · B-Roll 3 Alternate</span></div>
+        <button class="copy-btn" data-target="b-3-5-4-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-3-5-4-alt-text">Hyper-detailed macro shot of steam rising from a clay cuia of erva-cidreira-hortelã tea, single fresh hortelã leaf floating, steam threads curl through tropical morning light, banana leaf and philodendron in soft background blur, deep moody negative space above, terracotta tile surface. Vertical 9:16. --no neon, oversaturated</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-3-5-4-alt-motion">Steam threads rise slowly through tropical light, leaf drifts very slightly, static camera.</pre>
+      <button class="copy-btn" data-target="b-3-5-4-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 4 CHINA ===================== -->
+  <section id="k4">
+    <h2>🇨🇳 Kit 4 — China</h2>
+    <p class="lead"><strong>Hero ingredients:</strong> 枸杞 (goji) · 红枣 (red date) · 黄芪 (astragalus) · 陈皮 (dried tangerine peel)</p>
+
+    <div class="prompt filterable" data-searchable id="b-4-2-alt">
+      <div class="prompt-header">
+        <div><span class="tag">close-up hands</span><span class="prompt-id">Prompt 4.2-ALT · B-Roll 1 Alternate</span></div>
+        <button class="copy-btn" data-target="b-4-2-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-4-2-alt-text">Extreme close-up of weathered Chinese herbalist's hands carefully placing dried red dates one by one into a small celadon dish already holding bright red goji berries, fingers calm and precise, traditional dark wood Chinese apothecary surface, warm lantern light, refined elegance, photorealistic skin texture. Vertical 9:16. --no plastic skin, AI fingers, modern manicure</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-4-2-alt-motion">Each red date placed deliberately one at a time, fingers withdraw, very subtle camera push-in.</pre>
+      <button class="copy-btn" data-target="b-4-2-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-4-3-alt">
+      <div class="prompt-header">
+        <div><span class="tag">ingredient pour</span><span class="prompt-id">Prompt 4.3-ALT · B-Roll 2 Alternate</span></div>
+        <button class="copy-btn" data-target="b-4-3-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-4-3-alt-text">Macro shot of dried goji berries cascading from a small porcelain spoon into a celadon teacup already holding red dates and warm water, berries floating as they settle, warm lantern light, dark wood Chinese apothecary surface with ink-brush calligraphy partially visible. Vertical 9:16. --no plastic, modern packaging</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-4-3-alt-motion">Berries cascade slowly, settle on water surface, gentle ripples, very subtle drift.</pre>
+      <button class="copy-btn" data-target="b-4-3-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-4-4-alt">
+      <div class="prompt-header">
+        <div><span class="tag">steam swirl</span><span class="prompt-id">Prompt 4.4-ALT · B-Roll 3 Alternate</span></div>
+        <button class="copy-btn" data-target="b-4-4-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-4-4-alt-text">Hyper-detailed macro shot of steam rising from a celadon teacup of goji-red-date tea, single red date floating, steam threads curl through warm lantern light, deep moody negative space above, dark wood Chinese apothecary surface, ink-brush calligraphy partially visible in background blur. Vertical 9:16. --no neon, oversaturated, fake bokeh</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-4-4-alt-motion">Steam threads rise slowly through lantern light, red date drifts very slightly, static camera.</pre>
+      <button class="copy-btn" data-target="b-4-4-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+  </section>
+
+  <!-- ===================== KIT 5 JAPAN ===================== -->
+  <section id="k5">
+    <h2>🇯🇵 Kit 5 — Japan</h2>
+    <p class="lead"><strong>Hero ingredients:</strong> 生姜 (ginger) · 陳皮 (dried tangerine peel) · 梅干し (umeboshi) · 番茶 (bancha)</p>
+
+    <div class="prompt filterable" data-searchable id="b-5-2-alt">
+      <div class="prompt-header">
+        <div><span class="tag">close-up hands</span><span class="prompt-id">Prompt 5.2-ALT · B-Roll 1 Alternate</span></div>
+        <button class="copy-btn" data-target="b-5-2-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-5-2-alt-text">Extreme close-up of refined Japanese Kampo herbalist's hands using bamboo tongs to place a single piece of dried tangerine peel (chenpi) into a small white ceramic dish already holding thin slices of fresh ginger, fingers precise and deliberate, soft diffused shoji-screen daylight, cedar table surface, wabi-sabi aesthetic, photorealistic skin texture. Vertical 9:16. --no plastic skin, AI fingers, modern manicure</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-5-2-alt-motion">Tongs place the chenpi precisely, brief pause, withdraw, very subtle camera drift.</pre>
+      <button class="copy-btn" data-target="b-5-2-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-5-3-alt">
+      <div class="prompt-header">
+        <div><span class="tag">ingredient pour</span><span class="prompt-id">Prompt 5.3-ALT · B-Roll 2 Alternate</span></div>
+        <button class="copy-btn" data-target="b-5-3-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-5-3-alt-text">Macro shot of clear hot water being slowly poured from a small iron kyusu teapot into a white ceramic teacup containing thin slices of fresh ginger and a single piece of dried chenpi, ingredients dancing on the surface, soft diffused shoji-screen daylight, low cedar table, single ikebana of pine in soft background blur, wabi-sabi aesthetic. Vertical 9:16. --no plastic, neon, branded</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-5-3-alt-motion">Slow continuous pour, ginger and chenpi rise, water settles, very subtle camera drift.</pre>
+      <button class="copy-btn" data-target="b-5-3-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+
+    <div class="prompt filterable" data-searchable id="b-5-4-alt">
+      <div class="prompt-header">
+        <div><span class="tag">steam swirl</span><span class="prompt-id">Prompt 5.4-ALT · B-Roll 3 Alternate</span></div>
+        <button class="copy-btn" data-target="b-5-4-alt-text">Copy Still</button>
+      </div>
+      <pre id="b-5-4-alt-text">Hyper-detailed macro shot of steam rising from a white ceramic teacup of ginger-chenpi tea, single thin ginger slice floating, steam threads curl through soft shoji-screen daylight, deep moody negative space above, cedar table, single pine sprig in soft background blur, wabi-sabi aesthetic. Vertical 9:16. --no neon, fake bokeh, oversaturated</pre>
+      <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+      <pre id="b-5-4-alt-motion">Steam threads rise slowly through diffused light, ginger slice drifts very slightly, static camera.</pre>
+      <button class="copy-btn" data-target="b-5-4-alt-motion" style="margin-top:6px">Copy Motion</button>
+    </div>
+  </section>
+
+  <!-- ===================== USAGE ===================== -->
+  <section id="usage">
+    <h2>📋 How to Use the Variants</h2>
+
+    <h3>Step 1 — Generate the alternates (one-time)</h3>
+    <ol>
+      <li>For each kit you've already produced the original 3 b-rolls for, generate the matching 3 alternates from this page</li>
+      <li>Use Nano Banana Pro for stills, then Higgsfield Create Video for motion (same as original workflow)</li>
+      <li>Save into <code class="inline">[Market]/broll/alt/</code> alongside <code class="inline">[Market]/broll/</code></li>
+    </ol>
+
+    <h3>Step 2 — Build platform-specific cuts</h3>
+    <table>
+      <tr><th>Platform</th><th>B-Roll Mix</th><th>Why</th></tr>
+      <tr><td>TikTok / Reels</td><td>X.2 + X.3 + X.4 (originals)</td><td>First post — algorithm sees fresh content.</td></tr>
+      <tr><td>YouTube Shorts</td><td><strong>X.2-ALT</strong> + X.3 + X.4</td><td>Shorts algorithm checks visual signature first 2s. Different opener = treated as fresh.</td></tr>
+      <tr><td>Pinterest carousel</td><td>X.2 + <strong>X.3-ALT</strong> + <strong>X.4-ALT</strong></td><td>Pinterest's visual search needs distinct stills — alternates differentiate.</td></tr>
+      <tr><td>Lemon8 / Red Note</td><td><strong>X.2-ALT</strong> + <strong>X.3-ALT</strong> + X.4</td><td>Heavy aesthetics-driven feeds. Original may have been seen by users who cross-platform.</td></tr>
+      <tr><td>WhatsApp / Telegram Channels</td><td><strong>All ALT (X.2-ALT + X.3-ALT + X.4-ALT)</strong></td><td>Subscribers want something they haven't seen on public feeds.</td></tr>
+    </table>
+
+    <h3>Step 3 — Track which mix wins</h3>
+    <div class="callout">
+      Add a <code class="inline">_mix[A|B|C]</code> tag to filenames. After 30 days, identify which mix outperforms in each market. <strong>Originals are not always the winners</strong> — the close-up-hands variant often beats the powder-pour for thumb-stopping power on Reels.
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    Remedia · B-Roll Variants · 18 prompts × 3 styles × 6 markets
+  </footer>
+</main>
+
+</div>
+
+<script src="_remedia_shared.js"></script>
+</body>
+</html>

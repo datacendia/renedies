@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Remedia Rebrand — Available .com Domains</title>
+<style>
+  :root {
+    --bg: #1a1612;
+    --panel: #221d18;
+    --panel-2: #2a241e;
+    --text: #f0e9df;
+    --muted: #a89c8a;
+    --accent: #d4a574;
+    --accent-2: #8fbc8f;
+    --accent-3: #c97b7b;
+    --border: #3a3128;
+    --code-bg: #15110d;
+    --success: #6fa86f;
+    --warn-bg: rgba(201, 123, 123, 0.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .layout { display: flex; min-height: 100vh; }
+
+  /* Sidebar */
+  aside {
+    width: 300px;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 24px 18px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  aside h1 {
+    font-size: 1.2em;
+    margin: 0 0 4px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+  aside .subtitle {
+    font-size: 0.78em;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  #search {
+    width: 100%;
+    background: var(--code-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 0.95em;
+    margin-bottom: 18px;
+    outline: none;
+  }
+  #search:focus { border-color: var(--accent); }
+  #search-count {
+    font-size: 0.78em;
+    color: var(--muted);
+    margin: -10px 0 16px;
+    padding-left: 4px;
+  }
+  aside nav { font-size: 0.88em; }
+  aside nav a {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 1px;
+    transition: background 0.15s;
+  }
+  aside nav a:hover { background: var(--panel-2); color: var(--accent); }
+  aside nav a .count { color: var(--muted); font-size: 0.88em; }
+  aside nav .group {
+    color: var(--muted);
+    font-size: 0.72em;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 14px 0 4px;
+    padding-left: 10px;
+  }
+  aside nav .nested { padding-left: 18px; font-size: 0.92em; }
+
+  /* Main */
+  main {
+    flex: 1;
+    padding: 36px 50px 80px;
+    max-width: 1200px;
+  }
+  h1.page-title {
+    font-size: 2em;
+    color: var(--accent);
+    margin: 0 0 6px;
+  }
+  .lead {
+    color: var(--muted);
+    font-size: 0.98em;
+    margin-bottom: 32px;
+  }
+  section { margin-bottom: 50px; scroll-margin-top: 16px; }
+  h2 {
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-top: 44px;
+    font-size: 1.5em;
+  }
+  h3 { color: var(--accent-2); margin-top: 28px; font-size: 1.15em; }
+
+  /* Callouts */
+  .callout {
+    background: var(--panel-2);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    margin: 14px 0;
+    font-size: 0.94em;
+  }
+  .callout.warn { border-left-color: var(--accent-3); background: var(--warn-bg); }
+  .callout strong { color: var(--accent); }
+  .callout.warn strong { color: var(--accent-3); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    background: var(--panel);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.92em;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th { background: var(--panel-2); color: var(--accent); font-weight: 600; font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.5px; }
+  tr:last-child td { border-bottom: none; }
+  tr.dom-row { transition: background 0.15s; }
+  tr.dom-row:hover { background: var(--panel-2); }
+  tr.dom-hidden { display: none; }
+  .num-cell { text-align: right; color: var(--muted); width: 4em; }
+
+  /* Domain pills — click to copy */
+  .dom {
+    display: inline-block;
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 4px 11px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: all;
+  }
+  .dom:hover { background: var(--panel-2); border-color: var(--accent); }
+  .dom.copied { background: var(--success); color: white; border-color: var(--success); }
+  .dom.tier1 { border-left: 3px solid var(--accent); font-weight: 600; }
+  .dom-star { color: var(--accent-2); font-size: 0.85em; margin-left: 4px; }
+
+  /* Tier 3 compact grid tables */
+  table.compact td { padding: 8px 12px; }
+  table.compact .dom { display: block; text-align: center; }
+
+  /* Footer */
+  footer {
+    color: var(--muted);
+    font-size: 0.85em;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--accent); }
+
+  /* Small notes */
+  em.muted { color: var(--muted); font-style: italic; }
+  .pron { color: var(--muted); font-family: ui-monospace, monospace; font-size: 0.85em; }
+
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; }
+    aside { width: 100%; height: auto; position: relative; }
+    main { padding: 24px; }
+  }
+</style>
+<link rel="stylesheet" href="_remedia_shared.css" />
+</head>
+<body>
+<div class="layout">
+
+<aside>
+  <h1>🏆 REMEDIA</h1>
+  <div class="subtitle">Available .com Domains</div>
+
+  <input id="search" type="search" placeholder="🔍 Search domains / meanings (Ctrl+K)…" />
+  <div id="search-count"></div>
+  <button class="theme-toggle" type="button" style="width:100%;margin-bottom:14px;">☀ Light</button>
+
+  <nav>
+    <div class="group">⭐⭐⭐ Tier 1</div>
+    <a href="#tier1"><span>Top 12 Picks</span><span class="count">12</span></a>
+
+    <div class="group">⭐⭐ Tier 2 — Cultural Roots</div>
+    <a href="#greek" class="nested"><span>Greek Healing</span><span class="count">6</span></a>
+    <a href="#egyptian" class="nested"><span>Egyptian Healing</span><span class="count">11</span></a>
+    <a href="#latin" class="nested"><span>Latin Medicinal</span><span class="count">11</span></a>
+    <a href="#arabic" class="nested"><span>Arabic Healing</span><span class="count">2</span></a>
+    <a href="#sanskrit" class="nested"><span>Sanskrit / Vedic</span><span class="count">1</span></a>
+    <a href="#celtic" class="nested"><span>Celtic / Gaelic</span><span class="count">4</span></a>
+    <a href="#bilingual" class="nested"><span>🇪🇸 ↔ 🇺🇸 Bilingual 🆕</span><span class="count">7</span></a>
+    <a href="#andean" class="nested"><span>Andean / Indigenous</span><span class="count">8</span></a>
+    <a href="#aboriginal" class="nested"><span>Aboriginal Australian</span><span class="count">4</span></a>
+    <a href="#norse" class="nested"><span>Norse Mythology</span><span class="count">6</span></a>
+    <a href="#persian" class="nested"><span>Persian / Avestan</span><span class="count">10</span></a>
+    <a href="#yoruba" class="nested"><span>Yoruba (West African)</span><span class="count">7</span></a>
+    <a href="#swahili" class="nested"><span>Swahili (Literal)</span><span class="count">13</span></a>
+    <a href="#korean" class="nested"><span>Korean</span><span class="count">4</span></a>
+
+    <div class="group">⭐ Tier 3 — Compounds</div>
+    <a href="#verda" class="nested"><span>Verda- (Green)</span><span class="count">10</span></a>
+    <a href="#sela" class="nested"><span>Sela- (Hebrew)</span><span class="count">12</span></a>
+    <a href="#tal" class="nested"><span>Tal- (Dew)</span><span class="count">10</span></a>
+    <a href="#mira" class="nested"><span>Mira- (Wonder)</span><span class="count">9</span></a>
+    <a href="#lumen" class="nested"><span>Lumen- (Light)</span><span class="count">4</span></a>
+    <a href="#sol" class="nested"><span>Sol- (Sun)</span><span class="count">5</span></a>
+    <a href="#yara" class="nested"><span>Yara- (Butterfly)</span><span class="count">11</span></a>
+    <a href="#flora" class="nested"><span>Flora-</span><span class="count">5</span></a>
+    <a href="#yume" class="nested"><span>Yume / Kira (JP)</span><span class="count">3</span></a>
+    <a href="#other" class="nested"><span>Other Compounds</span><span class="count">5</span></a>
+
+    <div class="group">Pick &amp; Buy</div>
+    <a href="#recommend"><span>🎯 Recommendations</span></a>
+    <a href="#next"><span>🚀 Next Steps</span></a>
+  </nav>
+</aside>
+
+<main>
+  <h1 class="page-title">🏆 Remedia Rebrand — Master List</h1>
+  <p class="lead">177 validated available <code>.com</code> domains across 6 batches. <strong>Click any domain to copy.</strong></p>
+
+  <div class="callout">
+    <strong>Validation method:</strong> Each domain checked against Verisign's official RDAP registry on <strong>May 14, 2026 ~11:30am UTC-5</strong> (original 170) and <strong>May 15, 2026 ~11:12am UTC</strong> (Bilingual EN/ES batch of 7). A 404 response = available.
+  </div>
+  <div class="callout warn">
+    <strong>⚠️ Always re-verify on Namecheap / Cloudflare / GoDaddy before purchase.</strong> Domain availability changes hourly, especially for desirable names. Squatters scrape research lists.
+  </div>
+
+  <!-- ============ TIER 1 ============ -->
+  <section id="tier1">
+    <h2>⭐⭐⭐ Tier 1 — Top 12 Picks</h2>
+    <p class="lead">Best brand + pronounceable + meaningful. Click any to copy.</p>
+    <table>
+      <thead><tr><th class="num-cell">#</th><th>Domain</th><th>Pronunciation</th><th>Origin</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td class="num-cell">1</td><td><span class="dom tier1">Afyasoul.com</span></td><td class="pron">AHF-yah-soul</td><td>Swahili</td><td><em>Afya</em> literally means "HEALTH"</td></tr>
+        <tr class="dom-row"><td class="num-cell">2</td><td><span class="dom tier1">Salvaroma.com</span></td><td class="pron">sal-VAH-ro-ma</td><td>Latin</td><td><em>Salvia</em> (sage, "to heal") + aroma</td></tr>
+        <tr class="dom-row"><td class="num-cell">3</td><td><span class="dom tier1">Osanyinya.com</span></td><td class="pron">oh-SAHN-yin-ya</td><td>Yoruba</td><td><em>Osanyin</em> — orisha of medicinal plants</td></tr>
+        <tr class="dom-row"><td class="num-cell">4</td><td><span class="dom tier1">Haomaroma.com</span></td><td class="pron">HOW-mah-ro-ma</td><td>Persian / Avestan</td><td><em>Haoma</em> — sacred healing plant</td></tr>
+        <tr class="dom-row"><td class="num-cell">5</td><td><span class="dom tier1">Hygeasoul.com</span></td><td class="pron">hi-JEE-uh-soul</td><td>Greek</td><td><em>Hygeia</em> — goddess of health</td></tr>
+        <tr class="dom-row"><td class="num-cell">6</td><td><span class="dom tier1">Verdaroma.com</span></td><td class="pron">ver-DAH-ro-ma</td><td>Latin</td><td><em>Verde</em> (green) + aroma</td></tr>
+        <tr class="dom-row"><td class="num-cell">7</td><td><span class="dom tier1">Dawaroma.com</span></td><td class="pron">DAH-wah-ro-ma</td><td>Swahili</td><td><em>Dawa</em> literally means "MEDICINE"</td></tr>
+        <tr class="dom-row"><td class="num-cell">8</td><td><span class="dom tier1">Anahitaroma.com</span></td><td class="pron">ah-nah-HEE-ta-ro-ma</td><td>Persian</td><td><em>Anahita</em> — goddess of healing waters</td></tr>
+        <tr class="dom-row"><td class="num-cell">9</td><td><span class="dom tier1">Hekaroma.com</span></td><td class="pron">HEK-uh-ro-ma</td><td>Egyptian</td><td><em>Heka</em> — god of medicine + magic</td></tr>
+        <tr class="dom-row"><td class="num-cell">10</td><td><span class="dom tier1">Eirhekara.com</span></td><td class="pron">AYR-heh-kar-uh</td><td>Norse + Egyptian</td><td><em>Eir</em> (Norse healer) + <em>Heka</em> — double-deity</td></tr>
+        <tr class="dom-row"><td class="num-cell">11</td><td><span class="dom tier1">Avalonya.com</span></td><td class="pron">av-uh-LON-ya</td><td>Welsh / Celtic</td><td><em>Avalon</em> — mythical isle of healing</td></tr>
+        <tr class="dom-row"><td class="num-cell">12</td><td><span class="dom tier1">Killava.com</span></td><td class="pron">KEE-yah-va</td><td>Quechua</td><td><em>Killa</em> — Inca moon goddess (Peru)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TIER 2 ============ -->
+  <h2>⭐⭐ Tier 2 — Strong Mythological / Healing Roots</h2>
+
+  <section id="greek">
+    <h3>Greek Healing Pantheon <em class="muted">— 6 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Iasova.com</span></td><td><em>Iaso</em> — goddess of recovery</td></tr>
+        <tr class="dom-row"><td><span class="dom">Acesova.com</span></td><td><em>Aceso</em> — goddess of healing process</td></tr>
+        <tr class="dom-row"><td><span class="dom">Panacira.com</span></td><td><em>Panacea</em> — universal cure</td></tr>
+        <tr class="dom-row"><td><span class="dom">Aiglea.com</span></td><td><em>Aigle</em> — daughter of Asclepius, "radiance"</td></tr>
+        <tr class="dom-row"><td><span class="dom">Phoebra.com</span></td><td><em>Phoebe</em> — "bright, pure"</td></tr>
+        <tr class="dom-row"><td><span class="dom">Chloeva.com</span></td><td><em>Chloe</em> — "green shoot, new growth"</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="egyptian">
+    <h3>Egyptian Healing <em class="muted">— 11 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Hekasoul.com</span></td><td><em>Heka</em> (medicine/magic) + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Ankhsoul.com</span></td><td>Ankh + soul — "soul of life"</td></tr>
+        <tr class="dom-row"><td><span class="dom">Isisoul.com</span></td><td><em>Isis</em> — goddess of healing</td></tr>
+        <tr class="dom-row"><td><span class="dom">Isiaroma.com</span></td><td>Isis + aroma</td></tr>
+        <tr class="dom-row"><td><span class="dom">Sekhmara.com</span></td><td><em>Sekhmet</em> — lion goddess, "lady of life"</td></tr>
+        <tr class="dom-row"><td><span class="dom">Sekhmasoul.com</span></td><td>Sekhmet + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Imhotara.com</span></td><td><em>Imhotep</em> — first physician in history</td></tr>
+        <tr class="dom-row"><td><span class="dom">Selketra.com</span></td><td><em>Selket</em> — scorpion goddess of healing</td></tr>
+        <tr class="dom-row"><td><span class="dom">Renpeta.com</span></td><td><em>Renpet</em> — goddess of freshness</td></tr>
+        <tr class="dom-row"><td><span class="dom">Wadjetra.com</span></td><td><em>Wadjet</em> — eye of healing</td></tr>
+        <tr class="dom-row"><td><span class="dom">Anksaroma.com</span></td><td>Ankh + aroma</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="latin">
+    <h3>Latin Medicinal <em class="muted">— 11 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Salvasoul.com</span></td><td><em>Salvia</em> (sage) + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salusoul.com</span></td><td><em>Salus</em> — Roman goddess of health</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salveva.com</span></td><td><em>Salve</em> (heal) + Eva</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salusva.com</span></td><td><em>Salus</em> variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salusaya.com</span></td><td><em>Salus</em> — softer ending</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salvarya.com</span></td><td>Sage variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salviera.com</span></td><td>Sage variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Verbasoul.com</span></td><td><em>Verba</em> (verbena/herb) + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Radixya.com</span></td><td><em>Radix</em> — "root"</td></tr>
+        <tr class="dom-row"><td><span class="dom">Rosseva.com</span></td><td><em>Ros</em> (dew) + Eva</td></tr>
+        <tr class="dom-row"><td><span class="dom">Verifloh.com</span></td><td><em>Verde</em> + flora</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="arabic">
+    <h3>Arabic Healing <em class="muted">— 2 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Hakimara.com</span></td><td><em>Hakim</em> (حكيم) — wise healer</td></tr>
+        <tr class="dom-row"><td><span class="dom">Hakimaya.com</span></td><td>Variant feminine</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="sanskrit">
+    <h3>Sanskrit / Vedic <em class="muted">— 1 domain</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Amrivya.com</span></td><td><em>Amrita</em> — nectar of immortality</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="celtic">
+    <h3>Celtic / Gaelic <em class="muted">— 4 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Druidha.com</span></td><td>Feminine <em>druid</em> — keeper of plant wisdom</td></tr>
+        <tr class="dom-row"><td><span class="dom">Druidasoul.com</span></td><td>Druid + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Roisara.com</span></td><td><em>Róisín</em> — "little rose" (Ireland)</td></tr>
+        <tr class="dom-row"><td><span class="dom">Caoima.com</span></td><td><em>Caoimhe</em> — "gentle, beloved" (KEE-va)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="bilingual">
+    <h3>🇪🇸 ↔ 🇺🇸 Bilingual EN/ES Hybrids <em class="muted">— 7 domains · NEW (May 15, 2026)</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Pronunciation</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom tier1">Saviasoul.com</span> <span class="dom-star">⭐⭐⭐</span></td><td class="pron">SAH-vya-soul</td><td><em>Savia</em> (Sp/Pt: plant lifeblood/sap) + soul. <strong>Strongest pick of the batch.</strong></td></tr>
+        <tr class="dom-row"><td><span class="dom tier1">Hierbasoul.com</span> <span class="dom-star">⭐⭐</span></td><td class="pron">YEHR-bah-soul</td><td><em>Hierba</em> (herb) + soul. Explicitly herbalist.</td></tr>
+        <tr class="dom-row"><td><span class="dom tier1">Salviavida.com</span> <span class="dom-star">⭐</span></td><td class="pron">SAHL-vya-VEE-dah</td><td><em>Salvia</em> + <em>vida</em>. Reads identically EN/ES/PT.</td></tr>
+        <tr class="dom-row"><td><span class="dom">Raizsoul.com</span></td><td class="pron">rah-EEZ-soul</td><td><em>Raíz</em> (root) + soul. Earthy, grounded.</td></tr>
+        <tr class="dom-row"><td><span class="dom">Mielsoul.com</span></td><td class="pron">mee-EL-soul</td><td><em>Miel</em> (honey) + soul. Short and warm.</td></tr>
+        <tr class="dom-row"><td><span class="dom">Aguaroma.com</span></td><td class="pron">AH-gwah-ro-ma</td><td><em>Agua</em> (water) + aroma.</td></tr>
+        <tr class="dom-row"><td><span class="dom">Balsamosoul.com</span></td><td class="pron">BAHL-sah-mo-soul</td><td><em>Bálsamo</em> (balm) + soul.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>Yield note:</strong> 27 bilingual candidates checked, 7 available (26%). Most ES-EN hybrids are aggressively parked by domain brokers (BrandBucket, Afternic, Brandsly).</div>
+  </section>
+
+  <section id="andean">
+    <h3>Andean / Indigenous American <em class="muted">— 8 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Killaya.com</span></td><td><em>Killa</em> (moon) variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Mayuara.com</span></td><td><em>Mayu</em> — sacred river (Quechua)</td></tr>
+        <tr class="dom-row"><td><span class="dom">Yacuva.com</span></td><td><em>Yacu</em> — water (Quechua)</td></tr>
+        <tr class="dom-row"><td><span class="dom">Tahomya.com</span></td><td><em>Tahoma</em> — "great mountain" (Salish)</td></tr>
+        <tr class="dom-row"><td><span class="dom">Aiyanva.com</span></td><td><em>Aiyana</em> — "eternal blossom" (Cherokee)</td></tr>
+        <tr class="dom-row"><td><span class="dom">Ayashia.com</span></td><td><em>Ayasha</em> — "little one" (Cheyenne)</td></tr>
+        <tr class="dom-row"><td><span class="dom">Wakasara.com</span></td><td><em>Wakan</em> — "sacred" (Lakota)</td></tr>
+        <tr class="dom-row"><td><span class="dom">Wakasoul.com</span></td><td>Wakan + soul</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="aboriginal">
+    <h3>Aboriginal Australian <em class="muted">— 4 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Allirava.com</span></td><td><em>Allira</em> — "quartz crystal"</td></tr>
+        <tr class="dom-row"><td><span class="dom">Karrisoul.com</span></td><td><em>Karri</em> — eucalyptus tree + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Wirrava.com</span></td><td><em>Wirra</em> — "sky"</td></tr>
+        <tr class="dom-row"><td><span class="dom">Yirrava.com</span></td><td><em>Yirra</em> — gum tree (eucalyptus)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="norse">
+    <h3>Norse Mythology <em class="muted">— 6 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Eirsoul.com</span></td><td><em>Eir</em> — Norse goddess of healing</td></tr>
+        <tr class="dom-row"><td><span class="dom">Eirhekara.com</span></td><td><em>Eir</em> (Norse) + <em>Heka</em> (Egyptian) — double-deity</td></tr>
+        <tr class="dom-row"><td><span class="dom">Idunaya.com</span></td><td><em>Idunn</em> — goddess of golden apples of youth</td></tr>
+        <tr class="dom-row"><td><span class="dom">Idunsoul.com</span></td><td>Idunn + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Idunaroma.com</span></td><td>Idunn + aroma</td></tr>
+        <tr class="dom-row"><td><span class="dom">Vorsoul.com</span></td><td><em>Vor</em> — goddess of awareness/wisdom</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="persian">
+    <h3>Persian / Avestan / Zoroastrian <em class="muted">— 10 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Haomaroma.com</span></td><td><em>Haoma</em> — sacred healing plant in Zoroastrianism</td></tr>
+        <tr class="dom-row"><td><span class="dom">Haomasoul.com</span></td><td>Haoma + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Anahitaroma.com</span></td><td><em>Anahita</em> — Persian goddess of healing waters</td></tr>
+        <tr class="dom-row"><td><span class="dom">Anahitsoul.com</span></td><td>Anahita + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Anahitya.com</span></td><td>Anahita variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Roshanya.com</span></td><td><em>Roshan</em> — bright, luminous</td></tr>
+        <tr class="dom-row"><td><span class="dom">Mehrsoul.com</span></td><td><em>Mehr</em> — sun, love, kindness</td></tr>
+        <tr class="dom-row"><td><span class="dom">Darmanya.com</span></td><td><em>Darman</em> — cure, treatment</td></tr>
+        <tr class="dom-row"><td><span class="dom">Tabibya.com</span></td><td><em>Tabib</em> — traditional healer</td></tr>
+        <tr class="dom-row"><td><span class="dom">Tabibara.com</span></td><td>Tabib variant</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="yoruba">
+    <h3>Yoruba (West African) — Direct Healing Mythology <em class="muted">— 7 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Osanyinya.com</span> <span class="dom-star">⭐</span></td><td><em>Osanyin</em> — orisha of medicinal plants</td></tr>
+        <tr class="dom-row"><td><span class="dom">Osanyinsoul.com</span></td><td>Osanyin + soul</td></tr>
+        <tr class="dom-row"><td><span class="dom">Osanyinroma.com</span></td><td>Osanyin + aroma</td></tr>
+        <tr class="dom-row"><td><span class="dom">Oshunya.com</span></td><td><em>Oshun</em> — river goddess of healing/love</td></tr>
+        <tr class="dom-row"><td><span class="dom">Oshunaroma.com</span></td><td>Oshun + aroma</td></tr>
+        <tr class="dom-row"><td><span class="dom">Ifearoma.com</span></td><td><em>Ife</em> — love</td></tr>
+        <tr class="dom-row"><td><span class="dom">Ayokara.com</span></td><td><em>Ayoka</em> — one who brings joy</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="swahili">
+    <h3>Swahili — Literal Healing Words <em class="muted">— 13 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Afyasoul.com</span> <span class="dom-star">⭐⭐</span></td><td><em>Afya</em> — <strong>"HEALTH"</strong> literal</td></tr>
+        <tr class="dom-row"><td><span class="dom">Afyaroma.com</span></td><td>Afya + aroma</td></tr>
+        <tr class="dom-row"><td><span class="dom">Afyaya.com</span></td><td>Afya variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Dawaroma.com</span> <span class="dom-star">⭐⭐</span></td><td><em>Dawa</em> — <strong>"MEDICINE"</strong> literal</td></tr>
+        <tr class="dom-row"><td><span class="dom">Hekimasoul.com</span></td><td><em>Hekima</em> — wisdom</td></tr>
+        <tr class="dom-row"><td><span class="dom">Mzizisoul.com</span></td><td><em>Mzizi</em> — root</td></tr>
+        <tr class="dom-row"><td><span class="dom">Mzizira.com</span></td><td>Mzizi variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salamasoul.com</span></td><td><em>Salama</em> — peace, safety</td></tr>
+        <tr class="dom-row"><td><span class="dom">Salamava.com</span></td><td>Salama variant</td></tr>
+        <tr class="dom-row"><td><span class="dom">Imanisoul.com</span></td><td><em>Imani</em> — faith</td></tr>
+        <tr class="dom-row"><td><span class="dom">Barakasoul.com</span></td><td><em>Baraka</em> — blessings</td></tr>
+        <tr class="dom-row"><td><span class="dom">Nurusoul.com</span></td><td><em>Nuru</em> — light</td></tr>
+        <tr class="dom-row"><td><span class="dom">Asharoma.com</span></td><td><em>Asha</em> — life</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="korean">
+    <h3>Korean <em class="muted">— 4 domains</em></h3>
+    <table>
+      <thead><tr><th>Domain</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Boramya.com</span></td><td><em>Boram</em> — worth, value</td></tr>
+        <tr class="dom-row"><td><span class="dom">Hanuiya.com</span></td><td><em>Hanui</em> — sky/heavenly</td></tr>
+        <tr class="dom-row"><td><span class="dom">Garamya.com</span></td><td><em>Garam</em> — river</td></tr>
+        <tr class="dom-row"><td><span class="dom">Iseusoul.com</span></td><td><em>Iseul</em> — dew (Korean equivalent of Hebrew <em>Tal</em>)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ TIER 3 ============ -->
+  <h2>⭐ Tier 3 — Coined Cross-Cultural Compounds</h2>
+  <p class="lead">Constructed names built on phonetic roots. Less culturally anchored but highly brandable.</p>
+
+  <section id="verda">
+    <h3>Verda- (Green / Verdant) <em class="muted">— 10 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Verdomira.com</span></td><td><span class="dom">Verdaema.com</span></td><td><span class="dom">Verdohra.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Verdohira.com</span></td><td><span class="dom">Verdohva.com</span></td><td><span class="dom">Verdovara.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Verdovira.com</span></td><td><span class="dom">Verdayoma.com</span></td><td><span class="dom">Verdsoul.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Vervoma.com</span></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="sela">
+    <h3>Sela / Sel- (Hebrew "pause") <em class="muted">— 12 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Selohra.com</span></td><td><span class="dom">Selovara.com</span></td><td><span class="dom">Selavyra.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Selohora.com</span></td><td><span class="dom">Selohira.com</span></td><td><span class="dom">Selohva.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Selvaeva.com</span></td><td><span class="dom">Selvema.com</span></td><td><span class="dom">Selumva.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Selayoma.com</span></td><td><span class="dom">Selviya.com</span></td><td><span class="dom">Selroma.com</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="tal">
+    <h3>Tal- (Hebrew "dew") <em class="muted">— 10 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Talivya.com</span></td><td><span class="dom">Talevyra.com</span></td><td><span class="dom">Talievra.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Talevira.com</span></td><td><span class="dom">Talvyra.com</span></td><td><span class="dom">Talvema.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Talvaeva.com</span></td><td><span class="dom">Talihva.com</span></td><td><span class="dom">Talisoul.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Taliyoma.com</span></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="mira">
+    <h3>Mira / Mir- (Wonder) <em class="muted">— 9 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Mirayva.com</span></td><td><span class="dom">Mirevya.com</span></td><td><span class="dom">Mirahova.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Mirovara.com</span></td><td><span class="dom">Mirohva.com</span></td><td><span class="dom">Mireshka.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Miraema.com</span></td><td><span class="dom">Mirayoma.com</span></td><td><span class="dom">Mirvoma.com</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="lumen">
+    <h3>Lumen- (Light) <em class="muted">— 4 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Lumevira.com</span></td><td><span class="dom">Lumaeva.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Lumaema.com</span></td><td><span class="dom">Lumayoma.com</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="sol">
+    <h3>Sol- (Sun) <em class="muted">— 5 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Solentyra.com</span></td><td><span class="dom">Solenovra.com</span></td><td><span class="dom">Solyoma.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Solaema.com</span></td><td><span class="dom">Solvoma.com</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="yara">
+    <h3>Yara / Ya- (Butterfly / Honeycomb) <em class="muted">— 11 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Yaroviya.com</span></td><td><span class="dom">Yaromira.com</span></td><td><span class="dom">Yaravira.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Yaresoul.com</span></td><td><span class="dom">Yaraema.com</span></td><td><span class="dom">Yaraeva.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Yavoma.com</span></td><td><span class="dom">Yavroma.com</span></td><td><span class="dom">Yaviel.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Yaviya.com</span></td><td><span class="dom">Yaviyo.com</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="flora">
+    <h3>Flora / Flor- (Flower) <em class="muted">— 5 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Florhva.com</span></td><td><span class="dom">Floani.com</span></td><td><span class="dom">Floavi.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Floevi.com</span></td><td><span class="dom">Floavy.com</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="yume">
+    <h3>Yume / Kira (Japanese) <em class="muted">— 3 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Yumevi.com</span></td><td><span class="dom">Yumavy.com</span></td><td><span class="dom">Kiravy.com</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="other">
+    <h3>Other Compounds <em class="muted">— 5 domains</em></h3>
+    <table class="compact">
+      <tbody>
+        <tr class="dom-row"><td><span class="dom">Aravyra.com</span></td><td><span class="dom">Heviyo.com</span></td><td><span class="dom">Toviyo.com</span></td></tr>
+        <tr class="dom-row"><td><span class="dom">Almvoma.com</span></td><td><span class="dom">Herbasoul.com</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ RECOMMENDATIONS ============ -->
+  <section id="recommend">
+    <h2>🎯 Recommendation Framework</h2>
+    <table>
+      <thead><tr><th>If You Want…</th><th>Recommended Domain(s)</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr class="dom-row"><td><strong>Maximum clarity</strong> — instantly herbal</td><td><span class="dom tier1">Salvaroma.com</span> / <span class="dom tier1">Verdaroma.com</span></td><td>Latin "sage" or "green" + aroma</td></tr>
+        <tr class="dom-row"><td><strong>Mystical / mythological weight</strong></td><td><span class="dom tier1">Hygeasoul.com</span> / <span class="dom tier1">Hekaroma.com</span> / <span class="dom tier1">Avalonya.com</span></td><td>Greek goddess of health / Egyptian god of medicine / Celtic isle of healing</td></tr>
+        <tr class="dom-row"><td><strong>Bilingual EN/ES reach</strong></td><td><span class="dom tier1">Saviasoul.com</span> <span class="dom-star">⭐⭐⭐</span></td><td><em>Savia</em> (plant sap) + soul — reads native in Spanish, Portuguese, and English</td></tr>
+        <tr class="dom-row"><td><strong>Cultural anchor for Peru market</strong></td><td><span class="dom tier1">Killava.com</span></td><td>Quechua moon goddess</td></tr>
+        <tr class="dom-row"><td><strong>Swahili literal-healing global reach</strong></td><td><span class="dom tier1">Afyasoul.com</span> / <span class="dom tier1">Dawaroma.com</span></td><td>"Health" + soul / "Medicine" + aroma</td></tr>
+        <tr class="dom-row"><td><strong>Persian sacred-plant mythology</strong></td><td><span class="dom tier1">Haomaroma.com</span> / <span class="dom tier1">Anahitaroma.com</span></td><td>Sacred healing plant / goddess of healing waters</td></tr>
+        <tr class="dom-row"><td><strong>Yoruba (West African) plant orisha</strong></td><td><span class="dom tier1">Osanyinya.com</span></td><td><em>Osanyin</em> — orisha of medicinal plants</td></tr>
+        <tr class="dom-row"><td><strong>Norse + Egyptian double-deity</strong></td><td><span class="dom tier1">Eirhekara.com</span></td><td><em>Eir</em> (Norse healer) + <em>Heka</em> (Egyptian)</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn"><strong>Note:</strong> Earlier drafts referenced <em>Talienza.com</em>, <em>Ankhva.com</em>, and <em>Shifasoul.com</em>. These were <strong>not</strong> in the May 14/15 validation batches — re-check availability before purchase if interested.</div>
+  </section>
+
+  <!-- ============ NEXT STEPS ============ -->
+  <section id="next">
+    <h2>🚀 Next Steps</h2>
+    <ol>
+      <li><strong>Pick 2–3 favorites</strong> from this list</li>
+      <li><strong>Re-verify on Namecheap</strong> — type the domain at <a href="https://namecheap.com" target="_blank">namecheap.com</a> to confirm</li>
+      <li><strong>Check social handles</strong> at <a href="https://namechk.com" target="_blank">namechk.com</a> — confirm @instagram, @tiktok, @youtube available</li>
+      <li><strong>Register</strong> the .com immediately (~$10–12/year on Namecheap)</li>
+      <li><strong>Optionally lock</strong> <code>.co</code>, <code>.io</code>, <code>.net</code> for the same name to prevent squatters</li>
+      <li><strong>Update the brand</strong> in <code>Remedia_Production_Guide.html</code>, prompts, and <code>Remedia_Videos/</code> folder structure</li>
+    </ol>
+  </section>
+
+  <footer>
+    Remedia Rebrand · Master domain list · Validation Verisign RDAP · May 14–15, 2026 · 177 unique domains
+  </footer>
+</main>
+
+</div>
+
+<script src="_remedia_shared.js"></script>
+
+</body>
+</html>

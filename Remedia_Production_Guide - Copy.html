@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Remedia — AI Video Production Guide</title>
+<style>
+  :root {
+    --bg: #1a1612;
+    --panel: #221d18;
+    --panel-2: #2a241e;
+    --text: #f0e9df;
+    --muted: #a89c8a;
+    --accent: #d4a574;
+    --accent-2: #8fbc8f;
+    --border: #3a3128;
+    --code-bg: #15110d;
+    --success: #6fa86f;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .layout { display: flex; min-height: 100vh; }
+  /* Sidebar */
+  aside {
+    width: 280px;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 24px 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  aside h1 {
+    font-size: 1.3em;
+    margin: 0 0 6px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+  aside .subtitle {
+    font-size: 0.8em;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  aside nav { font-size: 0.92em; }
+  aside nav a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 2px;
+    transition: background 0.15s;
+  }
+  aside nav a:hover { background: var(--panel-2); color: var(--accent); }
+  aside nav .group {
+    color: var(--muted);
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 16px 0 6px;
+    padding-left: 10px;
+  }
+  aside nav .nested { padding-left: 22px; font-size: 0.88em; }
+
+  /* Main */
+  main {
+    flex: 1;
+    padding: 40px 60px;
+    max-width: 1100px;
+  }
+  h1.page-title {
+    font-size: 2.2em;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  .lead {
+    color: var(--muted);
+    font-size: 1.05em;
+    margin-bottom: 40px;
+  }
+  section { margin-bottom: 60px; }
+  h2 {
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-top: 50px;
+  }
+  h3 { color: var(--accent-2); margin-top: 32px; }
+  h4 { color: var(--text); margin-top: 24px; }
+
+  /* Step blocks */
+  .step {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 18px 0;
+  }
+  .step-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .step-header h3 { margin: 0; color: var(--accent); }
+  .step-meta { color: var(--muted); font-size: 0.85em; }
+  .step ol { padding-left: 22px; }
+  .step ol li { margin-bottom: 6px; }
+
+  /* Prompt blocks */
+  .prompt {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 12px 0;
+    position: relative;
+    scroll-margin-top: 20px;
+  }
+  .prompt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .prompt-id {
+    font-size: 0.78em;
+    color: var(--accent);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .prompt-label { color: var(--muted); font-size: 0.88em; }
+  .prompt pre {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    background: transparent;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    font-size: 0.92em;
+    line-height: 1.55;
+  }
+  .copy-btn {
+    background: var(--panel-2);
+    color: var(--accent);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .copy-btn:hover { background: var(--accent); color: var(--bg); }
+  .copy-btn.copied { background: var(--success); color: white; border-color: var(--success); }
+
+  /* Inline references */
+  a.ref {
+    color: var(--accent);
+    background: rgba(212, 165, 116, 0.1);
+    padding: 1px 6px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92em;
+  }
+  a.ref:hover { background: var(--accent); color: var(--bg); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: var(--panel);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92em;
+  }
+  th { background: var(--panel-2); color: var(--accent); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+
+  /* Callouts */
+  .callout {
+    border-left: 3px solid var(--accent-2);
+    background: rgba(143, 188, 143, 0.06);
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin: 14px 0;
+  }
+  .callout.warn { border-color: #d49b74; background: rgba(212, 155, 116, 0.06); }
+  .callout strong { color: var(--accent); }
+
+  /* Checklist */
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: var(--accent);
+  }
+
+  /* Market badges */
+  .market-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .market-tab {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: all 0.15s;
+  }
+  .market-tab:hover { background: var(--accent); color: var(--bg); }
+
+  code.inline {
+    background: var(--code-bg);
+    padding: 2px 7px;
+    border-radius: 3px;
+    color: var(--accent);
+    font-size: 0.9em;
+  }
+
+  /* Training prompts collapsible */
+  details.training-set {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  details.training-set summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.02em;
+    user-select: none;
+    list-style: none;
+  }
+  details.training-set summary::-webkit-details-marker { display: none; }
+  details.training-set summary::before {
+    content: '▶  ';
+    font-size: 0.7em;
+    color: var(--accent);
+    transition: transform 0.2s;
+  }
+  details.training-set[open] summary::before {
+    content: '▼  ';
+  }
+  details.training-set .training-grid {
+    margin-top: 14px;
+  }
+  .prompt.compact {
+    padding: 10px 14px;
+    margin: 8px 0;
+    border-left-width: 2px;
+  }
+  .prompt.compact pre {
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+  .prompt.compact .prompt-id {
+    font-size: 0.72em;
+  }
+  .prompt.compact .copy-btn {
+    padding: 3px 9px;
+    font-size: 0.74em;
+  }
+
+  /* Highlight when scroll-targeted */
+  :target {
+    animation: flash 1.6s ease-out;
+  }
+  @keyframes flash {
+    0% { box-shadow: 0 0 0 3px var(--accent); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  /* Print */
+  @media print {
+    aside { display: none; }
+    main { padding: 0; }
+    .copy-btn { display: none; }
+  }
+
+  @media (max-width: 800px) {
+    .layout { flex-direction: column; }
+    aside { width: 100%; height: auto; position: relative; }
+    main { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- ============== SIDEBAR ============== -->
+<aside>
+  <h1>REMEDIA</h1>
+  <div class="subtitle">AI Video Production Guide</div>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#setup">Phase 0 — Setup</a>
+
+    <div class="group">Production Steps</div>
+    <a href="#step1" class="nested">1. Soul ID Training Set</a>
+    <a href="#step2" class="nested">2. Train Soul ID</a>
+    <a href="#step3" class="nested">3. Hero Herbalist Image</a>
+    <a href="#step4" class="nested">4. Talking Head</a>
+    <a href="#step5" class="nested">5. B-Roll Stills</a>
+    <a href="#step6" class="nested">6. B-Roll Animation</a>
+    <a href="#step7" class="nested">7. Book Cover</a>
+    <a href="#step8" class="nested">8. CapCut Assembly</a>
+    <a href="#step9" class="nested">9. Publish</a>
+
+    <div class="group">Prompt Kits</div>
+    <a href="#kit1">🇺🇸 Kit 1 — Global</a>
+    <a href="#kit2">🇮🇳 Kit 2 — India</a>
+    <a href="#kit3">🇵🇪 Kit 3 — Peru</a>
+    <a href="#kit4">🇨🇳 Kit 4 — China</a>
+    <a href="#kit5">🇯🇵 Kit 5 — Japan</a>
+
+    <div class="group">Training Prompts</div>
+    <a href="#soulid-training">Soul ID Training (100 prompts)</a>
+
+    <div class="group">Reference</div>
+    <a href="#universal">Universal Motion</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#troubleshoot">Troubleshooting</a>
+  </nav>
+</aside>
+
+<!-- ============== MAIN ============== -->
+<main>
+
+<section id="overview">
+  <h1 class="page-title">Remedia — AI Video Production Guide</h1>
+  <p class="lead">5 localized videos · 5 markets · ~50 minutes per video. Every step links to the exact prompt you need. Click any reference like <a href="#p-1-1" class="ref">Prompt 1.1</a> to jump to it.</p>
+
+  <div class="callout"><strong>🟢 Start here:</strong> Do <strong>Kit 1 (Global)</strong> end-to-end first — all 9 steps, all the way to published. <em>Then</em> repeat for Kits 2–5. Don't try to parallelize until your first video ships correctly.</div>
+
+  <table>
+    <tr><th>Asset</th><th>Per Video</th><th>Total (5 videos)</th></tr>
+    <tr><td>Herbalist Image</td><td>1</td><td>5</td></tr>
+    <tr><td>Soul ID character</td><td>1</td><td>5</td></tr>
+    <tr><td>Talking Head clip</td><td>1</td><td>5</td></tr>
+    <tr><td>B-Roll clips</td><td>3</td><td>15</td></tr>
+    <tr><td>Book Cover clip</td><td>1</td><td>5</td></tr>
+    <tr><td><strong>Final video</strong></td><td><strong>1</strong></td><td><strong>5</strong></td></tr>
+  </table>
+</section>
+
+<!-- ============== PHASE 0 — SETUP ============== -->
+<section id="setup">
+  <h2>Phase 0 — One-Time Setup (10 min)</h2>
+
+  <div class="step">
+    <h3>0.1 — Subscribe to Higgsfield Ultra</h3>
+    <p>Go to <a href="https://higgsfield.ai" target="_blank" style="color:var(--accent)">higgsfield.ai</a> → upgrade to <strong>Ultra</strong> (55% off). Unlocks Kling Avatars 2.0, Higgsfield Speak, unlimited Nano Banana Pro.</p>
+  </div>
+
+  <div class="step">
+    <h3>0.2 — Folder Structure</h3>
+    <pre style="background:var(--code-bg);padding:14px;border-radius:6px;color:var(--text);">Remedia_Videos/
+├── 00_assets/        ← book cover image, logo PNG
+├── 01_Global/
+├── 02_India/
+├── 03_Peru/
+├── 04_China/
+└── 05_Japan/</pre>
+  </div>
+
+  <div class="step">
+    <h3>0.3 — Install CapCut Desktop</h3>
+    <p>Download from <a href="https://www.capcut.com/" target="_blank" style="color:var(--accent)">capcut.com</a> (free). Desktop version only — mobile timeline is too imprecise.</p>
+  </div>
+</section>
+
+<!-- ============== PRODUCTION STEPS ============== -->
+<section>
+  <h2>Production Steps (Per Video)</h2>
+  <p class="lead">Replace <code class="inline">[KIT]</code> with your market number. Do all 9 steps for <strong>Kit 1 (Global)</strong> first, then repeat for Kits 2–5.</p>
+
+  <div class="callout"><strong>🟢 Big-picture flow:</strong> Train your character first (Steps 1–2) → Generate hero image with that character (Step 3) → Lipsync it (Step 4) → Add cinematic b-rolls (Steps 5–7) → Edit (Step 8) → Publish (Step 9).</div>
+
+  <!-- STEP 1 -->
+  <div class="step" id="step1">
+    <div class="step-header">
+      <h3>Step 1 — Generate Soul ID Training Set</h3>
+      <div class="step-meta">⏱ 30 min · Tool: Nano Banana Pro</div>
+    </div>
+    <p>Goal: <strong>20–30 high-quality images of the same character</strong> to feed into Soul ID. Single-image training = "Bad" results. Volume + consistency = "Excellent".</p>
+    <ol>
+      <li><strong>Sidebar → Image → Nano Banana Pro</strong> (or Ctrl+K → "Nano Banana")</li>
+      <li>Open <a href="#soulid-training" class="ref">Soul ID Training Prompts</a> and pick 8–10 prompts from your kit's set:
+        <ul>
+          <li>Kit 1 → T1.1 through T1.20</li>
+          <li>Kit 2 → T2.1 through T2.20</li>
+          <li>Kit 3 → T3.1 through T3.20</li>
+          <li>Kit 4 → T4.1 through T4.20</li>
+          <li>Kit 5 → T5.1 through T5.20</li>
+        </ul>
+      </li>
+      <li>For each prompt: Aspect <strong>9:16</strong>, Quality <strong>High</strong>, Variations <strong>4</strong> → Generate</li>
+      <li>Reject any image where face shape, eye color, hair texture, or age drifts. Keep only "clearly the same person" results.</li>
+      <li>Target <strong>20–30 keepers minimum</strong>. Save them all to <code class="inline">[Market]/training/</code></li>
+    </ol>
+    <div class="callout warn"><strong>Quality gate:</strong> Don't proceed to Step 2 until you have 20+ keepers that match the locked <a href="#kit1" class="ref">Character Bible</a> for your kit. Garbage in = garbage Soul ID.</div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step" id="step2">
+    <div class="step-header">
+      <h3>Step 2 — Train Soul ID Character</h3>
+      <div class="step-meta">⏱ 10 min upload + 5–10 min training · Tool: Soul ID</div>
+    </div>
+    <ol>
+      <li><strong>Sidebar → Image → Soul ID</strong></li>
+      <li>Click <strong>Create New Character</strong>, name it <code class="inline">Remedia_[Market]</code> (e.g. <code class="inline">Remedia_Global</code>)</li>
+      <li>Drag in <strong>all 20–30 training images</strong> from <code class="inline">[Market]/training/</code> at once</li>
+      <li>Watch the quality meter. Add or remove images until it shows <strong>"Good"</strong> or <strong>"Excellent"</strong></li>
+      <li>Click <strong>Create ✨ 25</strong> (this is the "train" button; <strong>✨ 25 = 25 Higgsfield credits</strong>)</li>
+      <li>Wait 5–10 min until the character card shows <strong>"Ready"</strong></li>
+    </ol>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step" id="step3">
+    <div class="step-header">
+      <h3>Step 3 — Generate Hero Herbalist Image (with Soul ID)</h3>
+      <div class="step-meta">⏱ 5 min · Tool: Nano Banana Pro + your trained Soul ID</div>
+    </div>
+    <p>Now generate the single still image that becomes your talking head, with the face <strong>locked</strong> to your Soul ID character.</p>
+
+    <div class="callout"><strong>📌 How to attach your Soul ID character in Nano Banana Pro</strong><br>
+    You attach characters by <strong>@-mentioning them inside the prompt</strong>, not via a dropdown.<br><br>
+    1. Open <strong>Image → Nano Banana Pro</strong><br>
+    2. Click into the prompt input bar<br>
+    3. Type <strong><code class="inline">@</code></strong> — an autocomplete list of your trained Soul ID characters appears<br>
+    4. Select <code class="inline">@Remedia_[Market]</code> from the list (e.g. <code class="inline">@Remedia_Global</code> for Kit 1)<br>
+    5. The mention becomes a colored chip/pill inside the prompt. <em>Double-check it matches your market</em> — Kit 2 prompts must use <code class="inline">@Remedia_India</code>, etc.<br>
+    6. Continue typing or paste the rest of your prompt <strong>after</strong> the mention, then generate<br><br>
+    <strong>Note:</strong> The <code class="inline">+</code> icon left of the prompt is for uploading <em>reference images</em> (style/composition refs), not for character selection. Don't confuse the two.</div>
+
+    <ol>
+      <li>Open <strong>Nano Banana Pro</strong></li>
+      <li>In the prompt bar, type <code class="inline">@</code> and select <code class="inline">@Remedia_[Market]</code> (see callout above for details)</li>
+      <li>After the mention chip, paste the Herbalist Image prompt for your market:
+        <ul>
+          <li>Kit 1 → <a href="#p-1-1" class="ref">Prompt 1.1</a></li>
+          <li>Kit 2 → <a href="#p-2-1" class="ref">Prompt 2.1</a></li>
+          <li>Kit 3 → <a href="#p-3-1" class="ref">Prompt 3.1</a></li>
+          <li>Kit 4 → <a href="#p-4-1" class="ref">Prompt 4.1</a></li>
+          <li>Kit 5 → <a href="#p-5-1" class="ref">Prompt 5.1</a></li>
+        </ul>
+      </li>
+      <li>Settings: Aspect <strong>9:16</strong>, Quality <strong>High</strong>, Variations <strong>4–6</strong></li>
+      <li>Generate, pick the one with: clear face · <strong>closed mouth</strong> in soft natural position · hands visible but not blocking face</li>
+      <li>Download as <code class="inline">herbalist.jpg</code> into the market folder. <strong>This is the file you upload in Step 4.</strong></li>
+    </ol>
+    <div class="callout warn"><strong>Quality gate:</strong> If no result has all 3 (clear face + closed mouth + clean hands), regenerate. This image becomes the entire video's face — worth the extra round.</div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step" id="step4">
+    <div class="step-header">
+      <h3>Step 4 — Generate Talking Head (Lipsync)</h3>
+      <div class="step-meta">⏱ 10 min · Tool: Lipsync Studio · Model: Kling Avatars 2.0</div>
+    </div>
+    <ol>
+      <li><strong>Sidebar → Video → Lipsync Studio</strong></li>
+      <li><strong>Image:</strong> Upload <code class="inline">herbalist.jpg</code> (the Step 3 output)</li>
+      <li><strong>Audio text:</strong> Paste the Script for your market:
+        <ul>
+          <li>Kit 1 → <a href="#p-1-6" class="ref">Prompt 1.6 (English)</a></li>
+          <li>Kit 2 → <a href="#p-2-6" class="ref">Prompt 2.6 (Hindi)</a></li>
+          <li>Kit 3 → <a href="#p-3-6" class="ref">Prompt 3.6 (Spanish)</a></li>
+          <li>Kit 4 → <a href="#p-4-6" class="ref">Prompt 4.6 (Mandarin)</a></li>
+          <li>Kit 5 → <a href="#p-5-6" class="ref">Prompt 5.6 (Japanese)</a></li>
+        </ul>
+      </li>
+      <li><strong>Generate Audio</strong> → pick voice:
+        <ul>
+          <li>Kit 1: English Female, Warm, age 30–40</li>
+          <li>Kit 2: Hindi Female, age 45–55, grandmotherly</li>
+          <li>Kit 3: Spanish (LATAM) Female, age 50–60, earthy</li>
+          <li>Kit 4: Mandarin Female, age 45–55, scholarly</li>
+          <li>Kit 5: Japanese Female, age 40–50, meditative</li>
+        </ul>
+      </li>
+      <li>Preview audio — confirm 14–18s. If longer, trim a sentence.</li>
+      <li><strong>Prompt field:</strong> Paste <a href="#universal" class="ref">Universal Motion Direction</a></li>
+      <li><strong>Model:</strong> Kling Avatars 2.0 (the "5m" duration one)</li>
+      <li>Duration: <strong>20 seconds</strong> · Resolution: <strong>1080p</strong></li>
+      <li>Generate → download as <code class="inline">talking_head.mp4</code></li>
+    </ol>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step" id="step5">
+    <div class="step-header">
+      <h3>Step 5 — Generate 3 B-Roll Stills</h3>
+      <div class="step-meta">⏱ 4 min · Tool: Nano Banana Pro (no Soul ID needed)</div>
+    </div>
+    <p>B-rolls are scene/object shots with no character. <strong>Don't @-mention any Soul ID</strong> in these prompts (delete the chip if it carried over from Step 3), then generate all 3 stills back-to-back:</p>
+    <table>
+      <tr><th>B-Roll</th><th>Kit 1</th><th>Kit 2</th><th>Kit 3</th><th>Kit 4</th><th>Kit 5</th></tr>
+      <tr><td>#1 (hook)</td><td><a href="#p-1-2" class="ref">1.2</a></td><td><a href="#p-2-2" class="ref">2.2</a></td><td><a href="#p-3-2" class="ref">3.2</a></td><td><a href="#p-4-2" class="ref">4.2</a></td><td><a href="#p-5-2" class="ref">5.2</a></td></tr>
+      <tr><td>#2 (tea)</td><td><a href="#p-1-3" class="ref">1.3</a></td><td><a href="#p-2-3" class="ref">2.3</a></td><td><a href="#p-3-3" class="ref">3.3</a></td><td><a href="#p-4-3" class="ref">4.3</a></td><td><a href="#p-5-3" class="ref">5.3</a></td></tr>
+      <tr><td>#3 (herbs/scene)</td><td><a href="#p-1-4" class="ref">1.4</a></td><td><a href="#p-2-4" class="ref">2.4</a></td><td><a href="#p-3-4" class="ref">3.4</a></td><td><a href="#p-4-4" class="ref">4.4</a></td><td><a href="#p-5-4" class="ref">5.4</a></td></tr>
+    </table>
+    <p>Settings: 9:16, High, 2 variations each. Download as <code class="inline">broll_1_still.jpg</code>, <code class="inline">broll_2_still.jpg</code>, <code class="inline">broll_3_still.jpg</code>.</p>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step" id="step6">
+    <div class="step-header">
+      <h3>Step 6 — Animate the 3 B-Roll Stills</h3>
+      <div class="step-meta">⏱ 8 min (parallel renders) · Tool: Create Video · Model: Seedance 2.0</div>
+    </div>
+    <ol>
+      <li><strong>Sidebar → Video → Create Video</strong></li>
+      <li>Upload <code class="inline">broll_1_still.jpg</code></li>
+      <li>Paste the <strong>Motion line</strong> from the corresponding prompt (each prompt has a motion line below the still)</li>
+      <li>Duration <strong>5s</strong>, Aspect <strong>9:16</strong>, Model <strong>Seedance 2.0</strong></li>
+      <li>Open new tab, repeat for B-roll 2, then B-roll 3</li>
+      <li>Download as <code class="inline">broll_1.mp4</code>, <code class="inline">broll_2.mp4</code>, <code class="inline">broll_3.mp4</code></li>
+    </ol>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step" id="step7">
+    <div class="step-header">
+      <h3>Step 7 — Generate Book Cover Closer</h3>
+      <div class="step-meta">⏱ 5 min · Tools: Nano Banana + Create Video</div>
+    </div>
+    <ol>
+      <li>Nano Banana Pro → paste book cover prompt:
+        <ul>
+          <li>Kit 1 → <a href="#p-1-5" class="ref">Prompt 1.5</a></li>
+          <li>Kit 2 → <a href="#p-2-5" class="ref">Prompt 2.5</a></li>
+          <li>Kit 3 → <a href="#p-3-5" class="ref">Prompt 3.5</a></li>
+          <li>Kit 4 → <a href="#p-4-5" class="ref">Prompt 4.5</a></li>
+          <li>Kit 5 → <a href="#p-5-5" class="ref">Prompt 5.5</a></li>
+        </ul>
+      </li>
+      <li>Download as <code class="inline">book_still.jpg</code></li>
+      <li>Create Video → upload still → paste the motion line from the same prompt</li>
+      <li>Duration <strong>3s</strong> · 9:16 · Generate → save as <code class="inline">book_cover.mp4</code></li>
+    </ol>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="step" id="step8">
+    <div class="step-header">
+      <h3>Step 8 — Assemble in CapCut</h3>
+      <div class="step-meta">⏱ 15 min · Tool: CapCut Desktop</div>
+    </div>
+    <ol>
+      <li>New project, ratio <strong>9:16</strong></li>
+      <li>Import all clips into media library</li>
+      <li>Build the timeline (see below)</li>
+      <li>Detach the talking_head audio so VO continues through B-roll cutaways</li>
+      <li><strong>Auto-Captions:</strong> Captions → Auto Captions → <strong>manually set Source Language</strong> (don't trust auto-detect):
+        <ul>
+          <li>Kit 1 → English · Kit 2 → Hindi · Kit 3 → Spanish · Kit 4 → Chinese (Simplified) · Kit 5 → Japanese</li>
+        </ul>
+      </li>
+      <li><strong>Caption font (critical):</strong> Set font to <code class="inline">Noto Sans</code> (or <code class="inline">Noto Sans CJK</code> for Kits 4/5, <code class="inline">Noto Sans Devanagari</code> for Kit 2). Noto covers every script — most other fonts will render non-Latin scripts as garbled boxes/glyphs.</li>
+      <li><strong>Caption style:</strong> 80–90px, white text, black stroke 4px, center-aligned, positioned in the bottom 25% safe area (above the mobile UI zone)</li>
+      <li>Music: trending ambient/world at -22dB on Track 3</li>
+      <li>Color: Vintage Warm filter at 60%</li>
+      <li>Export 1080×1920, 30fps, High bitrate, MP4 H.264</li>
+    </ol>
+
+    <h4>Timeline (25 seconds @ 30fps)</h4>
+    <table>
+      <tr><th>Time</th><th>Video Track</th><th>Audio</th><th>Text Overlay</th></tr>
+      <tr><td>0.0–1.5s</td><td>broll_1.mp4 (hook)</td><td>silent</td><td>—</td></tr>
+      <tr><td>1.5–8.0s</td><td>talking_head.mp4</td><td>herbalist VO</td><td>—</td></tr>
+      <tr><td>8.0–11.0s</td><td>broll_2.mp4 (overlay)</td><td>VO continues</td><td>—</td></tr>
+      <tr><td>11.0–16.0s</td><td>talking_head.mp4</td><td>VO continues</td><td>—</td></tr>
+      <tr><td>16.0–19.0s</td><td>broll_3.mp4 (overlay)</td><td>VO continues</td><td>"Ayurveda · TCM · Kampo · Andean · Folk"</td></tr>
+      <tr><td>19.0–22.5s</td><td>book_cover.mp4</td><td>"Remedia. Link below."</td><td>"REMEDIA"</td></tr>
+      <tr><td>22.5–25.0s</td><td>End card</td><td>music tail</td><td>"📖 Link in bio"</td></tr>
+    </table>
+  </div>
+
+  <!-- STEP 9 -->
+  <div class="step" id="step9">
+    <div class="step-header">
+      <h3>Step 9 — Publish</h3>
+      <div class="step-meta">⏱ 5 min per platform</div>
+    </div>
+    <table>
+      <tr><th>Market</th><th>Platforms</th></tr>
+      <tr><td>🇺🇸 Global</td><td>TikTok · Instagram Reels · YouTube Shorts · Facebook Reels</td></tr>
+      <tr><td>🇮🇳 India</td><td>Instagram Reels · YouTube Shorts · Moj · Josh (skip TikTok)</td></tr>
+      <tr><td>🇵🇪 Peru</td><td>TikTok · Instagram Reels · YouTube Shorts · Facebook Reels</td></tr>
+      <tr><td>🇨🇳 China</td><td>Douyin · Xiaohongshu · Bilibili · WeChat Channels</td></tr>
+      <tr><td>🇯🇵 Japan</td><td>TikTok JP · Instagram Reels · YouTube Shorts · Twitter/X</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============== UNIVERSAL ============== -->
+<section id="universal">
+  <h2>Universal — Motion Direction (All Talking Heads)</h2>
+  <p>Use this in the Lipsync Studio <strong>Prompt</strong> field for every market.</p>
+  <div class="prompt" id="p-universal">
+    <div class="prompt-header">
+      <div><span class="prompt-id">Universal Motion</span> <span class="prompt-label">Lipsync motion direction</span></div>
+      <button class="copy-btn" data-target="p-universal-text">Copy</button>
+    </div>
+    <pre id="p-universal-text">Subtle natural head movement, occasional warm smile, gentle blinks, hands stay holding the prop. Calm grandmotherly presence.</pre>
+  </div>
+</section>
+
+<!-- ============== KIT 1 GLOBAL ============== -->
+<section id="kit1">
+  <h2>🇺🇸 Kit 1 — Global English</h2>
+  <p class="lead"><strong>Folder:</strong> <code class="inline">01_Global</code> · <strong>Voice:</strong> English (US/UK), Female, Warm, 30–40 · <strong>Script length:</strong> ~16s</p>
+
+  <div class="callout"><strong>🔒 Character Bible (locked across every Kit 1 prompt)</strong><br>
+  • <strong>Gender / Age:</strong> female, 35 years old<br>
+  • <strong>Height / Build:</strong> 5'6", medium build<br>
+  • <strong>Skin:</strong> fair with warm undertones, light freckles across nose and cheeks<br>
+  • <strong>Eyes:</strong> hazel-green<br>
+  • <strong>Hair:</strong> warm chestnut-brown, shoulder-length, loose curls, tied loosely back<br>
+  • <strong>Wardrobe:</strong> cream linen apron over sage-green linen shirt, small silver hoop earrings<br>
+  • <strong>Environment:</strong> modern apothecary with shelves of amber glass bottles, brass scales, terracotta pots of fresh herbs<br>
+  • <strong>Lighting:</strong> warm afternoon window light from camera left<br>
+  • <strong>Mouth:</strong> closed in soft natural position</div>
+
+  <div class="prompt" id="p-1-1">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 1.1</span> <span class="prompt-label">Herbalist Image — Nano Banana Pro</span></div><button class="copy-btn" data-target="p-1-1-text">Copy</button></div>
+    <pre id="p-1-1-text">35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles across nose and cheeks, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Holding a small glass jar of dried golden chamomile flowers in both hands at chest level, calm knowing expression. Modern apothecary with shelves of amber glass bottles, brass scales, terracotta pots of fresh herbs softly blurred behind. Warm afternoon window light from camera left. Shot on Canon C500, 50mm lens, shallow depth of field, cinematic warm amber and sage palette. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin texture, vertical 9:16.</pre>
+  </div>
+
+  <div class="prompt" id="p-1-2">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 1.2</span> <span class="prompt-label">B-Roll 1 — Turmeric Pour (still + motion)</span></div><button class="copy-btn" data-target="p-1-2-text">Copy Still</button></div>
+    <pre id="p-1-2-text">Extreme macro close-up of golden turmeric powder being slowly spooned into a dark stone bowl, fine dust particles in warm side light, deep black background, shallow depth of field. Slow motion aesthetic.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-1-2-motion">Slow motion powder falls gently, particles drift through light beam, subtle camera push-in.</pre>
+    <button class="copy-btn" data-target="p-1-2-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-1-3">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 1.3</span> <span class="prompt-label">B-Roll 2 — Chamomile Tea</span></div><button class="copy-btn" data-target="p-1-3-text">Copy Still</button></div>
+    <pre id="p-1-3-text">Top-down shot of amber chamomile tea in a handmade ceramic cup on a dark wooden table, single chamomile flower floating, gentle steam rising, warm window light from upper left, moody.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-1-3-motion">Steam curls upward slowly, tea swirls subtly, static camera with very slight drift.</pre>
+    <button class="copy-btn" data-target="p-1-3-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-1-4">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 1.4</span> <span class="prompt-label">B-Roll 3 — Hanging Herbs</span></div><button class="copy-btn" data-target="p-1-4-text">Copy Still</button></div>
+    <pre id="p-1-4-text">Bundles of drying rosemary, lavender, sage, and thyme tied with twine against a whitewashed stone wall, late afternoon golden light from the right, 35mm film aesthetic, warm earth tones.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-1-4-motion">Slow vertical pan upward along the herbs, herbs sway gently in subtle breeze.</pre>
+    <button class="copy-btn" data-target="p-1-4-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-1-5">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 1.5</span> <span class="prompt-label">Book Cover Closer</span></div><button class="copy-btn" data-target="p-1-5-text">Copy Still</button></div>
+    <pre id="p-1-5-text">The book "Remedia" with a botanical cover design, resting on a rustic oak table beside a small jar of dried chamomile, a brass measuring spoon, and a steaming ceramic teacup. Warm window light from camera left, shallow depth of field, cozy apothecary aesthetic. Book cover clearly visible and sharp.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-1-5-motion">Slow camera push-in toward the book cover, very subtle steam from teacup.</pre>
+    <button class="copy-btn" data-target="p-1-5-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-1-6">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 1.6</span> <span class="prompt-label">Script — English (18s)</span></div><button class="copy-btn" data-target="p-1-6-text">Copy Script</button></div>
+    <pre id="p-1-6-text">For three thousand years, before pharmacies, before pills, there was the garden.
+
+Chamomile for the mind. Ginger for the stomach. Turmeric for the joint.
+
+This isn't a trend. It's the original medicine.
+
+Remedia. Link below.</pre>
+  </div>
+
+  <h4>Caption (TikTok / Reels / Shorts)</h4>
+  <div class="prompt" id="cap-1">
+    <div class="prompt-header"><div><span class="prompt-id">Caption EN</span></div><button class="copy-btn" data-target="cap-1-text">Copy</button></div>
+    <pre id="cap-1-text">Before pharmacies, there was the garden. 🌿
+
+Three thousand years of plant medicine — Ayurveda, Chinese, Japanese, Andean, and folk wisdom — collected in one book.
+
+📖 Link in bio.
+
+#herbalmedicine #ayurveda #tcm #naturalhealing #plantmedicine #ancientwisdom #herbalist #remedia</pre>
+  </div>
+</section>
+
+<!-- ============== KIT 2 INDIA ============== -->
+<section id="kit2">
+  <h2>🇮🇳 Kit 2 — India (Hindi)</h2>
+  <p class="lead"><strong>Folder:</strong> <code class="inline">02_India</code> · <strong>Voice:</strong> Hindi, Female, 45–55, grandmotherly · <strong>Script length:</strong> ~17s</p>
+
+  <div class="callout"><strong>🔒 Character Bible (locked across every Kit 2 prompt)</strong><br>
+  • <strong>Gender / Age:</strong> female, 55 years old<br>
+  • <strong>Height / Build:</strong> 5'3", petite build<br>
+  • <strong>Skin:</strong> warm medium-brown with golden undertones, gentle character lines<br>
+  • <strong>Eyes:</strong> dark brown<br>
+  • <strong>Hair:</strong> silver-streaked black, mid-back length, tied in a low bun<br>
+  • <strong>Wardrobe:</strong> turmeric-ochre cotton sari with deep red border, small gold nose stud, small gold bangles<br>
+  • <strong>Environment:</strong> warm wooden interior with carved wooden lattice window, brass thali<br>
+  • <strong>Lighting:</strong> golden hour light filtering through carved lattice window<br>
+  • <strong>Mouth:</strong> closed in soft natural position</div>
+
+  <div class="prompt" id="p-2-1">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 2.1</span> <span class="prompt-label">Herbalist Image</span></div><button class="copy-btn" data-target="p-2-1-text">Copy</button></div>
+    <pre id="p-2-1-text">55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Seated beside a brass thali holding ashwagandha root, tulsi leaves, and a small clay diya lamp, gentle warm closed-mouth smile, calm grandmotherly knowing expression. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Shot on Arri Alexa, 50mm prime, shallow depth of field. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre>
+  </div>
+
+  <div class="prompt" id="p-2-2">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 2.2</span> <span class="prompt-label">B-Roll 1 — Turmeric on Thali</span></div><button class="copy-btn" data-target="p-2-2-text">Copy Still</button></div>
+    <pre id="p-2-2-text">Macro close-up of golden turmeric powder being spooned from a wooden bowl onto a brass thali, fine dust particles in warm Indian afternoon light, dark wooden background, shallow depth of field.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-2-2-motion">Slow motion powder falls, particles drift, very subtle push-in.</pre>
+    <button class="copy-btn" data-target="p-2-2-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-2-3">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 2.3</span> <span class="prompt-label">B-Roll 2 — Tulsi Tea</span></div><button class="copy-btn" data-target="p-2-3-text">Copy Still</button></div>
+    <pre id="p-2-3-text">Top-down shot of a small brass cup with steaming tulsi tea, fresh tulsi leaves floating, on a dark wooden surface scattered with cardamom pods and a single marigold flower, warm golden light.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-2-3-motion">Steam rises softly, gentle camera drift.</pre>
+    <button class="copy-btn" data-target="p-2-3-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-2-4">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 2.4</span> <span class="prompt-label">B-Roll 3 — Indian Hanging Herbs</span></div><button class="copy-btn" data-target="p-2-4-text">Copy Still</button></div>
+    <pre id="p-2-4-text">Bundles of drying tulsi, neem leaves, and ashwagandha root tied with red sacred thread against a textured terracotta wall, golden afternoon light, traditional Indian apothecary aesthetic.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-2-4-motion">Slow vertical pan upward, herbs sway gently in subtle breeze.</pre>
+    <button class="copy-btn" data-target="p-2-4-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-2-5">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 2.5</span> <span class="prompt-label">Book Cover Closer</span></div><button class="copy-btn" data-target="p-2-5-text">Copy Still</button></div>
+    <pre id="p-2-5-text">The book "Remedia" with botanical cover design, resting on a carved wooden table beside dried tulsi leaves, an ashwagandha root, and a brass diya lamp gently glowing. Warm golden light, shallow depth of field, traditional Indian apothecary aesthetic. Book cover clearly visible.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-2-5-motion">Slow camera push-in toward the book, diya flame flickers softly.</pre>
+    <button class="copy-btn" data-target="p-2-5-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-2-6">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 2.6</span> <span class="prompt-label">Script — Hindi</span></div><button class="copy-btn" data-target="p-2-6-text">Copy Script</button></div>
+    <pre id="p-2-6-text">तीन हज़ार वर्षों से, दवाख़ानों से पहले, गोलियों से पहले, हमारे पास बगीचा था।
+
+अश्वगंधा थकान के लिए। तुलसी साँस के लिए। हल्दी दर्द के लिए।
+
+ये फ़ैशन नहीं है। यह असली चिकित्सा है।
+
+रेमेडिया। लिंक नीचे है।</pre>
+  </div>
+
+  <h4>Caption</h4>
+  <div class="prompt" id="cap-2">
+    <div class="prompt-header"><div><span class="prompt-id">Caption HI</span></div><button class="copy-btn" data-target="cap-2-text">Copy</button></div>
+    <pre id="cap-2-text">दवाख़ानों से पहले, बगीचा था। 🌿
+
+तीन हज़ार वर्षों की पौधा चिकित्सा — एक किताब में।
+
+📖 Link in bio.
+
+#ayurveda #ayurvedalife #herbalmedicine #tulsi #ashwagandha #naturalhealing #remedia</pre>
+  </div>
+</section>
+
+<!-- ============== KIT 3 PERU ============== -->
+<section id="kit3">
+  <h2>🇵🇪 Kit 3 — Peru / LATAM (Spanish)</h2>
+  <p class="lead"><strong>Folder:</strong> <code class="inline">03_Peru</code> · <strong>Voice:</strong> Spanish (LATAM), Female, 50–60, earthy · <strong>Script length:</strong> ~15s</p>
+
+  <div class="callout"><strong>🔒 Character Bible (locked across every Kit 3 prompt)</strong><br>
+  • <strong>Gender / Age:</strong> female, 60 years old<br>
+  • <strong>Height / Build:</strong> 5'1", sturdy build<br>
+  • <strong>Skin:</strong> weathered warm brown with sun-kissed undertones, deep character lines<br>
+  • <strong>Eyes:</strong> dark brown<br>
+  • <strong>Hair:</strong> jet-black with silver strands, long, in two thick braids tied with red ribbon<br>
+  • <strong>Wardrobe:</strong> vibrant red and indigo manta over white embroidered blouse, traditional brown bowler hat<br>
+  • <strong>Environment:</strong> terraced Andean mountains at dawn with soft mist, hand-woven red and indigo textiles<br>
+  • <strong>Lighting:</strong> soft natural dawn light, warm earth tones<br>
+  • <strong>Mouth:</strong> closed in soft natural position</div>
+
+  <div class="prompt" id="p-3-1">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 3.1</span> <span class="prompt-label">Herbalist Image</span></div><button class="copy-btn" data-target="p-3-1-text">Copy</button></div>
+    <pre id="p-3-1-text">60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Holding a small bundle of dried muña and coca leaves at chest level, calm ancestral wise expression. Terraced Andean mountains at dawn with soft mist softly blurred behind. Soft natural dawn light, warm earth tones. Shot on 35mm film, golden hour. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with deep character lines, vertical 9:16.</pre>
+  </div>
+
+  <div class="prompt" id="p-3-2">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 3.2</span> <span class="prompt-label">B-Roll 1 — Maca Powder</span></div><button class="copy-btn" data-target="p-3-2-text">Copy Still</button></div>
+    <pre id="p-3-2-text">Macro close-up of golden maca powder being spooned from a wooden bowl into a stone mortar, particles in warm Andean morning light, dark background, shallow depth of field.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-3-2-motion">Slow motion powder cascades, particles drift, subtle push-in.</pre>
+    <button class="copy-btn" data-target="p-3-2-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-3-3">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 3.3</span> <span class="prompt-label">B-Roll 2 — Coca Tea</span></div><button class="copy-btn" data-target="p-3-3-text">Copy Still</button></div>
+    <pre id="p-3-3-text">Top-down shot of a small clay cup with steaming green coca tea, fresh coca leaves floating, on a hand-woven Andean textile in red and indigo patterns, warm soft morning light.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-3-3-motion">Steam rises slowly, gentle camera drift.</pre>
+    <button class="copy-btn" data-target="p-3-3-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-3-4">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 3.4</span> <span class="prompt-label">B-Roll 3 — Andean Landscape</span></div><button class="copy-btn" data-target="p-3-4-text">Copy Still</button></div>
+    <pre id="p-3-4-text">Vertical view of terraced Andean mountains at dawn with mist, foreground showing bundles of muña and dried herbs hanging from a wooden post, golden warm light filtering through.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-3-4-motion">Slow upward pan, mist drifts, herbs sway.</pre>
+    <button class="copy-btn" data-target="p-3-4-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-3-5">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 3.5</span> <span class="prompt-label">Book Cover Closer</span></div><button class="copy-btn" data-target="p-3-5-text">Copy Still</button></div>
+    <pre id="p-3-5-text">The book "Remedia" with botanical cover, resting on a hand-woven Andean textile in red and indigo, beside dried muña leaves, a maca root, and a small steaming clay cup. Warm dawn light, shallow depth of field, ancestral Andean aesthetic. Book cover clearly visible.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-3-5-motion">Slow camera push-in toward the book, steam rises subtly from the cup.</pre>
+    <button class="copy-btn" data-target="p-3-5-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-3-6">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 3.6</span> <span class="prompt-label">Script — Spanish</span></div><button class="copy-btn" data-target="p-3-6-text">Copy Script</button></div>
+    <pre id="p-3-6-text">Durante tres mil años, antes de las farmacias, antes de las pastillas, estaba el jardín.
+
+Muña para el estómago. Maca para la fuerza. Coca para la altura.
+
+Esto no es moda. Es la medicina original.
+
+Remedia. Enlace abajo.</pre>
+  </div>
+
+  <h4>Caption</h4>
+  <div class="prompt" id="cap-3">
+    <div class="prompt-header"><div><span class="prompt-id">Caption ES</span></div><button class="copy-btn" data-target="cap-3-text">Copy</button></div>
+    <pre id="cap-3-text">Antes de las farmacias, estaba el jardín. 🌿
+
+Tres mil años de medicina de plantas — Ayurveda, China, Japonesa, Andina y popular — en un solo libro.
+
+📖 Enlace en la bio.
+
+#medicinaancestral #plantasmedicinales #ayurveda #curanderismo #sanacionnatural #remedia</pre>
+  </div>
+</section>
+
+<!-- ============== KIT 4 CHINA ============== -->
+<section id="kit4">
+  <h2>🇨🇳 Kit 4 — China (Mandarin)</h2>
+  <p class="lead"><strong>Folder:</strong> <code class="inline">04_China</code> · <strong>Voice:</strong> Mandarin, Female, 45–55, scholarly · <strong>Script length:</strong> ~17s</p>
+
+  <div class="callout"><strong>🔒 Character Bible (locked across every Kit 4 prompt)</strong><br>
+  • <strong>Gender / Age:</strong> female, 50 years old<br>
+  • <strong>Height / Build:</strong> 5'5", slender build<br>
+  • <strong>Skin:</strong> porcelain with cool ivory undertones, refined and smooth<br>
+  • <strong>Eyes:</strong> dark brown<br>
+  • <strong>Hair:</strong> jet-black, straight, mid-back length, pulled back simply into a low knot<br>
+  • <strong>Wardrobe:</strong> charcoal linen mandarin-collar robe with simple cloth knot buttons<br>
+  • <strong>Environment:</strong> dark wood TCM apothecary cabinet with hundreds of small labeled drawers, ink-brush calligraphy scroll<br>
+  • <strong>Lighting:</strong> warm paper lantern glow, soft amber tones<br>
+  • <strong>Mouth:</strong> closed in soft natural position</div>
+
+  <div class="prompt" id="p-4-1">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 4.1</span> <span class="prompt-label">Herbalist Image</span></div><button class="copy-btn" data-target="p-4-1-text">Copy</button></div>
+    <pre id="p-4-1-text">50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Gently weighing dried red goji berries and astragalus root on a small brass scale held in both hands, refined scholarly serene expression. Dark wood TCM apothecary cabinet with hundreds of small labeled drawers softly blurred behind, single ink-brush calligraphy scroll on the wall. Warm paper lantern glow, soft amber tones. Shot on Sony Venice, 85mm anamorphic, shallow depth of field. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre>
+  </div>
+
+  <div class="prompt" id="p-4-2">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 4.2</span> <span class="prompt-label">B-Roll 1 — Goji Berries</span></div><button class="copy-btn" data-target="p-4-2-text">Copy Still</button></div>
+    <pre id="p-4-2-text">Macro close-up of dried red goji berries pouring slowly from a wooden scoop into a celadon ceramic dish, warm side light, dark wooden background, shallow depth of field.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-4-2-motion">Slow cascade, berries tumble gently, subtle push-in.</pre>
+    <button class="copy-btn" data-target="p-4-2-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-4-3">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 4.3</span> <span class="prompt-label">B-Roll 2 — Chinese Tea Pour</span></div><button class="copy-btn" data-target="p-4-3-text">Copy Still</button></div>
+    <pre id="p-4-3-text">Top-down shot of dark herbal tea in a small Yixing clay teapot pouring into a tiny ceramic cup, gentle steam rising, beside dried astragalus root and a calligraphy brush, warm lantern light.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-4-3-motion">Tea pours steadily, steam rises slowly.</pre>
+    <button class="copy-btn" data-target="p-4-3-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-4-4">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 4.4</span> <span class="prompt-label">B-Roll 3 — Apothecary Drawers</span></div><button class="copy-btn" data-target="p-4-4-text">Copy Still</button></div>
+    <pre id="p-4-4-text">Horizontal view of a dark wood TCM apothecary cabinet with rows of small drawers, a hand reaching to open one revealing dried red herbs, warm soft lantern glow.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-4-4-motion">Slow horizontal pan, hand opens drawer revealing herbs.</pre>
+    <button class="copy-btn" data-target="p-4-4-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-4-5">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 4.5</span> <span class="prompt-label">Book Cover Closer</span></div><button class="copy-btn" data-target="p-4-5-text">Copy Still</button></div>
+    <pre id="p-4-5-text">The book "Remedia" with botanical cover, resting on a dark wood table beside a celadon teacup with steaming tea, dried goji berries, an astragalus root, and an ink-brush calligraphy character. Warm lantern light, shallow depth of field, refined Chinese apothecary aesthetic. Book cover clearly visible.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-4-5-motion">Slow camera push-in, steam rises from teacup.</pre>
+    <button class="copy-btn" data-target="p-4-5-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-4-6">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 4.6</span> <span class="prompt-label">Script — Simplified Chinese</span></div><button class="copy-btn" data-target="p-4-6-text">Copy Script</button></div>
+    <pre id="p-4-6-text">三千年来,在药房之前,在药片之前,我们有花园。
+
+枸杞养肝。黄芪补气。生姜暖胃。
+
+这不是潮流,这是最初的医学。
+
+Remedia,链接在下方。</pre>
+  </div>
+
+  <h4>Caption</h4>
+  <div class="prompt" id="cap-4">
+    <div class="prompt-header"><div><span class="prompt-id">Caption ZH</span></div><button class="copy-btn" data-target="cap-4-text">Copy</button></div>
+    <pre id="cap-4-text">药房之前,有花园。🌿
+
+三千年的草药智慧 —— 阿育吠陀、中医、汉方、安第斯、民间疗法 —— 集于一书。
+
+📖 链接在简介。
+
+#中医 #中草药 #养生 #传统医学 #草本疗法 #remedia</pre>
+  </div>
+</section>
+
+<!-- ============== KIT 5 JAPAN ============== -->
+<section id="kit5">
+  <h2>🇯🇵 Kit 5 — Japan (Japanese)</h2>
+  <p class="lead"><strong>Folder:</strong> <code class="inline">05_Japan</code> · <strong>Voice:</strong> Japanese, Female, 40–50, meditative · <strong>Script length:</strong> ~18s</p>
+
+  <div class="callout"><strong>🔒 Character Bible (locked across every Kit 5 prompt)</strong><br>
+  • <strong>Gender / Age:</strong> female, 45 years old<br>
+  • <strong>Height / Build:</strong> 5'3", slender build<br>
+  • <strong>Skin:</strong> pale ivory with cool undertones, smooth and refined<br>
+  • <strong>Eyes:</strong> dark brown<br>
+  • <strong>Hair:</strong> smooth straight black, mid-length, in a low chignon<br>
+  • <strong>Wardrobe:</strong> deep indigo noragi jacket over natural linen blouse<br>
+  • <strong>Environment:</strong> shoji screen, low cedar table, single ikebana of pine branch in black ceramic vase<br>
+  • <strong>Lighting:</strong> soft diffused shoji-screen daylight, wabi-sabi atmosphere<br>
+  • <strong>Mouth:</strong> closed in soft natural position</div>
+
+  <div class="prompt" id="p-5-1">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 5.1</span> <span class="prompt-label">Herbalist Image</span></div><button class="copy-btn" data-target="p-5-1-text">Copy</button></div>
+    <pre id="p-5-1-text">45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Kneeling at a low cedar table, holding a small white ceramic dish containing dried herbs at chest level, quiet precise meditative expression. Shoji screen with diffused soft daylight softly blurred behind, single ikebana of pine branch in black ceramic vase, muted natural palette, wabi-sabi aesthetic. Soft diffused shoji-screen daylight. Shot on Leica Summilux 50mm, shallow depth of field. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre>
+  </div>
+
+  <div class="prompt" id="p-5-2">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 5.2</span> <span class="prompt-label">B-Roll 1 — Ginger Slicing</span></div><button class="copy-btn" data-target="p-5-2-text">Copy Still</button></div>
+    <pre id="p-5-2-text">Macro close-up of fresh ginger root being sliced thinly with a small ceramic knife on a cedar cutting board, soft diffused light from a shoji screen, muted natural tones, wabi-sabi aesthetic.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-5-2-motion">Slow precise slicing motion, very subtle camera drift.</pre>
+    <button class="copy-btn" data-target="p-5-2-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-5-3">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 5.3</span> <span class="prompt-label">B-Roll 2 — Herb Measuring</span></div><button class="copy-btn" data-target="p-5-3-text">Copy Still</button></div>
+    <pre id="p-5-3-text">Top-down shot of dried herbs being measured with bamboo tongs into a small white ceramic bowl on a dark cedar surface, single dried pine sprig beside it, soft diffused daylight from camera left.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-5-3-motion">Tongs place herbs deliberately, gentle camera drift.</pre>
+    <button class="copy-btn" data-target="p-5-3-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-5-4">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 5.4</span> <span class="prompt-label">B-Roll 3 — Cedar Table with Ikebana</span></div><button class="copy-btn" data-target="p-5-4-text">Copy Still</button></div>
+    <pre id="p-5-4-text">Horizontal view of a low cedar table with small ceramic dishes of dried herbs arranged precisely, single ikebana arrangement of a pine branch, soft shoji-screen daylight, quiet meditative atmosphere.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-5-4-motion">Slow horizontal pan across the table, very subtle motion.</pre>
+    <button class="copy-btn" data-target="p-5-4-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-5-5">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 5.5</span> <span class="prompt-label">Book Cover Closer</span></div><button class="copy-btn" data-target="p-5-5-text">Copy Still</button></div>
+    <pre id="p-5-5-text">The book "Remedia" with botanical cover, resting on a low cedar table beside a small ikebana arrangement of pine, a white ceramic dish of dried ginger, and a single matcha bowl. Soft diffused shoji-screen daylight, shallow depth of field, wabi-sabi aesthetic. Book cover clearly visible.</pre>
+    <div style="margin-top:10px"><strong style="color:var(--accent-2);font-size:0.85em">MOTION:</strong></div>
+    <pre id="p-5-5-motion">Slow camera push-in toward the book, very subtle light shift.</pre>
+    <button class="copy-btn" data-target="p-5-5-motion" style="margin-top:6px">Copy Motion</button>
+  </div>
+
+  <div class="prompt" id="p-5-6">
+    <div class="prompt-header"><div><span class="prompt-id">Prompt 5.6</span> <span class="prompt-label">Script — Japanese</span></div><button class="copy-btn" data-target="p-5-6-text">Copy Script</button></div>
+    <pre id="p-5-6-text">三千年前から、薬局よりも、薬よりも、庭がありました。
+
+不安にはカモミール。胃には生姜。痛みにはウコン。
+
+これは流行ではありません。本来の医学です。
+
+Remedia。リンクは下に。</pre>
+  </div>
+
+  <h4>Caption</h4>
+  <div class="prompt" id="cap-5">
+    <div class="prompt-header"><div><span class="prompt-id">Caption JA</span></div><button class="copy-btn" data-target="cap-5-text">Copy</button></div>
+    <pre id="cap-5-text">薬局よりも前に、庭がありました。🌿
+
+三千年の植物医学 —— アーユルヴェーダ、中医学、漢方、アンデス、民間療法 —— 一冊の本に。
+
+📖 リンクはプロフィールに。
+
+#漢方 #薬草 #自然療法 #伝統医学 #ハーブ #remedia</pre>
+  </div>
+</section>
+
+<!-- ============== SOUL ID TRAINING PROMPTS ============== -->
+<section id="soulid-training">
+  <h2>Soul ID Training Prompts (100 Variations)</h2>
+  <p class="lead">For each market, generate 4 variations of each prompt below = 80 images per market. Pick the best 20–30 that all clearly look like the same person, then upload all to Soul ID. This is what gets you "Good" or "Excellent" character lock instead of "Bad".</p>
+
+  <div class="callout"><strong>Workflow per market:</strong> 1) Pick 5–10 prompts from below · 2) Generate 4 variations of each in Nano Banana Pro · 3) Reject any that don't look like the same person · 4) Upload 20+ keepers to Soul ID · 5) Click Create.</div>
+
+  <!-- KIT 1 GLOBAL TRAINING -->
+  <details class="training-set">
+    <summary>🇺🇸 Kit 1 Global — 20 Training Variations</summary>
+    <div class="training-grid">
+      <div class="prompt compact" id="t-1-1"><div class="prompt-header"><span class="prompt-id">T1.1 Tight Headshot</span><button class="copy-btn" data-target="t-1-1-x">Copy</button></div><pre id="t-1-1-x">35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Tight headshot from chest up, eyes warmly to camera. Modern apothecary, amber bottles softly blurred behind. Warm afternoon window light from camera left, 85mm lens, shallow depth of field. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-2"><div class="prompt-header"><span class="prompt-id">T1.2 Three-Quarter Left</span><button class="copy-btn" data-target="t-1-2-x">Copy</button></div><pre id="t-1-2-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Three-quarter angle facing camera left, eyes slightly off-camera, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-3"><div class="prompt-header"><span class="prompt-id">T1.3 Three-Quarter Right</span><button class="copy-btn" data-target="t-1-3-x">Copy</button></div><pre id="t-1-3-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Three-quarter angle facing camera right, gentle natural posture, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-4"><div class="prompt-header"><span class="prompt-id">T1.4 Side Profile</span><button class="copy-btn" data-target="t-1-4-x">Copy</button></div><pre id="t-1-4-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Pure side profile facing camera left, gazing softly forward, mouth closed. Modern apothecary, amber bottle shelves softly blurred. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-5"><div class="prompt-header"><span class="prompt-id">T1.5 Looking Down at Hands</span><button class="copy-btn" data-target="t-1-5-x">Copy</button></div><pre id="t-1-5-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Eyes downcast looking at hands holding dried chamomile, calm focused expression, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-6"><div class="prompt-header"><span class="prompt-id">T1.6 Looking Up</span><button class="copy-btn" data-target="t-1-6-x">Copy</button></div><pre id="t-1-6-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Eyes looking up gently with soft warmth, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-7"><div class="prompt-header"><span class="prompt-id">T1.7 Wide Medium Shot</span><button class="copy-btn" data-target="t-1-7-x">Copy</button></div><pre id="t-1-7-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Wide medium shot showing apron and arms, behind a wooden apothecary counter with herbs and brass scales. Warm window light. Photorealistic, mouth closed.</pre></div>
+      <div class="prompt compact" id="t-1-8"><div class="prompt-header"><span class="prompt-id">T1.8 Low Angle</span><button class="copy-btn" data-target="t-1-8-x">Copy</button></div><pre id="t-1-8-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Slight low-angle close-up, looking gently down toward camera, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-9"><div class="prompt-header"><span class="prompt-id">T1.9 Mortar &amp; Pestle</span><button class="copy-btn" data-target="t-1-9-x">Copy</button></div><pre id="t-1-9-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Holding a small wooden mortar and pestle, gently grinding herbs, focused expression, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-10"><div class="prompt-header"><span class="prompt-id">T1.10 Fresh Herb Bouquet</span><button class="copy-btn" data-target="t-1-10-x">Copy</button></div><pre id="t-1-10-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Holding a small fresh bouquet of rosemary, sage, lavender close to chest, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-11"><div class="prompt-header"><span class="prompt-id">T1.11 Pouring Tea</span><button class="copy-btn" data-target="t-1-11-x">Copy</button></div><pre id="t-1-11-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Carefully pouring amber chamomile tea from a small ceramic kettle into a cup, focused expression, mouth closed. Modern apothecary counter. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-12"><div class="prompt-header"><span class="prompt-id">T1.12 Notebook</span><button class="copy-btn" data-target="t-1-12-x">Copy</button></div><pre id="t-1-12-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Holding a small leather-bound notebook, pencil in other hand, looking thoughtfully off-camera, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-13"><div class="prompt-header"><span class="prompt-id">T1.13 Reaching to Shelf</span><button class="copy-btn" data-target="t-1-13-x">Copy</button></div><pre id="t-1-13-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Reaching up gently to take an amber glass jar from an apothecary shelf, profile angle, mouth closed. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-14"><div class="prompt-header"><span class="prompt-id">T1.14 Lavender in Apron</span><button class="copy-btn" data-target="t-1-14-x">Copy</button></div><pre id="t-1-14-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Both hands cradling dried lavender in front of her apron, looking down with soft closed-mouth smile. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-15"><div class="prompt-header"><span class="prompt-id">T1.15 Warm Smile to Camera</span><button class="copy-btn" data-target="t-1-15-x">Copy</button></div><pre id="t-1-15-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Soft warm closed-mouth smile, eyes warmly to camera, calm grandmotherly knowing expression. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm window light. Photorealistic, hyperrealistic skin.</pre></div>
+      <div class="prompt compact" id="t-1-16"><div class="prompt-header"><span class="prompt-id">T1.16 Calm Neutral</span><button class="copy-btn" data-target="t-1-16-x">Copy</button></div><pre id="t-1-16-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Calm neutral expression, mouth closed, eyes directly to camera. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-17"><div class="prompt-header"><span class="prompt-id">T1.17 Thoughtful Off-Camera</span><button class="copy-btn" data-target="t-1-17-x">Copy</button></div><pre id="t-1-17-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Thoughtful contemplative expression, eyes looking off-camera into the soft light, mouth closed. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-18"><div class="prompt-header"><span class="prompt-id">T1.18 Eyes Closed Peaceful</span><button class="copy-btn" data-target="t-1-18-x">Copy</button></div><pre id="t-1-18-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Gentle inward closed-mouth smile, eyes softly closed, peaceful expression. Modern apothecary with amber bottles, brass scales, terracotta herb pots softly blurred behind. Warm afternoon window light from camera left. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-1-19"><div class="prompt-header"><span class="prompt-id">T1.19 Backlit Rim Light</span><button class="copy-btn" data-target="t-1-19-x">Copy</button></div><pre id="t-1-19-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Sitting near apothecary window, strong warm backlight rim-lighting hair and shoulders, soft fill on face, mouth closed. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-1-20"><div class="prompt-header"><span class="prompt-id">T1.20 Diffused Front Portrait</span><button class="copy-btn" data-target="t-1-20-x">Copy</button></div><pre id="t-1-20-x">Same character: 35-year-old woman, 5'6" medium build, fair skin with warm undertones and light freckles, hazel-green eyes, warm chestnut-brown shoulder-length loose curls tied loosely back, silver hoop earrings, cream linen apron over sage-green linen shirt. Front-facing portrait, soft even diffused daylight, modern apothecary slightly out of focus. Mouth closed in natural neutral position, eyes warmly to camera. Photorealistic, hyperrealistic skin.</pre></div>
+    </div>
+  </details>
+
+  <!-- KIT 2 INDIA TRAINING -->
+  <details class="training-set">
+    <summary>🇮🇳 Kit 2 India — 20 Training Variations</summary>
+    <div class="training-grid">
+      <div class="prompt compact" id="t-2-1"><div class="prompt-header"><span class="prompt-id">T2.1 Tight Headshot</span><button class="copy-btn" data-target="t-2-1-x">Copy</button></div><pre id="t-2-1-x">55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Tight headshot from chest up, eyes warmly to camera. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice, 85mm lens, shallow depth of field. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-2"><div class="prompt-header"><span class="prompt-id">T2.2 Three-Quarter Left</span><button class="copy-btn" data-target="t-2-2-x">Copy</button></div><pre id="t-2-2-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Three-quarter angle facing camera left, eyes slightly off-camera, mouth closed. Warm wooden interior, carved lattice window. Golden hour light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-2-3"><div class="prompt-header"><span class="prompt-id">T2.3 Three-Quarter Right</span><button class="copy-btn" data-target="t-2-3-x">Copy</button></div><pre id="t-2-3-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Three-quarter angle facing camera right, gentle natural posture, mouth closed. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-4"><div class="prompt-header"><span class="prompt-id">T2.4 Side Profile</span><button class="copy-btn" data-target="t-2-4-x">Copy</button></div><pre id="t-2-4-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Pure side profile facing camera left, gazing softly forward, mouth closed. Warm wooden interior with brass thali in foreground. Golden hour light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-2-5"><div class="prompt-header"><span class="prompt-id">T2.5 Looking at Tulsi</span><button class="copy-btn" data-target="t-2-5-x">Copy</button></div><pre id="t-2-5-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Eyes downcast looking at hands holding tulsi leaves, calm focused expression, mouth closed. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-6"><div class="prompt-header"><span class="prompt-id">T2.6 Looking Up</span><button class="copy-btn" data-target="t-2-6-x">Copy</button></div><pre id="t-2-6-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Eyes looking up gently with soft warmth, mouth closed. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-7"><div class="prompt-header"><span class="prompt-id">T2.7 Seated with Thali</span><button class="copy-btn" data-target="t-2-7-x">Copy</button></div><pre id="t-2-7-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Wide medium shot seated cross-legged on a colorful traditional rug, brass thali with herbs in front of her. Golden hour light through carved wooden window. Photorealistic, mouth closed.</pre></div>
+      <div class="prompt compact" id="t-2-8"><div class="prompt-header"><span class="prompt-id">T2.8 Low Angle</span><button class="copy-btn" data-target="t-2-8-x">Copy</button></div><pre id="t-2-8-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Slight low-angle close-up, looking gently down toward camera, mouth closed. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-9"><div class="prompt-header"><span class="prompt-id">T2.9 Mortar Grinding</span><button class="copy-btn" data-target="t-2-9-x">Copy</button></div><pre id="t-2-9-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Holding a stone mortar and pestle grinding ashwagandha, focused expression, mouth closed. Warm wooden interior with brass thali. Golden hour light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-2-10"><div class="prompt-header"><span class="prompt-id">T2.10 Holding Tulsi</span><button class="copy-btn" data-target="t-2-10-x">Copy</button></div><pre id="t-2-10-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Holding a fresh bunch of tulsi leaves close to chest, mouth closed. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-11"><div class="prompt-header"><span class="prompt-id">T2.11 Pouring Brass Tea</span><button class="copy-btn" data-target="t-2-11-x">Copy</button></div><pre id="t-2-11-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Carefully pouring tulsi tea from a small brass kettle into a brass cup, focused expression, mouth closed. Warm wooden table. Golden hour light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-2-12"><div class="prompt-header"><span class="prompt-id">T2.12 Palm-Leaf Manuscript</span><button class="copy-btn" data-target="t-2-12-x">Copy</button></div><pre id="t-2-12-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Holding a small palm-leaf manuscript reading thoughtfully, mouth closed. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-13"><div class="prompt-header"><span class="prompt-id">T2.13 Lighting Diya</span><button class="copy-btn" data-target="t-2-13-x">Copy</button></div><pre id="t-2-13-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Lighting a small clay diya lamp with a thin taper, profile angle, focused expression, mouth closed. Warm wooden interior. Golden glow on face. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-2-14"><div class="prompt-header"><span class="prompt-id">T2.14 Cradling Roots</span><button class="copy-btn" data-target="t-2-14-x">Copy</button></div><pre id="t-2-14-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Both hands cradling dried ashwagandha root and tulsi in her lap, looking down with soft closed-mouth smile. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-15"><div class="prompt-header"><span class="prompt-id">T2.15 Warm Smile to Camera</span><button class="copy-btn" data-target="t-2-15-x">Copy</button></div><pre id="t-2-15-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Soft warm closed-mouth smile, eyes warmly to camera, calm grandmotherly knowing expression. Warm wooden interior. Golden hour light. Photorealistic, hyperrealistic skin with character lines.</pre></div>
+      <div class="prompt compact" id="t-2-16"><div class="prompt-header"><span class="prompt-id">T2.16 Calm Neutral</span><button class="copy-btn" data-target="t-2-16-x">Copy</button></div><pre id="t-2-16-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Calm neutral expression, mouth closed, eyes directly to camera. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-17"><div class="prompt-header"><span class="prompt-id">T2.17 Thoughtful Off-Camera</span><button class="copy-btn" data-target="t-2-17-x">Copy</button></div><pre id="t-2-17-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Thoughtful contemplative expression, eyes looking off-camera into the soft golden light, mouth closed. Warm wooden interior. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-2-18"><div class="prompt-header"><span class="prompt-id">T2.18 Prayerful Eyes Closed</span><button class="copy-btn" data-target="t-2-18-x">Copy</button></div><pre id="t-2-18-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Gentle inward closed-mouth smile, eyes softly closed, peaceful prayerful expression, hands together at heart. Warm wooden interior with carved wooden lattice window softly blurred behind. Golden hour light filtering through the lattice. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-2-19"><div class="prompt-header"><span class="prompt-id">T2.19 Lattice Backlight</span><button class="copy-btn" data-target="t-2-19-x">Copy</button></div><pre id="t-2-19-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Sitting by carved lattice window with strong warm backlight casting lattice shadow patterns on her face, soft fill, mouth closed. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-2-20"><div class="prompt-header"><span class="prompt-id">T2.20 Diffused Front Portrait</span><button class="copy-btn" data-target="t-2-20-x">Copy</button></div><pre id="t-2-20-x">Same character: 55-year-old Indian woman, 5'3" petite build, warm medium-brown skin with golden undertones and gentle character lines, dark brown eyes, silver-streaked black mid-back-length hair tied in a low bun, small gold nose stud, turmeric-ochre cotton sari with deep red border. Front-facing portrait, soft even diffused daylight, warm wooden interior softly out of focus. Mouth closed natural neutral, eyes warmly to camera. Photorealistic, hyperrealistic skin.</pre></div>
+    </div>
+  </details>
+
+  <!-- KIT 3 PERU TRAINING -->
+  <details class="training-set">
+    <summary>🇵🇪 Kit 3 Peru — 20 Training Variations</summary>
+    <div class="training-grid">
+      <div class="prompt compact" id="t-3-1"><div class="prompt-header"><span class="prompt-id">T3.1 Tight Headshot</span><button class="copy-btn" data-target="t-3-1-x">Copy</button></div><pre id="t-3-1-x">60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Tight headshot from chest up, eyes warmly to camera. Terraced Andean mountains at dawn with soft mist softly blurred behind. Soft natural dawn light, warm earth tones, 85mm lens, shallow depth of field. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin with deep character lines, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-3-2"><div class="prompt-header"><span class="prompt-id">T3.2 Three-Quarter Left</span><button class="copy-btn" data-target="t-3-2-x">Copy</button></div><pre id="t-3-2-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Three-quarter angle facing camera left, eyes off-camera, mouth closed. Andean mountain background at dawn. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-3"><div class="prompt-header"><span class="prompt-id">T3.3 Three-Quarter Right</span><button class="copy-btn" data-target="t-3-3-x">Copy</button></div><pre id="t-3-3-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Three-quarter angle facing camera right, gentle natural posture, mouth closed. Andean mountain background. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-4"><div class="prompt-header"><span class="prompt-id">T3.4 Side Profile</span><button class="copy-btn" data-target="t-3-4-x">Copy</button></div><pre id="t-3-4-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Pure side profile facing camera left, gazing softly toward distant mountains, mouth closed. Andean dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-5"><div class="prompt-header"><span class="prompt-id">T3.5 Looking at Coca</span><button class="copy-btn" data-target="t-3-5-x">Copy</button></div><pre id="t-3-5-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Eyes downcast looking at weathered hands holding coca leaves, calm focused expression, mouth closed. Andean mountain background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-6"><div class="prompt-header"><span class="prompt-id">T3.6 Looking to Sky</span><button class="copy-btn" data-target="t-3-6-x">Copy</button></div><pre id="t-3-6-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Eyes looking up gently toward the sky with soft reverence, mouth closed. Andean mountain background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-7"><div class="prompt-header"><span class="prompt-id">T3.7 Wide on Stone Wall</span><button class="copy-btn" data-target="t-3-7-x">Copy</button></div><pre id="t-3-7-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Wide medium shot seated on a stone wall, hand-woven textile across her lap with herbs, terraced mountains stretching behind. Dawn light. Photorealistic, mouth closed.</pre></div>
+      <div class="prompt compact" id="t-3-8"><div class="prompt-header"><span class="prompt-id">T3.8 Low Angle</span><button class="copy-btn" data-target="t-3-8-x">Copy</button></div><pre id="t-3-8-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Slight low-angle close-up, looking gently down toward camera, mouth closed. Andean mountain background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-9"><div class="prompt-header"><span class="prompt-id">T3.9 Stone Mortar Maca</span><button class="copy-btn" data-target="t-3-9-x">Copy</button></div><pre id="t-3-9-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Holding a stone mortar grinding maca root, focused expression, mouth closed. Andean mountain background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-10"><div class="prompt-header"><span class="prompt-id">T3.10 Holding Muña Bundle</span><button class="copy-btn" data-target="t-3-10-x">Copy</button></div><pre id="t-3-10-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Holding a small bundle of dried muña and coca leaves close to chest, mouth closed. Andean background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-11"><div class="prompt-header"><span class="prompt-id">T3.11 Pouring Coca Tea</span><button class="copy-btn" data-target="t-3-11-x">Copy</button></div><pre id="t-3-11-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Carefully pouring steaming coca tea from a small clay kettle into a clay cup on a hand-woven textile, focused expression, mouth closed. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-12"><div class="prompt-header"><span class="prompt-id">T3.12 Spinning Wool</span><button class="copy-btn" data-target="t-3-12-x">Copy</button></div><pre id="t-3-12-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Holding a hand-spun weaving spindle with red and indigo wool, hands gently working the thread, mouth closed. Andean background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-13"><div class="prompt-header"><span class="prompt-id">T3.13 Gathering Earth Herbs</span><button class="copy-btn" data-target="t-3-13-x">Copy</button></div><pre id="t-3-13-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Reaching down to gather muña from the earth, low angle, focused expression, mouth closed. Andean mountain background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-14"><div class="prompt-header"><span class="prompt-id">T3.14 Cradling Maca</span><button class="copy-btn" data-target="t-3-14-x">Copy</button></div><pre id="t-3-14-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Both hands cradling a maca root in her lap on the woven manta, looking down with soft closed-mouth smile. Andean background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-15"><div class="prompt-header"><span class="prompt-id">T3.15 Warm Smile</span><button class="copy-btn" data-target="t-3-15-x">Copy</button></div><pre id="t-3-15-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Soft warm closed-mouth smile, eyes warmly to camera, calm ancestral wise expression. Andean mountain background. Dawn light. Photorealistic, hyperrealistic skin with weathered character lines.</pre></div>
+      <div class="prompt compact" id="t-3-16"><div class="prompt-header"><span class="prompt-id">T3.16 Calm Neutral</span><button class="copy-btn" data-target="t-3-16-x">Copy</button></div><pre id="t-3-16-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Calm neutral expression, mouth closed, eyes directly to camera. Andean background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-17"><div class="prompt-header"><span class="prompt-id">T3.17 Looking at Mountains</span><button class="copy-btn" data-target="t-3-17-x">Copy</button></div><pre id="t-3-17-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Thoughtful contemplative expression, eyes looking off into the misty mountains, mouth closed. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-18"><div class="prompt-header"><span class="prompt-id">T3.18 Eyes Closed Peaceful</span><button class="copy-btn" data-target="t-3-18-x">Copy</button></div><pre id="t-3-18-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Gentle inward closed-mouth smile, eyes softly closed, peaceful expression, hands resting on the woven manta. Andean background. Dawn light. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-19"><div class="prompt-header"><span class="prompt-id">T3.19 Dawn Backlight</span><button class="copy-btn" data-target="t-3-19-x">Copy</button></div><pre id="t-3-19-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Strong warm dawn backlight rim-lighting braids and shoulders, soft fill on face, mouth closed. Mountains glowing behind. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-3-20"><div class="prompt-header"><span class="prompt-id">T3.20 Diffused Front Portrait</span><button class="copy-btn" data-target="t-3-20-x">Copy</button></div><pre id="t-3-20-x">Same character: 60-year-old Quechua woman, 5'1" sturdy build, weathered warm brown skin with sun-kissed undertones and deep character lines, dark brown eyes, jet-black hair with silver strands in two long thick braids tied with red ribbon, traditional brown bowler hat, vibrant red and indigo manta over white embroidered blouse. Front-facing portrait, soft even diffused dawn light, Andean mountains softly blurred. Mouth closed natural neutral, eyes warmly to camera. Photorealistic, hyperrealistic weathered skin texture.</pre></div>
+    </div>
+  </details>
+
+  <!-- KIT 4 CHINA TRAINING -->
+  <details class="training-set">
+    <summary>🇨🇳 Kit 4 China — 20 Training Variations</summary>
+    <div class="training-grid">
+      <div class="prompt compact" id="t-4-1"><div class="prompt-header"><span class="prompt-id">T4.1 Tight Headshot</span><button class="copy-btn" data-target="t-4-1-x">Copy</button></div><pre id="t-4-1-x">50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Tight headshot from chest up, eyes warmly to camera. Dark wood TCM apothecary cabinet softly blurred behind. Warm paper lantern glow, 85mm anamorphic lens, shallow depth of field. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-4-2"><div class="prompt-header"><span class="prompt-id">T4.2 Three-Quarter Left</span><button class="copy-btn" data-target="t-4-2-x">Copy</button></div><pre id="t-4-2-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Three-quarter angle facing camera left, eyes off-camera, mouth closed. Dark wood apothecary cabinet background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-3"><div class="prompt-header"><span class="prompt-id">T4.3 Three-Quarter Right</span><button class="copy-btn" data-target="t-4-3-x">Copy</button></div><pre id="t-4-3-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Three-quarter angle facing camera right, gentle scholarly posture, mouth closed. Dark wood apothecary cabinet background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-4"><div class="prompt-header"><span class="prompt-id">T4.4 Side Profile</span><button class="copy-btn" data-target="t-4-4-x">Copy</button></div><pre id="t-4-4-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Pure side profile facing camera left, gazing softly forward, mouth closed. Dark wood apothecary cabinet with rows of small drawers. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-5"><div class="prompt-header"><span class="prompt-id">T4.5 Weighing on Brass Scale</span><button class="copy-btn" data-target="t-4-5-x">Copy</button></div><pre id="t-4-5-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Eyes downcast looking at hands weighing dried herbs on a brass scale, focused expression, mouth closed. Dark wood apothecary background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-6"><div class="prompt-header"><span class="prompt-id">T4.6 Looking Up</span><button class="copy-btn" data-target="t-4-6-x">Copy</button></div><pre id="t-4-6-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Eyes looking up gently with soft scholarly warmth, mouth closed. Dark wood apothecary background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-7"><div class="prompt-header"><span class="prompt-id">T4.7 Wide at Counter</span><button class="copy-btn" data-target="t-4-7-x">Copy</button></div><pre id="t-4-7-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Wide medium shot standing behind the apothecary counter with brass scale, herbs, and a Yixing teapot. Dark wood cabinet with hundreds of small drawers behind. Warm lantern glow. Photorealistic, mouth closed.</pre></div>
+      <div class="prompt compact" id="t-4-8"><div class="prompt-header"><span class="prompt-id">T4.8 Low Angle</span><button class="copy-btn" data-target="t-4-8-x">Copy</button></div><pre id="t-4-8-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Slight low-angle close-up, looking gently down toward camera, mouth closed. Dark wood apothecary background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-9"><div class="prompt-header"><span class="prompt-id">T4.9 Goji on Brass Scale</span><button class="copy-btn" data-target="t-4-9-x">Copy</button></div><pre id="t-4-9-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Holding a small brass scale weighing dried red goji berries, focused expression, mouth closed. Dark wood apothecary background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-10"><div class="prompt-header"><span class="prompt-id">T4.10 Holding Astragalus</span><button class="copy-btn" data-target="t-4-10-x">Copy</button></div><pre id="t-4-10-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Holding a fresh bunch of dried astragalus root close to chest, mouth closed. Dark wood apothecary background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-11"><div class="prompt-header"><span class="prompt-id">T4.11 Pouring Yixing Tea</span><button class="copy-btn" data-target="t-4-11-x">Copy</button></div><pre id="t-4-11-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Carefully pouring dark herbal tea from a Yixing clay teapot into a small ceramic cup, focused expression, mouth closed. Dark wood table. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-12"><div class="prompt-header"><span class="prompt-id">T4.12 Calligraphy Brush</span><button class="copy-btn" data-target="t-4-12-x">Copy</button></div><pre id="t-4-12-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Holding a calligraphy brush over rice paper writing herb names in ink, thoughtful focused expression, mouth closed. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-13"><div class="prompt-header"><span class="prompt-id">T4.13 Opening Drawer</span><button class="copy-btn" data-target="t-4-13-x">Copy</button></div><pre id="t-4-13-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Reaching to open a small drawer in the apothecary cabinet, profile angle, focused expression, mouth closed. Warm lantern glow on face. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-14"><div class="prompt-header"><span class="prompt-id">T4.14 Goji on Celadon</span><button class="copy-btn" data-target="t-4-14-x">Copy</button></div><pre id="t-4-14-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Both hands cradling dried goji berries on a celadon dish, looking down with soft closed-mouth smile. Dark wood apothecary background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-15"><div class="prompt-header"><span class="prompt-id">T4.15 Scholarly Smile</span><button class="copy-btn" data-target="t-4-15-x">Copy</button></div><pre id="t-4-15-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Soft warm closed-mouth smile, eyes warmly to camera, calm scholarly serene expression. Dark wood apothecary background. Warm lantern glow. Photorealistic, hyperrealistic skin.</pre></div>
+      <div class="prompt compact" id="t-4-16"><div class="prompt-header"><span class="prompt-id">T4.16 Calm Neutral</span><button class="copy-btn" data-target="t-4-16-x">Copy</button></div><pre id="t-4-16-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Calm neutral expression, mouth closed, eyes directly to camera. Dark wood apothecary background. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-17"><div class="prompt-header"><span class="prompt-id">T4.17 Looking at Scroll</span><button class="copy-btn" data-target="t-4-17-x">Copy</button></div><pre id="t-4-17-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Thoughtful contemplative expression, eyes looking off-camera at calligraphy scroll, mouth closed. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-18"><div class="prompt-header"><span class="prompt-id">T4.18 Meditative Eyes Closed</span><button class="copy-btn" data-target="t-4-18-x">Copy</button></div><pre id="t-4-18-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Gentle inward closed-mouth smile, eyes softly closed, peaceful meditative expression, hands resting on table. Warm lantern glow. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-19"><div class="prompt-header"><span class="prompt-id">T4.19 Lantern Backlight</span><button class="copy-btn" data-target="t-4-19-x">Copy</button></div><pre id="t-4-19-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Strong warm lantern backlight rim-lighting hair and shoulders, soft fill on face, mouth closed. Dark apothecary cabinet glowing behind. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-4-20"><div class="prompt-header"><span class="prompt-id">T4.20 Diffused Front Portrait</span><button class="copy-btn" data-target="t-4-20-x">Copy</button></div><pre id="t-4-20-x">Same character: 50-year-old Chinese woman TCM doctor, 5'5" slender build, porcelain skin with cool ivory undertones, dark brown eyes, jet-black straight mid-back hair pulled back simply into a low knot, charcoal linen mandarin-collar robe with cloth knot buttons. Front-facing portrait, soft even diffused warm light, dark wood apothecary softly blurred. Mouth closed natural neutral, eyes warmly to camera. Photorealistic, hyperrealistic skin.</pre></div>
+    </div>
+  </details>
+
+  <!-- KIT 5 JAPAN TRAINING -->
+  <details class="training-set">
+    <summary>🇯🇵 Kit 5 Japan — 20 Training Variations</summary>
+    <div class="training-grid">
+      <div class="prompt compact" id="t-5-1"><div class="prompt-header"><span class="prompt-id">T5.1 Tight Headshot</span><button class="copy-btn" data-target="t-5-1-x">Copy</button></div><pre id="t-5-1-x">45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Tight headshot from chest up, eyes warmly to camera. Shoji screen softly blurred behind, low cedar table with single ikebana of pine branch in black ceramic vase. Soft diffused shoji-screen daylight, Leica 50mm lens, shallow depth of field, wabi-sabi aesthetic. Mouth closed in soft natural position. Photorealistic, hyperrealistic skin, vertical 9:16.</pre></div>
+      <div class="prompt compact" id="t-5-2"><div class="prompt-header"><span class="prompt-id">T5.2 Three-Quarter Left</span><button class="copy-btn" data-target="t-5-2-x">Copy</button></div><pre id="t-5-2-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Three-quarter angle facing camera left, eyes off-camera, mouth closed. Shoji screen background. Soft diffused daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-3"><div class="prompt-header"><span class="prompt-id">T5.3 Three-Quarter Right</span><button class="copy-btn" data-target="t-5-3-x">Copy</button></div><pre id="t-5-3-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Three-quarter angle facing camera right, gentle precise posture, mouth closed. Shoji screen background. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-4"><div class="prompt-header"><span class="prompt-id">T5.4 Side Profile</span><button class="copy-btn" data-target="t-5-4-x">Copy</button></div><pre id="t-5-4-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Pure side profile facing camera left, gazing softly forward, mouth closed. Shoji screen with single ikebana arrangement of pine branch. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-5"><div class="prompt-header"><span class="prompt-id">T5.5 Measuring Herbs</span><button class="copy-btn" data-target="t-5-5-x">Copy</button></div><pre id="t-5-5-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Eyes downcast looking at hands measuring dried herbs into a small white ceramic bowl, focused expression, mouth closed. Cedar table. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-6"><div class="prompt-header"><span class="prompt-id">T5.6 Looking Up</span><button class="copy-btn" data-target="t-5-6-x">Copy</button></div><pre id="t-5-6-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Eyes looking up gently with quiet meditative warmth, mouth closed. Shoji screen background. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-7"><div class="prompt-header"><span class="prompt-id">T5.7 Kneeling at Cedar Table</span><button class="copy-btn" data-target="t-5-7-x">Copy</button></div><pre id="t-5-7-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Wide medium shot kneeling at low cedar table with small ceramic dishes of dried herbs arranged precisely, ikebana of pine branch, shoji screen behind. Soft daylight. Photorealistic, mouth closed.</pre></div>
+      <div class="prompt compact" id="t-5-8"><div class="prompt-header"><span class="prompt-id">T5.8 Low Angle</span><button class="copy-btn" data-target="t-5-8-x">Copy</button></div><pre id="t-5-8-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Slight low-angle close-up, looking gently down toward camera, mouth closed. Shoji screen background. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-9"><div class="prompt-header"><span class="prompt-id">T5.9 Slicing Ginger</span><button class="copy-btn" data-target="t-5-9-x">Copy</button></div><pre id="t-5-9-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Slicing fresh ginger root thinly with a small ceramic knife on a cedar cutting board, focused precise expression, mouth closed. Soft daylight from shoji screen. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-10"><div class="prompt-header"><span class="prompt-id">T5.10 Holding Pine Sprig</span><button class="copy-btn" data-target="t-5-10-x">Copy</button></div><pre id="t-5-10-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Holding a fresh sprig of pine close to chest, mouth closed. Shoji screen background. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-11"><div class="prompt-header"><span class="prompt-id">T5.11 Pouring Iron Kettle</span><button class="copy-btn" data-target="t-5-11-x">Copy</button></div><pre id="t-5-11-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Carefully pouring hot water from a small iron kettle into a ceramic bowl, focused expression, mouth closed. Cedar table. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-12"><div class="prompt-header"><span class="prompt-id">T5.12 Bamboo Tongs</span><button class="copy-btn" data-target="t-5-12-x">Copy</button></div><pre id="t-5-12-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Holding bamboo tongs placing dried herbs into a small white ceramic dish with great precision, mouth closed. Cedar table. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-13"><div class="prompt-header"><span class="prompt-id">T5.13 Adjusting Ikebana</span><button class="copy-btn" data-target="t-5-13-x">Copy</button></div><pre id="t-5-13-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Reaching to adjust a single pine branch in a black ceramic ikebana vase, profile angle, focused expression, mouth closed. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-14"><div class="prompt-header"><span class="prompt-id">T5.14 Cradling Ceramic Bowl</span><button class="copy-btn" data-target="t-5-14-x">Copy</button></div><pre id="t-5-14-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Both hands cradling a small white ceramic bowl of dried ginger in her lap, looking down with soft closed-mouth smile. Cedar table. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-15"><div class="prompt-header"><span class="prompt-id">T5.15 Meditative Smile</span><button class="copy-btn" data-target="t-5-15-x">Copy</button></div><pre id="t-5-15-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Soft warm closed-mouth smile, eyes warmly to camera, quiet precise meditative expression. Shoji screen background. Soft daylight. Photorealistic, hyperrealistic skin.</pre></div>
+      <div class="prompt compact" id="t-5-16"><div class="prompt-header"><span class="prompt-id">T5.16 Calm Neutral</span><button class="copy-btn" data-target="t-5-16-x">Copy</button></div><pre id="t-5-16-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Calm neutral expression, mouth closed, eyes directly to camera. Shoji screen background. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-17"><div class="prompt-header"><span class="prompt-id">T5.17 Looking at Ikebana</span><button class="copy-btn" data-target="t-5-17-x">Copy</button></div><pre id="t-5-17-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Thoughtful contemplative expression, eyes looking off-camera at ikebana arrangement, mouth closed. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-18"><div class="prompt-header"><span class="prompt-id">T5.18 Eyes Closed Meditation</span><button class="copy-btn" data-target="t-5-18-x">Copy</button></div><pre id="t-5-18-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Gentle inward closed-mouth smile, eyes softly closed, peaceful meditative expression, hands resting on cedar table. Soft daylight. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-19"><div class="prompt-header"><span class="prompt-id">T5.19 Shoji Backlight</span><button class="copy-btn" data-target="t-5-19-x">Copy</button></div><pre id="t-5-19-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Strong soft backlight from shoji screen rim-lighting hair and shoulders, gentle fill on face, mouth closed. Wabi-sabi atmosphere. Photorealistic.</pre></div>
+      <div class="prompt compact" id="t-5-20"><div class="prompt-header"><span class="prompt-id">T5.20 Diffused Front Portrait</span><button class="copy-btn" data-target="t-5-20-x">Copy</button></div><pre id="t-5-20-x">Same character: 45-year-old Japanese woman Kampo herbalist, 5'3" slender build, pale ivory skin with cool undertones, dark brown eyes, smooth straight black mid-length hair in a low chignon, deep indigo noragi jacket over natural linen blouse. Front-facing portrait, soft even diffused shoji-screen daylight, cedar table softly blurred. Mouth closed natural neutral, eyes warmly to camera. Photorealistic, hyperrealistic skin, wabi-sabi.</pre></div>
+    </div>
+  </details>
+
+  <div class="callout warn" style="margin-top:20px"><strong>Quality filter when picking:</strong> Reject any image where face shape, eye color, hair texture, or age looks different from your anchor. Reject open mouths and face coverings. Keep only "that's clearly the same person" images.</div>
+</section>
+
+<!-- ============== SCHEDULE ============== -->
+<section id="schedule">
+  <h2>Production Schedule</h2>
+  <table>
+    <tr><th>Day</th><th>Market</th><th>Kit</th><th>Prompts to use</th></tr>
+    <tr><td>Day 1</td><td>🇺🇸 Global</td><td>Kit 1</td><td><a href="#p-1-1" class="ref">1.1</a> → <a href="#p-1-6" class="ref">1.6</a></td></tr>
+    <tr><td>Day 2 AM</td><td>🇮🇳 India</td><td>Kit 2</td><td><a href="#p-2-1" class="ref">2.1</a> → <a href="#p-2-6" class="ref">2.6</a></td></tr>
+    <tr><td>Day 2 PM</td><td>🇵🇪 Peru</td><td>Kit 3</td><td><a href="#p-3-1" class="ref">3.1</a> → <a href="#p-3-6" class="ref">3.6</a></td></tr>
+    <tr><td>Day 3 AM</td><td>🇨🇳 China</td><td>Kit 4</td><td><a href="#p-4-1" class="ref">4.1</a> → <a href="#p-4-6" class="ref">4.6</a></td></tr>
+    <tr><td>Day 3 PM</td><td>🇯🇵 Japan</td><td>Kit 5</td><td><a href="#p-5-1" class="ref">5.1</a> → <a href="#p-5-6" class="ref">5.6</a></td></tr>
+    <tr><td>Day 4</td><td>All</td><td>—</td><td>Review, schedule posts</td></tr>
+  </table>
+</section>
+
+<!-- ============== CHECKLIST ============== -->
+<section id="checklist">
+  <h2>Per-Video Checklist</h2>
+  <p>Tick as you complete each step. Use one checklist per market.</p>
+  <ul class="checklist">
+    <li><input type="checkbox"> Step 1 — 20–30 Soul ID training images generated and saved</li>
+    <li><input type="checkbox"> Step 2 — Soul ID trained to "Good" or "Excellent" + "Ready"</li>
+    <li><input type="checkbox"> Step 3 — Hero <code class="inline">herbalist.jpg</code> generated with Soul ID attached (Prompt [KIT].1)</li>
+    <li><input type="checkbox"> Step 4 — Talking head rendered (Prompt [KIT].6 + Universal motion)</li>
+    <li><input type="checkbox"> Step 5 — 3 B-roll stills (Prompts [KIT].2, .3, .4)</li>
+    <li><input type="checkbox"> Step 6 — 3 B-roll videos rendered</li>
+    <li><input type="checkbox"> Step 7 — Book cover video rendered (Prompt [KIT].5)</li>
+    <li><input type="checkbox"> Step 8 — CapCut assembly + captions + music + export</li>
+    <li><input type="checkbox"> Step 9 — Posted to all platforms for that market</li>
+  </ul>
+</section>
+
+<!-- ============== TROUBLESHOOTING ============== -->
+<section id="troubleshoot">
+  <h2>Troubleshooting</h2>
+  <table>
+    <tr><th>Issue</th><th>Fix</th></tr>
+    <tr><td>Video cuts off mid-sentence</td><td>Increase duration to 20s+, regenerate</td></tr>
+    <tr><td>Lipsync looks robotic / wrong mouth shape</td><td>Regenerate herbalist with "mouth closed in soft natural position"</td></tr>
+    <tr><td>Eyes look dead / frozen</td><td>Regenerate; lipsync is non-deterministic</td></tr>
+    <tr><td>Hands morph mid-clip</td><td>Re-do herbalist with hands lower / further from face</td></tr>
+    <tr><td>Subtitles in wrong language</td><td>Captions → Auto Captions → manually set Source Language (don't trust auto-detect)</td></tr>
+    <tr><td>Subtitles render as garbled glyphs / boxes / wrong script</td><td>Caption font doesn't support that language's script. Click any caption → change font to <code class="inline">Noto Sans</code> (Latin/Cyrillic), <code class="inline">Noto Sans CJK</code> (Chinese/Japanese), or <code class="inline">Noto Sans Devanagari</code> (Hindi). Apply to all captions.</td></tr>
+    <tr><td>Audio out of sync after cuts</td><td>In CapCut: select audio → "Snap to original position"</td></tr>
+    <tr><td>First 1.5s feels weak</td><td>Use macro pour with motion-blur, add 0.5s zoom-burst</td></tr>
+    <tr><td>Video washed out</td><td>Reduce Vintage Warm filter to 40%</td></tr>
+    <tr><td>Music drowns voice</td><td>Music -22dB, voice -3dB, enable ducking</td></tr>
+    <tr><td>Soul ID quality stuck on "Bad" after 20+ uploads</td><td>Re-check every uploaded image. Remove any where face shape, eye color, hair, or age looks different. Replace with more "clearly the same person" generations from <a href="#soulid-training" class="ref">Training Prompts</a> until counter ticks up to "Good".</td></tr>
+    <tr><td>Nano Banana output is the wrong ethnicity / wrong character</td><td>Check the prompt bar for an <code class="inline">@Remedia_*</code> mention chip. If it's the wrong market (or missing), delete it, then type <code class="inline">@</code> and select the correct <code class="inline">@Remedia_[Market]</code>.</td></tr>
+    <tr><td>Can't find the Character dropdown in Nano Banana Pro</td><td>There is no dropdown. Type <code class="inline">@</code> in the prompt input — your trained Soul IDs autocomplete. See <a href="#step3" class="ref">Step 3</a> callout.</td></tr>
+    <tr><td>I clicked the <code class="inline">+</code> icon but no Character option appeared</td><td>The <code class="inline">+</code> is for uploading reference / style images, not Soul ID. Close it and use the <code class="inline">@</code> mention method instead.</td></tr>
+  </table>
+</section>
+
+<div style="margin-top:60px; padding-top:30px; border-top:1px solid var(--border); color:var(--muted); text-align:center; font-size:0.85em;">
+  Remedia Production Guide · v1.0 · Start with Kit 1 Global before scaling to others
+</div>
+
+</main>
+</div>
+
+<script>
+  // Copy-to-clipboard for all .copy-btn buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const targetId = btn.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const text = target.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('copied');
+        }, 1600);
+      } catch (e) {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1600);
+      }
+    });
+  });
+</script>
+</body>
+</html>
